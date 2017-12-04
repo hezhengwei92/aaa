@@ -1,0 +1,2 @@
+与硬件通过协议传输数据。
+技术：HTTP 协议帧，Netty，mybatis，

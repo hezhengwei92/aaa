@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbVSWDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbVSW" >
+    <id column="keyVSWID" property="keyVSWID" jdbcType="VARCHAR" />
+    <result column="hostname" property="hostname" jdbcType="VARCHAR" />
+    <result column="vswpwd" property="vswpwd" jdbcType="VARCHAR" />
+    <result column="expire" property="expire" jdbcType="INTEGER" />
+    <result column="lastHBTime" property="lastHBTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="vswProtocol" property="vswProtocol" jdbcType="VARCHAR"/>
+    <result column="publicIP" property="publicIP" jdbcType="VARCHAR" />
+    <result column="publicPort" property="publicPort" jdbcType="INTEGER" />
+    <result column="idxUUWiFiAreaId" property="idxUUWiFiAreaId" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="countryCode" property="countryCode" jdbcType="VARCHAR" />
+    <result column="ISPName" property="ISPName" jdbcType="VARCHAR" />
+    <result column="bandwidth" property="bandwidth" jdbcType="INTEGER" />
+    <result column="star" property="star" jdbcType="INTEGER" />
+    <result column="esxiHost" property="esxiHost" jdbcType="VARCHAR" />
+    <result column="CPU" property="CPU" jdbcType="VARCHAR" />
+    <result column="MEM" property="MEM" jdbcType="INTEGER" />
+    <result column="HARDDISK" property="HARDDISK" jdbcType="INTEGER" />
+    <result column="diskUsage" property="diskUsage" jdbcType="INTEGER" />
+    <result column="powerDate" property="powerDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyVSWID, hostname, vswpwd, expire, lastHBTime, state, vswProtocol, publicIP, publicPort, idxUUWiFiAreaId, location,
+    countryCode, ISPName, bandwidth, star, esxiHost, CPU, MEM, HARDDISK, diskUsage, powerDate, 
+    remarks, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbVSW
+    where keyVSWID = #{keyVSWID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbVSW
+    where keyVSWID = #{keyVSWID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbVSW" >
+    insert into tbVSW (keyVSWID, hostname, vswpwd, 
+      expire, lastHBTime, state, vswProtocol,
+      publicIP, publicPort, idxUUWiFiAreaId, location,
+      countryCode, ISPName, bandwidth, 
+      star, esxiHost, CPU, 
+      MEM, HARDDISK, diskUsage, 
+      powerDate, remarks, mdfTm, 
+      mdfBy, crtTm, crtBy
+      )
+    values (#{keyVSWID,jdbcType=VARCHAR}, #{hostname,jdbcType=VARCHAR}, #{vswpwd,jdbcType=VARCHAR}, 
+      #{expire,jdbcType=INTEGER}, #{lastHBTime,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}, #{vswProtocol,jdbcType=VARCHAR},
+      #{publicIP,jdbcType=VARCHAR}, #{publicPort,jdbcType=INTEGER}, #{idxUUWiFiAreaId,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR},
+      #{countryCode,jdbcType=VARCHAR}, #{ISPName,jdbcType=VARCHAR}, #{bandwidth,jdbcType=INTEGER}, 
+      #{star,jdbcType=INTEGER}, #{esxiHost,jdbcType=VARCHAR}, #{CPU,jdbcType=VARCHAR}, 
+      #{MEM,jdbcType=INTEGER}, #{HARDDISK,jdbcType=INTEGER}, #{diskUsage,jdbcType=INTEGER}, 
+      #{powerDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, 
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbVSW" >
+    insert into tbVSW
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyVSWID != null" >
+        keyVSWID,
+      </if>
+      <if test="hostname != null" >
+        hostname,
+      </if>
+      <if test="vswpwd != null" >
+        vswpwd,
+      </if>
+      <if test="expire != null" >
+        expire,
+      </if>
+      <if test="lastHBTime != null" >
+        lastHBTime,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="vswProtocol != null">
+        vswProtocol,
+      </if>
+      <if test="publicIP != null" >
+        publicIP,
+      </if>
+      <if test="publicPort != null" >
+        publicPort,
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="countryCode != null" >
+        countryCode,
+      </if>
+      <if test="ISPName != null" >
+        ISPName,
+      </if>
+      <if test="bandwidth != null" >
+        bandwidth,
+      </if>
+      <if test="star != null" >
+        star,
+      </if>
+      <if test="esxiHost != null" >
+        esxiHost,
+      </if>
+      <if test="CPU != null" >
+        CPU,
+      </if>
+      <if test="MEM != null" >
+        MEM,
+      </if>
+      <if test="HARDDISK != null" >
+        HARDDISK,
+      </if>
+      <if test="diskUsage != null" >
+        diskUsage,
+      </if>
+      <if test="powerDate != null" >
+        powerDate,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyVSWID != null" >
+        #{keyVSWID,jdbcType=VARCHAR},
+      </if>
+      <if test="hostname != null" >
+        #{hostname,jdbcType=VARCHAR},
+      </if>
+      <if test="vswpwd != null" >
+        #{vswpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="expire != null" >
+        #{expire,jdbcType=INTEGER},
+      </if>
+      <if test="lastHBTime != null" >
+        #{lastHBTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="vswProtocol != null">
+        #{vswProtocol,jdbcType=VARCHAR},
+      </if>
+      <if test="publicIP != null" >
+        #{publicIP,jdbcType=VARCHAR},
+      </if>
+      <if test="publicPort != null" >
+        #{publicPort,jdbcType=INTEGER},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null" >
+        #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ISPName != null" >
+        #{ISPName,jdbcType=VARCHAR},
+      </if>
+      <if test="bandwidth != null" >
+        #{bandwidth,jdbcType=INTEGER},
+      </if>
+      <if test="star != null" >
+        #{star,jdbcType=INTEGER},
+      </if>
+      <if test="esxiHost != null" >
+        #{esxiHost,jdbcType=VARCHAR},
+      </if>
+      <if test="CPU != null" >
+        #{CPU,jdbcType=VARCHAR},
+      </if>
+      <if test="MEM != null" >
+        #{MEM,jdbcType=INTEGER},
+      </if>
+      <if test="HARDDISK != null" >
+        #{HARDDISK,jdbcType=INTEGER},
+      </if>
+      <if test="diskUsage != null" >
+        #{diskUsage,jdbcType=INTEGER},
+      </if>
+      <if test="powerDate != null" >
+        #{powerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbVSW" >
+    update tbVSW
+    <set >
+      <if test="hostname != null" >
+        hostname = #{hostname,jdbcType=VARCHAR},
+      </if>
+      <if test="vswpwd != null" >
+        vswpwd = #{vswpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="expire != null" >
+        expire = #{expire,jdbcType=INTEGER},
+      </if>
+      <if test="lastHBTime != null" >
+        lastHBTime = #{lastHBTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="vswProtocol != null">
+        vswProtocol = #{vswProtocol,jdbcType=VARCHAR},
+      </if>
+      <if test="publicIP != null" >
+        publicIP = #{publicIP,jdbcType=VARCHAR},
+      </if>
+      <if test="publicPort != null" >
+        publicPort = #{publicPort,jdbcType=INTEGER},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null" >
+        countryCode = #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ISPName != null" >
+        ISPName = #{ISPName,jdbcType=VARCHAR},
+      </if>
+      <if test="bandwidth != null" >
+        bandwidth = #{bandwidth,jdbcType=INTEGER},
+      </if>
+      <if test="star != null" >
+        star = #{star,jdbcType=INTEGER},
+      </if>
+      <if test="esxiHost != null" >
+        esxiHost = #{esxiHost,jdbcType=VARCHAR},
+      </if>
+      <if test="CPU != null" >
+        CPU = #{CPU,jdbcType=VARCHAR},
+      </if>
+      <if test="MEM != null" >
+        MEM = #{MEM,jdbcType=INTEGER},
+      </if>
+      <if test="HARDDISK != null" >
+        HARDDISK = #{HARDDISK,jdbcType=INTEGER},
+      </if>
+      <if test="diskUsage != null" >
+        diskUsage = #{diskUsage,jdbcType=INTEGER},
+      </if>
+      <if test="powerDate != null" >
+        powerDate = #{powerDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyVSWID = #{keyVSWID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbVSW" >
+    update tbVSW
+    set hostname = #{hostname,jdbcType=VARCHAR},
+      vswpwd = #{vswpwd,jdbcType=VARCHAR},
+      expire = #{expire,jdbcType=INTEGER},
+      lastHBTime = #{lastHBTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=VARCHAR},
+      vswProtocol = #{vswProtocol,jdbcType=VARCHAR},
+      publicIP = #{publicIP,jdbcType=VARCHAR},
+      publicPort = #{publicPort,jdbcType=INTEGER},
+      idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      countryCode = #{countryCode,jdbcType=VARCHAR},
+      ISPName = #{ISPName,jdbcType=VARCHAR},
+      bandwidth = #{bandwidth,jdbcType=INTEGER},
+      star = #{star,jdbcType=INTEGER},
+      esxiHost = #{esxiHost,jdbcType=VARCHAR},
+      CPU = #{CPU,jdbcType=VARCHAR},
+      MEM = #{MEM,jdbcType=INTEGER},
+      HARDDISK = #{HARDDISK,jdbcType=INTEGER},
+      diskUsage = #{diskUsage,jdbcType=INTEGER},
+      powerDate = #{powerDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyVSWID = #{keyVSWID,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByHostName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbVSW
+    where hostname = #{0} limit 1
+  </select>
+
+  <!--//String keyVswID, String ip, int port, String state, int expire-->
+  <update id="updateVSWREG">
+    update tbVSW set publicIP=#{1}, publicPort=#{2}, state=#{3}, expire=#{4}, lastHBTime=NOW(), mdfTm=NOW() where keyVSWID = #{0}
+  </update>
+</mapper>

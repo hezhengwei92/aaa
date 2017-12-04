@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbSupplierDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbSupplier" >
+    <id column="idxSupplierId" property="idxSupplierId" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phoneNumber" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="supplierLevel" property="supplierLevel" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    idxSupplierId, name, phoneNumber, supplierLevel, status, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbSupplier
+    where idxSupplierId = #{idxSupplierId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbSupplier
+    where idxSupplierId = #{idxSupplierId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbSupplier" >
+    insert into tbSupplier (idxSupplierId, name, phoneNumber, 
+      supplierLevel, status, mdfTm, 
+      mdfBy, crtTm, crtBy
+      )
+    values (#{idxSupplierId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{supplierLevel,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{mdfTm,jdbcType=TIMESTAMP}, 
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSupplier" >
+    insert into tbSupplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idxSupplierId != null" >
+        idxSupplierId,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phoneNumber != null" >
+        phoneNumber,
+      </if>
+      <if test="supplierLevel != null" >
+        supplierLevel,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idxSupplierId != null" >
+        #{idxSupplierId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierLevel != null" >
+        #{supplierLevel,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSupplier" >
+    update tbSupplier
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierLevel != null" >
+        supplierLevel = #{supplierLevel,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idxSupplierId = #{idxSupplierId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbSupplier" >
+    update tbSupplier
+    set name = #{name,jdbcType=VARCHAR},
+      phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
+      supplierLevel = #{supplierLevel,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where idxSupplierId = #{idxSupplierId,jdbcType=VARCHAR}
+  </update>
+</mapper>

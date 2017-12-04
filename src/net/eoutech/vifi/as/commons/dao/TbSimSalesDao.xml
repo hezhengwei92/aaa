@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbSimSalesDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbSimSales" >
+    <id column="keySimSalesID" property="keySimSalesID" jdbcType="INTEGER" />
+    <result column="idxSCGroupID" property="idxSCGroupID" jdbcType="VARCHAR" />
+    <result column="idxAreaId" property="idxAreaId" jdbcType="VARCHAR" />
+    <result column="dataPrice" property="dataPrice" jdbcType="INTEGER" />
+    <result column="maxDaily" property="maxDaily" jdbcType="INTEGER" />
+    <result column="maxMonthly" property="maxMonthly" jdbcType="INTEGER" />
+    <result column="limitUUWiFi" property="limitUUWiFi" jdbcType="VARCHAR" />
+    <result column="limitAgent" property="limitAgent" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keySimSalesID, idxSCGroupID, idxAreaId, dataPrice, maxDaily, maxMonthly, limitUUWiFi, 
+    limitAgent, remarks, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbSimSales
+    where keySimSalesID = #{keySimSalesID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbSimSales
+    where keySimSalesID = #{keySimSalesID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbSimSales" >
+    insert into tbSimSales (keySimSalesID, idxSCGroupID, idxAreaId, 
+      dataPrice, maxDaily, maxMonthly, 
+      limitUUWiFi, limitAgent, remarks, 
+      mdfTm, mdfBy, crtTm, 
+      crtBy)
+    values (#{keySimSalesID,jdbcType=INTEGER}, #{idxSCGroupID,jdbcType=VARCHAR}, #{idxAreaId,jdbcType=VARCHAR},
+      #{dataPrice,jdbcType=INTEGER}, #{maxDaily,jdbcType=INTEGER}, #{maxMonthly,jdbcType=INTEGER}, 
+      #{limitUUWiFi,jdbcType=VARCHAR}, #{limitAgent,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSimSales" >
+    insert into tbSimSales
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keySimSalesID != null" >
+        keySimSalesID,
+      </if>
+      <if test="idxSCGroupID != null" >
+        idxSCGroupID,
+      </if>
+      <if test="idxAreaId != null" >
+        idxAreaId,
+      </if>
+      <if test="dataPrice != null" >
+        dataPrice,
+      </if>
+      <if test="maxDaily != null" >
+        maxDaily,
+      </if>
+      <if test="maxMonthly != null" >
+        maxMonthly,
+      </if>
+      <if test="limitUUWiFi != null" >
+        limitUUWiFi,
+      </if>
+      <if test="limitAgent != null" >
+        limitAgent,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keySimSalesID != null" >
+        #{keySimSalesID,jdbcType=INTEGER},
+      </if>
+      <if test="idxSCGroupID != null" >
+        #{idxSCGroupID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAreaId != null" >
+        #{idxAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="dataPrice != null" >
+        #{dataPrice,jdbcType=INTEGER},
+      </if>
+      <if test="maxDaily != null" >
+        #{maxDaily,jdbcType=INTEGER},
+      </if>
+      <if test="maxMonthly != null" >
+        #{maxMonthly,jdbcType=INTEGER},
+      </if>
+      <if test="limitUUWiFi != null" >
+        #{limitUUWiFi,jdbcType=VARCHAR},
+      </if>
+      <if test="limitAgent != null" >
+        #{limitAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSimSales" >
+    update tbSimSales
+    <set >
+      <if test="idxSCGroupID != null" >
+        idxSCGroupID = #{idxSCGroupID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAreaId != null" >
+        idxAreaId = #{idxAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="dataPrice != null" >
+        dataPrice = #{dataPrice,jdbcType=INTEGER},
+      </if>
+      <if test="maxDaily != null" >
+        maxDaily = #{maxDaily,jdbcType=INTEGER},
+      </if>
+      <if test="maxMonthly != null" >
+        maxMonthly = #{maxMonthly,jdbcType=INTEGER},
+      </if>
+      <if test="limitUUWiFi != null" >
+        limitUUWiFi = #{limitUUWiFi,jdbcType=VARCHAR},
+      </if>
+      <if test="limitAgent != null" >
+        limitAgent = #{limitAgent,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keySimSalesID = #{keySimSalesID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbSimSales" >
+    update tbSimSales
+    set idxSCGroupID = #{idxSCGroupID,jdbcType=VARCHAR},
+      idxAreaId = #{idxAreaId,jdbcType=VARCHAR},
+      dataPrice = #{dataPrice,jdbcType=INTEGER},
+      maxDaily = #{maxDaily,jdbcType=INTEGER},
+      maxMonthly = #{maxMonthly,jdbcType=INTEGER},
+      limitUUWiFi = #{limitUUWiFi,jdbcType=VARCHAR},
+      limitAgent = #{limitAgent,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keySimSalesID = #{keySimSalesID,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectByAgentArea" resultType="java.lang.String" parameterType="java.util.Map">
+    select idxSCGroupID
+    from tbSimSales
+    where limitAgent in
+    <foreach collection="agentIdList" index="index" item="item" open="(" separator="," close=")">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+    and idxAreaId in
+    <foreach collection="areaIdList" index="index" item="item" open="(" separator="," close=")">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+    <if test="noSCGrpIdList != null">
+      and idxSCGroupID not in
+      <foreach collection="noSCGrpIdList" index="index" item="item" open="(" separator="," close=")">
+        #{item,jdbcType=VARCHAR}
+      </foreach>
+    </if>
+    order by idxAreaId desc
+  </select>
+
+
+</mapper>

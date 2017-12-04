@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbRateDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbRate" >
+    <id column="keyRateID" property="keyRateID" jdbcType="INTEGER" />
+    <result column="rateMode" property="rateMode" jdbcType="VARCHAR" />
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="INTEGER" />
+    <result column="idxCallPrefix" property="idxCallPrefix" jdbcType="VARCHAR" />
+    <result column="idxUUWiFiAreaId" property="idxUUWiFiAreaId" jdbcType="VARCHAR" />
+    <result column="countryCode" property="countryCode" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="priceCallOnline" property="priceCallOnline" jdbcType="INTEGER" />
+    <result column="priceCallOffline" property="priceCallOffline" jdbcType="INTEGER" />
+    <result column="priceCallbackOff" property="priceCallbackOff" jdbcType="INTEGER" />
+    <result column="priceCallGoIP" property="priceCallGoIP" jdbcType="INTEGER" />
+    <result column="priceCallbackGoIP" property="priceCallbackGoIP" jdbcType="INTEGER" />
+    <result column="priceSMS" property="priceSMS" jdbcType="INTEGER" />
+    <result column="priceNET" property="priceNET" jdbcType="INTEGER" />
+    <result column="dayDataPrice" property="dayDataPrice" jdbcType="INTEGER" />
+    <result column="dayDataLimit" property="dayDataLimit" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyRateID, rateMode, idxAgentID, direction, idxCallPrefix, idxUUWiFiAreaId, countryCode, country,
+    priceCallOnline, priceCallOffline, priceCallbackOff, priceCallGoIP, priceCallbackGoIP, 
+    priceSMS, priceNET, dayDataPrice, dayDataLimit, remarks, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbRate
+    where keyRateID = #{keyRateID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbRate
+    where keyRateID = #{keyRateID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbRate" >
+    insert into tbRate (keyRateID, rateMode, idxAgentID, 
+      direction, idxCallPrefix, idxUUWiFiAreaId, countryCode,
+      country, priceCallOnline, priceCallOffline, 
+      priceCallbackOff, priceCallGoIP, priceCallbackGoIP, 
+      priceSMS, priceNET, dayDataPrice, 
+      dayDataLimit, remarks, mdfTm, 
+      mdfBy, crtTm, crtBy
+      )
+    values (#{keyRateID,jdbcType=INTEGER}, #{rateMode,jdbcType=VARCHAR}, #{idxAgentID,jdbcType=VARCHAR}, 
+      #{direction,jdbcType=INTEGER}, #{idxCallPrefix,jdbcType=VARCHAR}, #{idxUUWiFiAreaId,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR},
+      #{country,jdbcType=VARCHAR}, #{priceCallOnline,jdbcType=INTEGER}, #{priceCallOffline,jdbcType=INTEGER}, 
+      #{priceCallbackOff,jdbcType=INTEGER}, #{priceCallGoIP,jdbcType=INTEGER}, #{priceCallbackGoIP,jdbcType=INTEGER}, 
+      #{priceSMS,jdbcType=INTEGER}, #{priceNET,jdbcType=INTEGER}, #{dayDataPrice,jdbcType=INTEGER}, 
+      #{dayDataLimit,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, 
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbRate" >
+    insert into tbRate
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyRateID != null" >
+        keyRateID,
+      </if>
+      <if test="rateMode != null" >
+        rateMode,
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID,
+      </if>
+      <if test="direction != null" >
+        direction,
+      </if>
+      <if test="idxCallPrefix != null" >
+        idxCallPrefix,
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId,
+      </if>
+      <if test="countryCode != null" >
+        countryCode,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="priceCallOnline != null" >
+        priceCallOnline,
+      </if>
+      <if test="priceCallOffline != null" >
+        priceCallOffline,
+      </if>
+      <if test="priceCallbackOff != null" >
+        priceCallbackOff,
+      </if>
+      <if test="priceCallGoIP != null" >
+        priceCallGoIP,
+      </if>
+      <if test="priceCallbackGoIP != null" >
+        priceCallbackGoIP,
+      </if>
+      <if test="priceSMS != null" >
+        priceSMS,
+      </if>
+      <if test="priceNET != null" >
+        priceNET,
+      </if>
+      <if test="dayDataPrice != null" >
+        dayDataPrice,
+      </if>
+      <if test="dayDataLimit != null" >
+        dayDataLimit,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyRateID != null" >
+        #{keyRateID,jdbcType=INTEGER},
+      </if>
+      <if test="rateMode != null" >
+        #{rateMode,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        #{direction,jdbcType=INTEGER},
+      </if>
+      <if test="idxCallPrefix != null" >
+        #{idxCallPrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null" >
+        #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="priceCallOnline != null" >
+        #{priceCallOnline,jdbcType=INTEGER},
+      </if>
+      <if test="priceCallOffline != null" >
+        #{priceCallOffline,jdbcType=INTEGER},
+      </if>
+      <if test="priceCallbackOff != null" >
+        #{priceCallbackOff,jdbcType=INTEGER},
+      </if>
+      <if test="priceCallGoIP != null" >
+        #{priceCallGoIP,jdbcType=INTEGER},
+      </if>
+      <if test="priceCallbackGoIP != null" >
+        #{priceCallbackGoIP,jdbcType=INTEGER},
+      </if>
+      <if test="priceSMS != null" >
+        #{priceSMS,jdbcType=INTEGER},
+      </if>
+      <if test="priceNET != null" >
+        #{priceNET,jdbcType=INTEGER},
+      </if>
+      <if test="dayDataPrice != null" >
+        #{dayDataPrice,jdbcType=INTEGER},
+      </if>
+      <if test="dayDataLimit != null" >
+        #{dayDataLimit,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbRate" >
+    update tbRate
+    <set >
+      <if test="rateMode != null" >
+        rateMode = #{rateMode,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        direction = #{direction,jdbcType=INTEGER},
+      </if>
+      <if test="idxCallPrefix != null" >
+        idxCallPrefix = #{idxCallPrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null" >
+        countryCode = #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="priceCallOnline != null" >
+        priceCallOnline = #{priceCallOnline,jdbcType=INTEGER},
+      </if>
+      <if test="priceCallOffline != null" >
+        priceCallOffline = #{priceCallOffline,jdbcType=INTEGER},
+      </if>
+      <if test="priceCallbackOff != null" >
+        priceCallbackOff = #{priceCallbackOff,jdbcType=INTEGER},
+      </if>
+      <if test="priceCallGoIP != null" >
+        priceCallGoIP = #{priceCallGoIP,jdbcType=INTEGER},
+      </if>
+      <if test="priceCallbackGoIP != null" >
+        priceCallbackGoIP = #{priceCallbackGoIP,jdbcType=INTEGER},
+      </if>
+      <if test="priceSMS != null" >
+        priceSMS = #{priceSMS,jdbcType=INTEGER},
+      </if>
+      <if test="priceNET != null" >
+        priceNET = #{priceNET,jdbcType=INTEGER},
+      </if>
+      <if test="dayDataPrice != null" >
+        dayDataPrice = #{dayDataPrice,jdbcType=INTEGER},
+      </if>
+      <if test="dayDataLimit != null" >
+        dayDataLimit = #{dayDataLimit,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyRateID = #{keyRateID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbRate" >
+    update tbRate
+    set rateMode = #{rateMode,jdbcType=VARCHAR},
+      idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      direction = #{direction,jdbcType=INTEGER},
+      idxCallPrefix = #{idxCallPrefix,jdbcType=VARCHAR},
+      idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      countryCode = #{countryCode,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      priceCallOnline = #{priceCallOnline,jdbcType=INTEGER},
+      priceCallOffline = #{priceCallOffline,jdbcType=INTEGER},
+      priceCallbackOff = #{priceCallbackOff,jdbcType=INTEGER},
+      priceCallGoIP = #{priceCallGoIP,jdbcType=INTEGER},
+      priceCallbackGoIP = #{priceCallbackGoIP,jdbcType=INTEGER},
+      priceSMS = #{priceSMS,jdbcType=INTEGER},
+      priceNET = #{priceNET,jdbcType=INTEGER},
+      dayDataPrice = #{dayDataPrice,jdbcType=INTEGER},
+      dayDataLimit = #{dayDataLimit,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyRateID = #{keyRateID,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql begin-->
+  <select id="queryCallRate" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from tbRate where rateMode = 'C' and idxAgentID = #{agentId,jdbcType=VARCHAR} and idxCallPrefix in
+    <foreach collection="array" item="item" index="index" open="(" separator="," close=")">#{item}</foreach>
+    order by idxCallPrefix DESC LIMIT 1;
+  </select>
+
+  <select id="queryDataRate" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select <include refid="Base_Column_List" /> from tbRate where rateMode = 'T' and idxUUWiFiAreaId in
+    <foreach collection="areaIdList" item="item" index="index" open="(" separator="," close=")">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+    and idxAgentID = #{agentId,jdbcType=VARCHAR} order by idxUUWiFiAreaId desc limit 1 for update
+  </select>
+</mapper>

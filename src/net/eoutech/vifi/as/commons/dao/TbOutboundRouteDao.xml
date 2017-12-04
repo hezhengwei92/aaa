@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbOutboundRouteDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbOutboundRoute" >
+    <id column="keyOutboundRouteId" property="keyOutboundRouteId" jdbcType="INTEGER" />
+    <result column="dnisPrefix" property="dnisPrefix" jdbcType="VARCHAR" />
+    <result column="dnisDomain" property="dnisDomain" jdbcType="VARCHAR" />
+    <result column="idxTrunkID" property="idxTrunkID" jdbcType="INTEGER" />
+    <result column="delDnisPrefixNum" property="delDnisPrefixNum" jdbcType="INTEGER" />
+    <result column="addDnisPrefixStr" property="addDnisPrefixStr" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyOutboundRouteId, dnisPrefix, dnisDomain, idxTrunkID, delDnisPrefixNum, addDnisPrefixStr, 
+    remarks, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbOutboundRoute
+    where keyOutboundRouteId = #{keyOutboundRouteId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbOutboundRoute
+    where keyOutboundRouteId = #{keyOutboundRouteId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbOutboundRoute" >
+    insert into tbOutboundRoute (keyOutboundRouteId, dnisPrefix, dnisDomain, 
+      idxTrunkID, delDnisPrefixNum, addDnisPrefixStr, 
+      remarks, mdfTm, mdfBy, 
+      crtTm, crtBy)
+    values (#{keyOutboundRouteId,jdbcType=INTEGER}, #{dnisPrefix,jdbcType=VARCHAR}, #{dnisDomain,jdbcType=VARCHAR}, 
+      #{idxTrunkID,jdbcType=INTEGER}, #{delDnisPrefixNum,jdbcType=INTEGER}, #{addDnisPrefixStr,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, 
+      #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbOutboundRoute" >
+    insert into tbOutboundRoute
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyOutboundRouteId != null" >
+        keyOutboundRouteId,
+      </if>
+      <if test="dnisPrefix != null" >
+        dnisPrefix,
+      </if>
+      <if test="dnisDomain != null" >
+        dnisDomain,
+      </if>
+      <if test="idxTrunkID != null" >
+        idxTrunkID,
+      </if>
+      <if test="delDnisPrefixNum != null" >
+        delDnisPrefixNum,
+      </if>
+      <if test="addDnisPrefixStr != null" >
+        addDnisPrefixStr,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyOutboundRouteId != null" >
+        #{keyOutboundRouteId,jdbcType=INTEGER},
+      </if>
+      <if test="dnisPrefix != null" >
+        #{dnisPrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="dnisDomain != null" >
+        #{dnisDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="idxTrunkID != null" >
+        #{idxTrunkID,jdbcType=INTEGER},
+      </if>
+      <if test="delDnisPrefixNum != null" >
+        #{delDnisPrefixNum,jdbcType=INTEGER},
+      </if>
+      <if test="addDnisPrefixStr != null" >
+        #{addDnisPrefixStr,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbOutboundRoute" >
+    update tbOutboundRoute
+    <set >
+      <if test="dnisPrefix != null" >
+        dnisPrefix = #{dnisPrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="dnisDomain != null" >
+        dnisDomain = #{dnisDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="idxTrunkID != null" >
+        idxTrunkID = #{idxTrunkID,jdbcType=INTEGER},
+      </if>
+      <if test="delDnisPrefixNum != null" >
+        delDnisPrefixNum = #{delDnisPrefixNum,jdbcType=INTEGER},
+      </if>
+      <if test="addDnisPrefixStr != null" >
+        addDnisPrefixStr = #{addDnisPrefixStr,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyOutboundRouteId = #{keyOutboundRouteId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbOutboundRoute" >
+    update tbOutboundRoute
+    set dnisPrefix = #{dnisPrefix,jdbcType=VARCHAR},
+      dnisDomain = #{dnisDomain,jdbcType=VARCHAR},
+      idxTrunkID = #{idxTrunkID,jdbcType=INTEGER},
+      delDnisPrefixNum = #{delDnisPrefixNum,jdbcType=INTEGER},
+      addDnisPrefixStr = #{addDnisPrefixStr,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyOutboundRouteId = #{keyOutboundRouteId,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectByPrefixNum" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbOutboundRoute where dnisPrefix in
+    <foreach collection="array" item="item" index="index" open="(" separator="," close=")">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+    order by dnisDomain desc
+  </select>
+</mapper>

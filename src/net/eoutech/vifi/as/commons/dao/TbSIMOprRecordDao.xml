@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbSIMOprRecordDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbSIMOprRecord" >
+    <id column="keyID" property="keyID" jdbcType="INTEGER" />
+    <result column="idxICCID" property="idxICCID" jdbcType="VARCHAR" />
+    <result column="action" property="action" jdbcType="VARCHAR" />
+    <result column="req" property="req" jdbcType="VARCHAR" />
+    <result column="result" property="result" jdbcType="INTEGER" />
+    <result column="resp" property="resp" jdbcType="VARCHAR" />
+    <result column="IP" property="IP" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyID, idxICCID, action, req, result, resp, IP, remark, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbSIMOprRecord
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbSIMOprRecord
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbSIMOprRecord" >
+    insert into tbSIMOprRecord (keyID, idxICCID, action, 
+      req, result, resp, 
+      IP, remark, crtTm, 
+      crtBy)
+    values (#{keyID,jdbcType=INTEGER}, #{idxICCID,jdbcType=VARCHAR}, #{action,jdbcType=VARCHAR}, 
+      #{req,jdbcType=VARCHAR}, #{result,jdbcType=INTEGER}, #{resp,jdbcType=VARCHAR}, 
+      #{IP,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSIMOprRecord" >
+    insert into tbSIMOprRecord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        keyID,
+      </if>
+      <if test="idxICCID != null" >
+        idxICCID,
+      </if>
+      <if test="action != null" >
+        action,
+      </if>
+      <if test="req != null" >
+        req,
+      </if>
+      <if test="result != null" >
+        result,
+      </if>
+      <if test="resp != null" >
+        resp,
+      </if>
+      <if test="IP != null" >
+        IP,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        #{keyID,jdbcType=INTEGER},
+      </if>
+      <if test="idxICCID != null" >
+        #{idxICCID,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="req != null" >
+        #{req,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        #{result,jdbcType=INTEGER},
+      </if>
+      <if test="resp != null" >
+        #{resp,jdbcType=VARCHAR},
+      </if>
+      <if test="IP != null" >
+        #{IP,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSIMOprRecord" >
+    update tbSIMOprRecord
+    <set >
+      <if test="idxICCID != null" >
+        idxICCID = #{idxICCID,jdbcType=VARCHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="req != null" >
+        req = #{req,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null" >
+        result = #{result,jdbcType=INTEGER},
+      </if>
+      <if test="resp != null" >
+        resp = #{resp,jdbcType=VARCHAR},
+      </if>
+      <if test="IP != null" >
+        IP = #{IP,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbSIMOprRecord" >
+    update tbSIMOprRecord
+    set idxICCID = #{idxICCID,jdbcType=VARCHAR},
+      action = #{action,jdbcType=VARCHAR},
+      req = #{req,jdbcType=VARCHAR},
+      result = #{result,jdbcType=INTEGER},
+      resp = #{resp,jdbcType=VARCHAR},
+      IP = #{IP,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+</mapper>

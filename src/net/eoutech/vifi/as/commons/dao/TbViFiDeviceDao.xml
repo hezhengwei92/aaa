@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbViFiDeviceDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbViFiDevice" >
+    <id column="keyDevID" property="keyDevID" jdbcType="VARCHAR" />
+    <result column="idxViFiID" property="idxViFiID" jdbcType="VARCHAR" />
+    <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+    <result column="alaisName" property="alaisName" jdbcType="VARCHAR" />
+    <result column="idxDevGrpID" property="idxDevGrpID" jdbcType="VARCHAR" />
+    <result column="idxVNSID" property="idxVNSID" jdbcType="VARCHAR" />
+    <result column="devState" property="devState" jdbcType="VARCHAR" />
+    <result column="cos" property="cos" jdbcType="VARCHAR" />
+    <result column="idxUserID" property="idxUserID" jdbcType="VARCHAR" />
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR" />
+    <result column="redirectTimes" property="redirectTimes" jdbcType="INTEGER" />
+    <result column="lastRedirectDate" property="lastRedirectDate" jdbcType="TIMESTAMP" />
+    <result column="expire" property="expire" jdbcType="INTEGER" />
+    <result column="lastDomain" property="lastDomain" jdbcType="VARCHAR" />
+    <result column="debugIdt" property="debugIdt" jdbcType="TINYINT" />
+    <result column="updateIdt" property="updateIdt" jdbcType="TINYINT" />
+    <result column="hardwareVer" property="hardwareVer" jdbcType="VARCHAR" />
+    <result column="firmwareVer" property="firmwareVer" jdbcType="VARCHAR" />
+    <result column="softwareVer" property="softwareVer" jdbcType="VARCHAR" />
+    <result column="lastUpdateDate" property="lastUpdateDate" jdbcType="TIMESTAMP" />
+    <result column="lastConnectTime" property="lastConnectTime" jdbcType="TIMESTAMP" />
+    <result column="lastConnectIP" property="lastConnectIP" jdbcType="VARCHAR" />
+    <result column="lastUUWiFiAreaId" property="lastUUWiFiAreaId" jdbcType="VARCHAR" />
+    <result column="lastUUWiFiData" property="lastUUWiFiData" jdbcType="INTEGER" />
+    <result column="lastUUWiFiSessId" property="lastUUWiFiSessId" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+    <result column="deviceFlow" property="deviceFlow" jdbcType="DOUBLE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyDevID, idxViFiID, pwd, alaisName, idxDevGrpID, idxVNSID, devState, cos, idxUserID, 
+    idxAgentID, redirectTimes, lastRedirectDate, expire, lastDomain, debugIdt, updateIdt, 
+    hardwareVer, firmwareVer, softwareVer, lastUpdateDate, lastConnectTime, lastConnectIP, lastUUWiFiAreaId, lastUUWiFiData, lastUUWiFiSessId,
+    remark, mdfTm, mdfBy, crtTm, crtBy,deviceFlow
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbViFiDevice
+    where keyDevID = #{keyDevID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbViFiDevice
+    where keyDevID = #{keyDevID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiDevice" >
+    insert into tbViFiDevice (keyDevID, idxViFiID, pwd, 
+      alaisName, idxDevGrpID, idxVNSID, 
+      devState, cos, idxUserID, 
+      idxAgentID, redirectTimes, lastRedirectDate, 
+      expire, lastDomain, debugIdt, 
+      updateIdt, hardwareVer, firmwareVer, 
+      softwareVer, lastUpdateDate, lastConnectTime, 
+      lastConnectIP, lastUUWiFiAreaId, lastUUWiFiData, lastUUWiFiSessId, remark, mdfTm,
+      mdfBy, crtTm, crtBy,deviceFlow
+      )
+    values (#{keyDevID,jdbcType=VARCHAR}, #{idxViFiID,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
+      #{alaisName,jdbcType=VARCHAR}, #{idxDevGrpID,jdbcType=VARCHAR}, #{idxVNSID,jdbcType=VARCHAR}, 
+      #{devState,jdbcType=VARCHAR}, #{cos,jdbcType=VARCHAR}, #{idxUserID,jdbcType=VARCHAR}, 
+      #{idxAgentID,jdbcType=VARCHAR}, #{redirectTimes,jdbcType=INTEGER}, #{lastRedirectDate,jdbcType=TIMESTAMP}, 
+      #{expire,jdbcType=INTEGER}, #{lastDomain,jdbcType=VARCHAR}, #{debugIdt,jdbcType=TINYINT}, 
+      #{updateIdt,jdbcType=TINYINT}, #{hardwareVer,jdbcType=VARCHAR}, #{firmwareVer,jdbcType=VARCHAR}, 
+      #{softwareVer,jdbcType=VARCHAR}, #{lastUpdateDate,jdbcType=TIMESTAMP}, #{lastConnectTime,jdbcType=TIMESTAMP}, 
+      #{lastConnectIP,jdbcType=VARCHAR}, #{lastUUWiFiAreaId,jdbcType=VARCHAR}, #{lastUUWiFiData,jdbcType=INTEGER}, #{lastUUWiFiSessId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP},
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR},#{deviceFlow,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiDevice" >
+    insert into tbViFiDevice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyDevID != null" >
+        keyDevID,
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID,
+      </if>
+      <if test="pwd != null" >
+        pwd,
+      </if>
+      <if test="alaisName != null" >
+        alaisName,
+      </if>
+      <if test="idxDevGrpID != null" >
+        idxDevGrpID,
+      </if>
+      <if test="idxVNSID != null" >
+        idxVNSID,
+      </if>
+      <if test="devState != null" >
+        devState,
+      </if>
+      <if test="cos != null" >
+        cos,
+      </if>
+      <if test="idxUserID != null" >
+        idxUserID,
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID,
+      </if>
+      <if test="redirectTimes != null" >
+        redirectTimes,
+      </if>
+      <if test="lastRedirectDate != null" >
+        lastRedirectDate,
+      </if>
+      <if test="expire != null" >
+        expire,
+      </if>
+      <if test="lastDomain != null" >
+        lastDomain,
+      </if>
+      <if test="debugIdt != null" >
+        debugIdt,
+      </if>
+      <if test="updateIdt != null" >
+        updateIdt,
+      </if>
+      <if test="hardwareVer != null" >
+        hardwareVer,
+      </if>
+      <if test="firmwareVer != null" >
+        firmwareVer,
+      </if>
+      <if test="softwareVer != null" >
+        softwareVer,
+      </if>
+      <if test="lastUpdateDate != null" >
+        lastUpdateDate,
+      </if>
+      <if test="lastConnectTime != null" >
+        lastConnectTime,
+      </if>
+      <if test="lastConnectIP != null" >
+        lastConnectIP,
+      </if>
+      <if test="lastUUWiFiAreaId != null">
+        lastUUWiFiAreaId,
+      </if>
+      <if test="lastUUWiFiData != null">
+        lastUUWiFiData,
+      </if>
+      <if test="lastUUWiFiSessId != null">
+        lastUUWiFiSessId,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+      <if test="deviceFlow != null" >
+        deviceFlow,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyDevID != null" >
+        #{keyDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxViFiID != null" >
+        #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="alaisName != null" >
+        #{alaisName,jdbcType=VARCHAR},
+      </if>
+      <if test="idxDevGrpID != null" >
+        #{idxDevGrpID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVNSID != null" >
+        #{idxVNSID,jdbcType=VARCHAR},
+      </if>
+      <if test="devState != null" >
+        #{devState,jdbcType=VARCHAR},
+      </if>
+      <if test="cos != null" >
+        #{cos,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUserID != null" >
+        #{idxUserID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectTimes != null" >
+        #{redirectTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastRedirectDate != null" >
+        #{lastRedirectDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expire != null" >
+        #{expire,jdbcType=INTEGER},
+      </if>
+      <if test="lastDomain != null" >
+        #{lastDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="debugIdt != null" >
+        #{debugIdt,jdbcType=TINYINT},
+      </if>
+      <if test="updateIdt != null" >
+        #{updateIdt,jdbcType=TINYINT},
+      </if>
+      <if test="hardwareVer != null" >
+        #{hardwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="firmwareVer != null" >
+        #{firmwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareVer != null" >
+        #{softwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null" >
+        #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastConnectTime != null" >
+        #{lastConnectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastConnectIP != null" >
+        #{lastConnectIP,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUUWiFiAreaId != null">
+        #{lastUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUUWiFiData != null">
+        #{lastUUWiFiData,jdbcType=INTEGER},
+      </if>
+      <if test="lastUUWiFiSessId != null">
+        #{lastUUWiFiSessId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceFlow != null" >
+        #{deviceFlow,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiDevice" >
+    update tbViFiDevice
+    <set >
+      <if test="idxViFiID != null" >
+        idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null" >
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="alaisName != null" >
+        alaisName = #{alaisName,jdbcType=VARCHAR},
+      </if>
+      <if test="idxDevGrpID != null" >
+        idxDevGrpID = #{idxDevGrpID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVNSID != null" >
+        idxVNSID = #{idxVNSID,jdbcType=VARCHAR},
+      </if>
+      <if test="devState != null" >
+        devState = #{devState,jdbcType=VARCHAR},
+      </if>
+      <if test="cos != null" >
+        cos = #{cos,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUserID != null" >
+        idxUserID = #{idxUserID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="redirectTimes != null" >
+        redirectTimes = #{redirectTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastRedirectDate != null" >
+        lastRedirectDate = #{lastRedirectDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expire != null" >
+        expire = #{expire,jdbcType=INTEGER},
+      </if>
+      <if test="lastDomain != null" >
+        lastDomain = #{lastDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="debugIdt != null" >
+        debugIdt = #{debugIdt,jdbcType=TINYINT},
+      </if>
+      <if test="updateIdt != null" >
+        updateIdt = #{updateIdt,jdbcType=TINYINT},
+      </if>
+      <if test="hardwareVer != null" >
+        hardwareVer = #{hardwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="firmwareVer != null" >
+        firmwareVer = #{firmwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareVer != null" >
+        softwareVer = #{softwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateDate != null" >
+        lastUpdateDate = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastConnectTime != null" >
+        lastConnectTime = #{lastConnectTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastConnectIP != null" >
+        lastConnectIP = #{lastConnectIP,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUUWiFiAreaId != null">
+        lastUUWiFiAreaId = #{lastUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUUWiFiData != null">
+        lastUUWiFiData = #{lastUUWiFiData,jdbcType=INTEGER},
+      </if>
+      <if test="lastUUWiFiSessId != null">
+        lastUUWiFiSessId = #{lastUUWiFiSessId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceFlow != null" >
+        crtBy = #{deviceFlow,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where keyDevID = #{keyDevID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiDevice" >
+    update tbViFiDevice
+    set idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      alaisName = #{alaisName,jdbcType=VARCHAR},
+      idxDevGrpID = #{idxDevGrpID,jdbcType=VARCHAR},
+      idxVNSID = #{idxVNSID,jdbcType=VARCHAR},
+      devState = #{devState,jdbcType=VARCHAR},
+      cos = #{cos,jdbcType=VARCHAR},
+      idxUserID = #{idxUserID,jdbcType=VARCHAR},
+      idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      redirectTimes = #{redirectTimes,jdbcType=INTEGER},
+      lastRedirectDate = #{lastRedirectDate,jdbcType=TIMESTAMP},
+      expire = #{expire,jdbcType=INTEGER},
+      lastDomain = #{lastDomain,jdbcType=VARCHAR},
+      debugIdt = #{debugIdt,jdbcType=TINYINT},
+      updateIdt = #{updateIdt,jdbcType=TINYINT},
+      hardwareVer = #{hardwareVer,jdbcType=VARCHAR},
+      firmwareVer = #{firmwareVer,jdbcType=VARCHAR},
+      softwareVer = #{softwareVer,jdbcType=VARCHAR},
+      lastUpdateDate = #{lastUpdateDate,jdbcType=TIMESTAMP},
+      lastConnectTime = #{lastConnectTime,jdbcType=TIMESTAMP},
+      lastConnectIP = #{lastConnectIP,jdbcType=VARCHAR},
+      lastUUWiFiAreaId = #{lastUUWiFiAreaId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR},
+      crtBy = #{deviceFlow,jdbcType=DOUBLE},
+    where keyDevID = #{keyDevID,jdbcType=VARCHAR}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectByIdxViFiID" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbViFiDevice where idxViFiID = #{0} limit 1
+  </select>
+
+  <!-- mysql begin -->
+  <update id="updateLastOnlineInfo" parameterType="java.util.Map">
+    update tbViFiDevice set lastConnectTime = NOW(),mdfTm = NOW()
+    <if test="lastConnectIP != null">
+      ,lastConnectIP = #{lastConnectIP,jdbcType=VARCHAR}
+    </if>
+    <if test="lastUUWiFiAreaId != null">
+      ,lastUUWiFiAreaId = #{lastUUWiFiAreaId,jdbcType=VARCHAR}
+    </if>
+    where idxViFiID = #{idxViFiID,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateUUWiFiInfo">
+    update tbViFiDevice set lastUUWiFiSessId = #{lastUUWiFiSessId,jdbcType=VARCHAR}, lastUUWiFiData = #{lastUUWiFiData,jdbcType=INTEGER} where idxViFiID = #{deviceId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="queryTimeOut" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbViFiDevice where  idxViFiID = #{0} AND TIMESTAMPDIFF(SECOND, lastConnectTime, NOW())>180;
+  </select>
+
+</mapper>

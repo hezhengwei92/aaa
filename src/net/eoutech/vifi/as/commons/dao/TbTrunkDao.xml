@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbTrunkDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbTrunk" >
+    <id column="keyTrunkID" property="keyTrunkID" jdbcType="INTEGER" />
+    <result column="idxTrunkName" property="idxTrunkName" jdbcType="VARCHAR" />
+    <result column="trusty" property="trusty" jdbcType="BIT" />
+    <result column="dynamic" property="dynamic" jdbcType="BIT" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="realm" property="realm" jdbcType="VARCHAR" />
+    <result column="host" property="host" jdbcType="VARCHAR" />
+    <result column="expires" property="expires" jdbcType="INTEGER" />
+    <result column="port" property="port" jdbcType="INTEGER" />
+    <result column="Prefix" property="prefix" jdbcType="VARCHAR" />
+    <result column="replaceUsername" property="replaceUsername" jdbcType="BIT" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="callingNum" property="callingNum" jdbcType="INTEGER" />
+    <result column="maxCallNum" property="maxCallNum" jdbcType="INTEGER" />
+    <result column="mcSupport" property="mcSupport" jdbcType="INTEGER" />
+    <result column="VPXID" property="VPXID" jdbcType="VARCHAR" />
+    <result column="idxSalerID" property="idxSalerID" jdbcType="VARCHAR" />
+    <result column="Remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyTrunkID, idxTrunkName, trusty, dynamic, username, realm, host, expires, port, 
+    Prefix, replaceUsername, state, callingNum, maxCallNum, mcSupport, VPXID, idxSalerID, 
+    Remarks, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbTrunk
+    where keyTrunkID = #{keyTrunkID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbTrunk
+    where keyTrunkID = #{keyTrunkID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbTrunk" >
+    insert into tbTrunk (keyTrunkID, idxTrunkName, trusty, 
+      dynamic, username, realm, 
+      host, expires, port, 
+      Prefix, replaceUsername, state, 
+      callingNum, maxCallNum, mcSupport, 
+      VPXID, idxSalerID, Remarks, 
+      mdfTm, mdfBy, crtTm, 
+      crtBy)
+    values (#{keyTrunkID,jdbcType=INTEGER}, #{idxTrunkName,jdbcType=VARCHAR}, #{trusty,jdbcType=BIT}, 
+      #{dynamic,jdbcType=BIT}, #{username,jdbcType=VARCHAR}, #{realm,jdbcType=VARCHAR}, 
+      #{host,jdbcType=VARCHAR}, #{expires,jdbcType=INTEGER}, #{port,jdbcType=INTEGER}, 
+      #{prefix,jdbcType=VARCHAR}, #{replaceUsername,jdbcType=BIT}, #{state,jdbcType=INTEGER}, 
+      #{callingNum,jdbcType=INTEGER}, #{maxCallNum,jdbcType=INTEGER}, #{mcSupport,jdbcType=INTEGER}, 
+      #{VPXID,jdbcType=VARCHAR}, #{idxSalerID,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbTrunk" >
+    insert into tbTrunk
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyTrunkID != null" >
+        keyTrunkID,
+      </if>
+      <if test="idxTrunkName != null" >
+        idxTrunkName,
+      </if>
+      <if test="trusty != null" >
+        trusty,
+      </if>
+      <if test="dynamic != null" >
+        dynamic,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="realm != null" >
+        realm,
+      </if>
+      <if test="host != null" >
+        host,
+      </if>
+      <if test="expires != null" >
+        expires,
+      </if>
+      <if test="port != null" >
+        port,
+      </if>
+      <if test="prefix != null" >
+        Prefix,
+      </if>
+      <if test="replaceUsername != null" >
+        replaceUsername,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="callingNum != null" >
+        callingNum,
+      </if>
+      <if test="maxCallNum != null" >
+        maxCallNum,
+      </if>
+      <if test="mcSupport != null" >
+        mcSupport,
+      </if>
+      <if test="VPXID != null" >
+        VPXID,
+      </if>
+      <if test="idxSalerID != null" >
+        idxSalerID,
+      </if>
+      <if test="remarks != null" >
+        Remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyTrunkID != null" >
+        #{keyTrunkID,jdbcType=INTEGER},
+      </if>
+      <if test="idxTrunkName != null" >
+        #{idxTrunkName,jdbcType=VARCHAR},
+      </if>
+      <if test="trusty != null" >
+        #{trusty,jdbcType=BIT},
+      </if>
+      <if test="dynamic != null" >
+        #{dynamic,jdbcType=BIT},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realm != null" >
+        #{realm,jdbcType=VARCHAR},
+      </if>
+      <if test="host != null" >
+        #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="expires != null" >
+        #{expires,jdbcType=INTEGER},
+      </if>
+      <if test="port != null" >
+        #{port,jdbcType=INTEGER},
+      </if>
+      <if test="prefix != null" >
+        #{prefix,jdbcType=VARCHAR},
+      </if>
+      <if test="replaceUsername != null" >
+        #{replaceUsername,jdbcType=BIT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="callingNum != null" >
+        #{callingNum,jdbcType=INTEGER},
+      </if>
+      <if test="maxCallNum != null" >
+        #{maxCallNum,jdbcType=INTEGER},
+      </if>
+      <if test="mcSupport != null" >
+        #{mcSupport,jdbcType=INTEGER},
+      </if>
+      <if test="VPXID != null" >
+        #{VPXID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSalerID != null" >
+        #{idxSalerID,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbTrunk" >
+    update tbTrunk
+    <set >
+      <if test="idxTrunkName != null" >
+        idxTrunkName = #{idxTrunkName,jdbcType=VARCHAR},
+      </if>
+      <if test="trusty != null" >
+        trusty = #{trusty,jdbcType=BIT},
+      </if>
+      <if test="dynamic != null" >
+        dynamic = #{dynamic,jdbcType=BIT},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realm != null" >
+        realm = #{realm,jdbcType=VARCHAR},
+      </if>
+      <if test="host != null" >
+        host = #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="expires != null" >
+        expires = #{expires,jdbcType=INTEGER},
+      </if>
+      <if test="port != null" >
+        port = #{port,jdbcType=INTEGER},
+      </if>
+      <if test="prefix != null" >
+        Prefix = #{prefix,jdbcType=VARCHAR},
+      </if>
+      <if test="replaceUsername != null" >
+        replaceUsername = #{replaceUsername,jdbcType=BIT},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="callingNum != null" >
+        callingNum = #{callingNum,jdbcType=INTEGER},
+      </if>
+      <if test="maxCallNum != null" >
+        maxCallNum = #{maxCallNum,jdbcType=INTEGER},
+      </if>
+      <if test="mcSupport != null" >
+        mcSupport = #{mcSupport,jdbcType=INTEGER},
+      </if>
+      <if test="VPXID != null" >
+        VPXID = #{VPXID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSalerID != null" >
+        idxSalerID = #{idxSalerID,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        Remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyTrunkID = #{keyTrunkID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbTrunk" >
+    update tbTrunk
+    set idxTrunkName = #{idxTrunkName,jdbcType=VARCHAR},
+      trusty = #{trusty,jdbcType=BIT},
+      dynamic = #{dynamic,jdbcType=BIT},
+      username = #{username,jdbcType=VARCHAR},
+      realm = #{realm,jdbcType=VARCHAR},
+      host = #{host,jdbcType=VARCHAR},
+      expires = #{expires,jdbcType=INTEGER},
+      port = #{port,jdbcType=INTEGER},
+      Prefix = #{prefix,jdbcType=VARCHAR},
+      replaceUsername = #{replaceUsername,jdbcType=BIT},
+      state = #{state,jdbcType=INTEGER},
+      callingNum = #{callingNum,jdbcType=INTEGER},
+      maxCallNum = #{maxCallNum,jdbcType=INTEGER},
+      mcSupport = #{mcSupport,jdbcType=INTEGER},
+      VPXID = #{VPXID,jdbcType=VARCHAR},
+      idxSalerID = #{idxSalerID,jdbcType=VARCHAR},
+      Remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyTrunkID = #{keyTrunkID,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectBatchById" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbTrunk where keyTrunkID in
+    <foreach collection="idList" item="item" index="index" open="(" separator="," close=")">
+      #{item,jdbcType=INTEGER}
+    </foreach>
+  </select>
+  
+  <select id="selectByHost" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select <include refid="Base_Column_List" /> from tbTrunk where host = #{0} limit 1
+  </select>
+  
+</mapper>

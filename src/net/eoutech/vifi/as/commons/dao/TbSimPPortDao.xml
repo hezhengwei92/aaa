@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbSimPPortDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbSimPPort" >
+    <id column="keyID" property="keyID" jdbcType="INTEGER" />
+    <result column="idxSimPDevID" property="idxSimPDevID" jdbcType="VARCHAR" />
+    <result column="idxSlotNum" property="idxSlotNum" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="idxIccid" property="idxIccid" jdbcType="VARCHAR" />
+    <result column="idxViFiId" property="idxViFiId" jdbcType="VARCHAR" />
+    <result column="usage" property="usage" jdbcType="INTEGER" />
+    <result column="duration" property="duration" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyID,idxSimPDevID,idxSlotNum,status,idxIccid,idxViFiId,`usage`,duration,remarks,
+    mdfTm,mdfBy,crtTm,crtBy,idxAgentID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbSimPPort
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="selectByPDevAndSlotNum" resultMap="BaseResultMap" parameterType="java.util.Map">
+    select
+    <include refid="Base_Column_List" />
+    from tbSimPPort
+    where idxSimPDevID = #{idxSimPDevID,jdbcType=VARCHAR} and idxSlotNum = #{idxSlotNum,jdbcType=INTEGER}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbSimPPort
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbSimPPort" >
+    insert into tbSimPPort (keyID, idxSimPDevID, idxSlotNum, 
+      `status`, idxIccid, idxViFiId,
+      `usage`, duration, remarks,
+      mdfTm, mdfBy, crtTm, 
+      crtBy,idxAgentID)
+    values (#{keyID,jdbcType=INTEGER}, #{idxSimPDevID,jdbcType=VARCHAR}, #{idxSlotNum,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{idxIccid,jdbcType=VARCHAR}, #{idxViFiId,jdbcType=VARCHAR}, 
+      #{usage,jdbcType=INTEGER}, #{duration,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, 
+      #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{crtBy,jdbcType=VARCHAR},#{idxAgentID,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSimPPort" >
+    insert into tbSimPPort
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        keyID,
+      </if>
+      <if test="idxSimPDevID != null" >
+        idxSimPDevID,
+      </if>
+      <if test="idxSlotNum != null" >
+        idxSlotNum,
+      </if>
+      <if test="status != null" >
+        `status`,
+      </if>
+      <if test="idxIccid != null" >
+        idxIccid,
+      </if>
+      <if test="idxViFiId != null" >
+        idxViFiId,
+      </if>
+      <if test="usage != null" >
+        `usage`,
+      </if>
+      <if test="duration != null" >
+        duration,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        #{keyID,jdbcType=INTEGER},
+      </if>
+      <if test="idxSimPDevID != null" >
+        #{idxSimPDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSlotNum != null" >
+        #{idxSlotNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="idxIccid != null" >
+        #{idxIccid,jdbcType=VARCHAR},
+      </if>
+      <if test="idxViFiId != null" >
+        #{idxViFiId,jdbcType=VARCHAR},
+      </if>
+      <if test="usage != null" >
+        #{usage,jdbcType=INTEGER},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSimPPort" >
+    update tbSimPPort
+    <set >
+      <if test="idxSimPDevID != null" >
+        idxSimPDevID = #{idxSimPDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSlotNum != null" >
+        idxSlotNum = #{idxSlotNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="idxIccid != null" >
+        idxIccid = #{idxIccid,jdbcType=VARCHAR},
+      </if>
+      <if test="idxViFiId != null" >
+        idxViFiId = #{idxViFiId,jdbcType=VARCHAR},
+      </if>
+      <if test="usage != null" >
+        `usage` = #{usage,jdbcType=INTEGER},
+      </if>
+      <if test="duration != null" >
+        duration = #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbSimPPort" >
+    update tbSimPPort
+    set idxSimPDevID = #{idxSimPDevID,jdbcType=VARCHAR},
+      idxSlotNum = #{idxSlotNum,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      idxIccid = #{idxIccid,jdbcType=VARCHAR},
+      idxViFiId = #{idxViFiId,jdbcType=VARCHAR},
+      `usage` = #{usage,jdbcType=INTEGER},
+      duration = #{duration,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR},
+      idxAgentID = #{idxAgentID,jdbcType=VARCHAR}
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+
+
+  <!--<select id="selectIccidBySimPDev" parameterType="java.lang.String" resultType="java.util.List">-->
+    <!--select idxIccid from tbSimPPort where idxSimPDevID = #{0} and idxIccid!=""-->
+  <!--</select>-->
+
+  <select id="queryPortCountBySimPDevID" parameterType="java.lang.String" resultType="Integer">
+    select count(keyID) from tbSimPPort where idxSimPDevID = #{0} limit 1
+  </select>
+
+  <delete id="deleteBySimPDevID" parameterType="java.lang.String">
+    delete from tbSimPPort where idxSimPDevID = #{0}
+  </delete>
+
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into tbSimPPort ( idxSimPDevID, idxSlotNum,
+      `status`, idxIccid, idxViFiId,
+      `usage`, duration, remarks,
+      mdfTm, mdfBy, crtTm,
+      crtBy,idxAgentID)
+    values
+      <foreach collection="list" item="item" index="index" separator=",">
+        (#{item.idxSimPDevID,jdbcType=VARCHAR}, #{item.idxSlotNum,jdbcType=INTEGER},
+        #{item.status,jdbcType=INTEGER}, #{item.idxIccid,jdbcType=VARCHAR}, #{item.idxViFiId,jdbcType=VARCHAR},
+        #{item.usage,jdbcType=INTEGER}, #{item.duration,jdbcType=INTEGER}, #{item.remarks,jdbcType=VARCHAR},
+        #{item.mdfTm,jdbcType=TIMESTAMP}, #{item.mdfBy,jdbcType=VARCHAR}, #{item.crtTm,jdbcType=TIMESTAMP},
+        #{item.crtBy,jdbcType=VARCHAR},#{item.idxAgentID,jdbcType=VARCHAR})
+      </foreach>
+  </insert>
+
+  <update id="updateBatch" parameterType="java.util.Map" >
+    update tbSimPPort set `status` = #{status,jdbcType=INTEGER}, mdfTm = NOW() where idxSlotNum in
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and idxSimPDevID = #{idxSimPDevID,jdbcType=VARCHAR}
+  </update>
+
+  <update id="publishPort">
+    update tbSimPPort set `status` = #{3}, `idxViFiId` = '',idxIccid = #{2}, mdfTm = #{4} where  idxSimPDevID= #{0} AND  idxSlotNum=#{1} limit 1
+  </update>
+
+  <update id="publishPull">
+    update tbSimPPort set `status` = #{1}, idxIccid='', mdfTm = NOW() where keyID = #{0} limit 1
+  </update>
+
+  <update id="updatePortVID">
+    update tbSimPPort set idxViFiId = #{1} where keyID = #{0}
+  </update>
+
+  <select id="selectByIccid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbSimPPort where idxIccid = #{0} limit 1
+  </select>
+
+  <!--<select id="selectByIccid" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbSimPPort where idxIccid = #{0} and `status` = 1 limit 1
+  </select>-->
+
+
+
+  <update id="cleanTimeoutResources" parameterType="java.util.List">
+    update `tbSimPPort` set `status` = 1,`idxViFiId` = '' where `keyID` in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+</mapper>

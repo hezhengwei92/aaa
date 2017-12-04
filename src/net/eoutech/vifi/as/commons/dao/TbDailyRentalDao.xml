@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbDailyRentalDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbDailyRental" >
+    <id column="keyID" property="keyID" jdbcType="INTEGER" />
+    <result column="idxViFiID" property="idxViFiID" jdbcType="VARCHAR" />
+    <result column="idxPhoneNumber" property="idxPhoneNumber" jdbcType="VARCHAR" />
+    <result column="startDate" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="endDate" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="maxData" property="maxData" jdbcType="INTEGER" />
+    <result column="rateLimit" property="rateLimit" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="areaCodes" property="areaCodes" jdbcType="VARCHAR" />
+    <result column="todayUsage" property="todayUsage" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyID, idxViFiID, idxPhoneNumber, startDate, endDate, maxData, rateLimit, price, 
+    areaCodes, todayUsage, remarks, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbDailyRental
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbDailyRental
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbDailyRental" >
+    insert into tbDailyRental (keyID, idxViFiID, idxPhoneNumber, 
+      startDate, endDate, maxData, 
+      rateLimit, price, areaCodes, 
+      todayUsage, remarks, mdfTm, 
+      mdfBy, crtTm, crtBy
+      )
+    values (#{keyID,jdbcType=INTEGER}, #{idxViFiID,jdbcType=VARCHAR}, #{idxPhoneNumber,jdbcType=VARCHAR}, 
+      #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, #{maxData,jdbcType=INTEGER}, 
+      #{rateLimit,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, #{areaCodes,jdbcType=VARCHAR}, 
+      #{todayUsage,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, 
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbDailyRental" >
+    insert into tbDailyRental
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        keyID,
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID,
+      </if>
+      <if test="idxPhoneNumber != null" >
+        idxPhoneNumber,
+      </if>
+      <if test="startDate != null" >
+        startDate,
+      </if>
+      <if test="endDate != null" >
+        endDate,
+      </if>
+      <if test="maxData != null" >
+        maxData,
+      </if>
+      <if test="rateLimit != null" >
+        rateLimit,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="areaCodes != null" >
+        areaCodes,
+      </if>
+      <if test="todayUsage != null" >
+        todayUsage,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        #{keyID,jdbcType=INTEGER},
+      </if>
+      <if test="idxViFiID != null" >
+        #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxPhoneNumber != null" >
+        #{idxPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxData != null" >
+        #{maxData,jdbcType=INTEGER},
+      </if>
+      <if test="rateLimit != null" >
+        #{rateLimit,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="areaCodes != null" >
+        #{areaCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="todayUsage != null" >
+        #{todayUsage,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbDailyRental" >
+    update tbDailyRental
+    <set >
+      <if test="idxViFiID != null" >
+        idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxPhoneNumber != null" >
+        idxPhoneNumber = #{idxPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        startDate = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        endDate = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="maxData != null" >
+        maxData = #{maxData,jdbcType=INTEGER},
+      </if>
+      <if test="rateLimit != null" >
+        rateLimit = #{rateLimit,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="areaCodes != null" >
+        areaCodes = #{areaCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="todayUsage != null" >
+        todayUsage = #{todayUsage,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbDailyRental" >
+    update tbDailyRental
+    set idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      idxPhoneNumber = #{idxPhoneNumber,jdbcType=VARCHAR},
+      startDate = #{startDate,jdbcType=TIMESTAMP},
+      endDate = #{endDate,jdbcType=TIMESTAMP},
+      maxData = #{maxData,jdbcType=INTEGER},
+      rateLimit = #{rateLimit,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      areaCodes = #{areaCodes,jdbcType=VARCHAR},
+      todayUsage = #{todayUsage,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectByUserId" resultType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbDailyRental
+    where NOW() between startDate and endDate and idxPhoneNumber = #{userId,jdbcType=VARCHAR} and idxViFiID = #{vid,jdbcType=VARCHAR}
+  </select>
+
+</mapper>

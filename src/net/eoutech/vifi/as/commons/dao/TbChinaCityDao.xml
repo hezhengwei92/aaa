@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbChinaCityDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbChinaCity" >
+    <id column="keyAreaId" property="keyAreaId" jdbcType="VARCHAR" />
+    <result column="region" property="region" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyAreaId, region, city, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbChinaCity
+    where keyAreaId = #{keyAreaId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbChinaCity
+    where keyAreaId = #{keyAreaId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbChinaCity" >
+    insert into tbChinaCity (keyAreaId, region, city, 
+      crtTm, crtBy)
+    values (#{keyAreaId,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbChinaCity" >
+    insert into tbChinaCity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyAreaId != null" >
+        keyAreaId,
+      </if>
+      <if test="region != null" >
+        region,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyAreaId != null" >
+        #{keyAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null" >
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbChinaCity" >
+    update tbChinaCity
+    <set >
+      <if test="region != null" >
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyAreaId = #{keyAreaId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbChinaCity" >
+    update tbChinaCity
+    set region = #{region,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyAreaId = #{keyAreaId,jdbcType=VARCHAR}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectByRegionCity" resultType="java.lang.String" parameterType="java.lang.String">
+    select keyAreaId from tbChinaCity where INSTR(#{0},region) and INSTR(#{0},city) limit 1
+  </select>
+
+  <select id="selectByRegion" resultType="java.lang.String" parameterType="java.lang.String">
+    select keyAreaId from tbChinaCity where INSTR(#{0},region) limit 1
+  </select>
+
+</mapper>

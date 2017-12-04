@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbUserSuiteDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbUserSuite" >
+    <id column="keyID" property="keyID" jdbcType="INTEGER" />
+    <result column="idxPhoneNumber" property="idxPhoneNumber" jdbcType="VARCHAR" />
+    <result column="suiteType" property="suiteType" jdbcType="VARCHAR" />
+    <result column="remainValue" property="remainValue" jdbcType="INTEGER" />
+    <result column="idxUUWiFiAreaId" property="idxUUWiFiAreaId" jdbcType="VARCHAR" />
+    <result column="effectDate" property="effectDate" jdbcType="TIMESTAMP" />
+    <result column="invalidDate" property="invalidDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyID, idxPhoneNumber, suiteType, remainValue, idxUUWiFiAreaId, effectDate, invalidDate, remarks,
+    mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbUserSuite
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbUserSuite
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbUserSuite" >
+    insert into tbUserSuite (keyID, idxPhoneNumber, suiteType, 
+      remainValue, idxUUWiFiAreaId, effectDate, invalidDate,
+      remarks, mdfTm, mdfBy, 
+      crtTm, crtBy)
+    values (#{keyID,jdbcType=INTEGER}, #{idxPhoneNumber,jdbcType=VARCHAR}, #{suiteType,jdbcType=VARCHAR}, 
+      #{remainValue,jdbcType=INTEGER}, #{idxUUWiFiAreaId,jdbcType=VARCHAR}, #{effectDate,jdbcType=TIMESTAMP}, #{invalidDate,jdbcType=TIMESTAMP},
+      #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, 
+      #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUserSuite" >
+    insert into tbUserSuite
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        keyID,
+      </if>
+      <if test="idxPhoneNumber != null" >
+        idxPhoneNumber,
+      </if>
+      <if test="suiteType != null" >
+        suiteType,
+      </if>
+      <if test="remainValue != null" >
+        remainValue,
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId,
+      </if>
+      <if test="effectDate != null" >
+        effectDate,
+      </if>
+      <if test="invalidDate != null" >
+        invalidDate,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        #{keyID,jdbcType=INTEGER},
+      </if>
+      <if test="idxPhoneNumber != null" >
+        #{idxPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteType != null" >
+        #{suiteType,jdbcType=VARCHAR},
+      </if>
+      <if test="remainValue != null" >
+        #{remainValue,jdbcType=INTEGER},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="effectDate != null" >
+        #{effectDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invalidDate != null" >
+        #{invalidDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUserSuite" >
+    update tbUserSuite
+    <set >
+      <if test="idxPhoneNumber != null" >
+        idxPhoneNumber = #{idxPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="suiteType != null" >
+        suiteType = #{suiteType,jdbcType=VARCHAR},
+      </if>
+      <if test="remainValue != null" >
+        remainValue = #{remainValue,jdbcType=INTEGER},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="effectDate != null" >
+        effectDate = #{effectDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invalidDate != null" >
+        invalidDate = #{invalidDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbUserSuite" >
+    update tbUserSuite
+    set idxPhoneNumber = #{idxPhoneNumber,jdbcType=VARCHAR},
+      suiteType = #{suiteType,jdbcType=VARCHAR},
+      remainValue = #{remainValue,jdbcType=INTEGER},
+      idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      effectDate = #{effectDate,jdbcType=TIMESTAMP},
+      invalidDate = #{invalidDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectByUserIdSuiteType" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbUserSuite
+    where idxPhoneNumber = #{userId,jdbcType=VARCHAR} and NOW() between effectDate and invalidDate and suiteType = #{suiteType,jdbcType=VARCHAR}
+    <if test="areaIdList != null">
+      and idxUUWiFiAreaId in
+      <foreach collection="areaIdList" index="index" item="item" open="(" separator="," close=")">
+        #{item,jdbcType=VARCHAR}
+      </foreach>
+    </if>
+  </select>
+
+  <update id="suiteCostBatch" parameterType="java.util.List">
+    <foreach collection="list" item="item" index="index">
+      update tbUserSuite set remainValue = #{item.value,jdbcType=INTEGER} where keyID = #{item.suiteId,jdbcType=INTEGER}
+    </foreach>
+
+  </update>
+</mapper>

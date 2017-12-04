@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbGoIPPortDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbGoIPPort" >
+    <id column="keyID" property="keyID" jdbcType="INTEGER" />
+    <result column="idxGoIPDevID" property="idxGoIPDevID" jdbcType="VARCHAR" />
+    <result column="idxportNum" property="idxportNum" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="bindType" property="bindType" jdbcType="VARCHAR" />
+    <result column="idxViFiID" property="idxViFiID" jdbcType="VARCHAR" />
+    <result column="uuIccid" property="uuIccid" jdbcType="VARCHAR" />
+    <result column="uuImsi" property="uuImsi" jdbcType="VARCHAR" />
+    <result column="userAct" property="userAct" jdbcType="VARCHAR" />
+    <result column="usage" property="usage" jdbcType="INTEGER" />
+    <result column="duration" property="duration" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyID, idxGoIPDevID, idxportNum, `status`, bindType, idxViFiID, uuIccid, uuImsi, userAct,
+    `usage`, duration, remarks, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbGoIPPort
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbGoIPPort
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbGoIPPort" >
+    insert into tbGoIPPort (keyID, idxGoIPDevID, idxportNum, 
+      `status`, bindType, idxViFiID,
+      uuIccid, uuImsi, userAct, 
+      `usage`, duration, remarks,
+      mdfTm, mdfBy, crtTm, 
+      crtBy)
+    values (#{keyID,jdbcType=INTEGER}, #{idxGoIPDevID,jdbcType=VARCHAR}, #{idxportNum,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{bindType,jdbcType=VARCHAR}, #{idxViFiID,jdbcType=VARCHAR}, 
+      #{uuIccid,jdbcType=VARCHAR}, #{uuImsi,jdbcType=VARCHAR}, #{userAct,jdbcType=VARCHAR}, 
+      #{usage,jdbcType=INTEGER}, #{duration,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, 
+      #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbGoIPPort" >
+    insert into tbGoIPPort
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        keyID,
+      </if>
+      <if test="idxGoIPDevID != null" >
+        idxGoIPDevID,
+      </if>
+      <if test="idxportNum != null" >
+        idxportNum,
+      </if>
+      <if test="status != null" >
+        `status`,
+      </if>
+      <if test="bindType != null" >
+        bindType,
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID,
+      </if>
+      <if test="uuIccid != null" >
+        uuIccid,
+      </if>
+      <if test="uuImsi != null" >
+        uuImsi,
+      </if>
+      <if test="userAct != null" >
+        userAct,
+      </if>
+      <if test="usage != null" >
+        `usage`,
+      </if>
+      <if test="duration != null" >
+        duration,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        #{keyID,jdbcType=INTEGER},
+      </if>
+      <if test="idxGoIPDevID != null" >
+        #{idxGoIPDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxportNum != null" >
+        #{idxportNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="bindType != null" >
+        #{bindType,jdbcType=VARCHAR},
+      </if>
+      <if test="idxViFiID != null" >
+        #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="uuIccid != null" >
+        #{uuIccid,jdbcType=VARCHAR},
+      </if>
+      <if test="uuImsi != null" >
+        #{uuImsi,jdbcType=VARCHAR},
+      </if>
+      <if test="userAct != null" >
+        #{userAct,jdbcType=VARCHAR},
+      </if>
+      <if test="usage != null" >
+        #{usage,jdbcType=INTEGER},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbGoIPPort" >
+    update tbGoIPPort
+    <set >
+      <if test="idxGoIPDevID != null" >
+        idxGoIPDevID = #{idxGoIPDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxportNum != null" >
+        idxportNum = #{idxportNum,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="bindType != null" >
+        bindType = #{bindType,jdbcType=VARCHAR},
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="uuIccid != null" >
+        uuIccid = #{uuIccid,jdbcType=VARCHAR},
+      </if>
+      <if test="uuImsi != null" >
+        uuImsi = #{uuImsi,jdbcType=VARCHAR},
+      </if>
+      <if test="userAct != null" >
+        userAct = #{userAct,jdbcType=VARCHAR},
+      </if>
+      <if test="usage != null" >
+        `usage` = #{usage,jdbcType=INTEGER},
+      </if>
+      <if test="duration != null" >
+        duration = #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbGoIPPort" >
+    update tbGoIPPort
+    set idxGoIPDevID = #{idxGoIPDevID,jdbcType=VARCHAR},
+      idxportNum = #{idxportNum,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      bindType = #{bindType,jdbcType=VARCHAR},
+      idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      uuIccid = #{uuIccid,jdbcType=VARCHAR},
+      uuImsi = #{uuImsi,jdbcType=VARCHAR},
+      userAct = #{userAct,jdbcType=VARCHAR},
+      `usage` = #{usage,jdbcType=INTEGER},
+      duration = #{duration,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql...begin-->
+  <select id="queryPortCountByGoIPDevID" parameterType="java.lang.String" resultType="Integer">
+    select count(keyID) from tbGoIPPort where idxGoIPDevID = #{0} limit 1
+  </select>
+
+  <delete id="deletePortByGoIPDevID" parameterType="java.lang.String">
+    delete from tbGoIPPort where idxGoIPDevID = #{0}
+  </delete>
+
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into tbGoIPPort (idxGoIPDevID, idxportNum,
+      `status`, bindType, idxViFiID,
+      uuIccid, uuImsi, userAct,
+      `usage`, duration, remarks,
+      mdfTm, mdfBy, crtTm,
+      crtBy)
+    values
+      <foreach collection="list" index="index" item="item" separator=",">
+        (#{item.idxGoIPDevID,jdbcType=VARCHAR}, #{item.idxportNum,jdbcType=INTEGER},
+        #{item.status,jdbcType=INTEGER}, #{item.bindType,jdbcType=VARCHAR}, #{item.idxViFiID,jdbcType=VARCHAR},
+        #{item.uuIccid,jdbcType=VARCHAR}, #{item.uuImsi,jdbcType=VARCHAR}, #{item.userAct,jdbcType=VARCHAR},
+        #{item.usage,jdbcType=INTEGER}, #{item.duration,jdbcType=INTEGER}, #{item.remarks,jdbcType=VARCHAR},
+        #{item.mdfTm,jdbcType=TIMESTAMP}, #{item.mdfBy,jdbcType=VARCHAR}, #{item.crtTm,jdbcType=TIMESTAMP},
+        #{item.crtBy,jdbcType=VARCHAR})
+      </foreach>
+  </insert>
+
+  <update id="updateBatch" parameterType="java.util.Map">
+    update tbGoIPPort set `status` = #{status,jdbcType=INTEGER} where idxPortNum in
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and idxGoIPDevID = #{idxGoIPDevID,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select <include refid="Base_Column_List" />
+    from tbGoIPPort where userAct = #{0} order by mdfTm desc limit 1
+  </select>
+
+  <select id="selectByDevIdSlot" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbGoIPPort where idxGoIPDevID = #{0} and idxportNum = #{1} limit 1
+  </select>
+
+  <select id="selectActiveGoIPPort" resultType="net.eoutech.vifi.as.commons.entity.TbGoIPPort" parameterType="java.lang.String">
+    select c.*
+    from tbGoIPDev a LEFT JOIN tbVSW b on a.idxVSWID = b.keyVSWID LEFT JOIN tbGoIPPort c on a.keyGoIPDevID = c.idxGoIPDevID LEFT JOIN tbGoIPGrp d on a.idxGoIPDevGrpID = d.keyGoIPDevGrpID
+    where b.state = 'R' and TIMESTAMPDIFF(SECOND,b.lastHBTime,NOW()) &lt; b.expire
+    and a.`status` = 0 and TIMESTAMPDIFF(SECOND,a.lastUpdate,NOW()) &lt; a.expire
+    and c.bindType = 'D' and c.idxViFiID = '' and c.`status` = 0
+    and d.idxAgentID = #{0} order by c.keyID asc limit 1
+  </select>
+
+  <update id="cleanTimeoutResources" parameterType="java.util.List">
+    update `tbGoIPPort` set `status` = 0,`idxViFiID` = '',`uuIccid` = '',`uuImsi` = '',`userAct` = '' where `keyID` in
+    <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </update>
+</mapper>

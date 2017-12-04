@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="application.properties"/>
+
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="net.eoutech.vifi.as.commons.utils.C3P0DataSourceFactory">
+                <property name="driverClass" value="${jdbc.driver}"/>
+                <property name="jdbcUrl" value="${jdbc.url}"/>
+                <property name="user" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+                <property name="initialPoolSize" value="${jdbc.initialPoolSize}"/>
+                <property name="minPoolSize" value="${jdbc.minPoolSize}"/>
+                <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+                <property name="loginTimeout" value="${jdbc.loginTimeout}"/>
+                <property name="maxIdleTime" value="${jdbc.maxIdleTime}"/>
+                <property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"/>
+                <property name="maxStatements" value="${jdbc.maxStatements}"/>
+                <property name="maxStatementsPerConnection" value="${jdbc.maxStatementsPerConnection}"/>
+                <property name="numHelperThreads" value="${jdbc.numHelperThreads}"/>
+            </dataSource>
+
+        </environment>
+    </environments>
+
+    <mappers>
+        <package name="net.eoutech.vifi.as.commons.dao"/>
+    </mappers>
+</configuration>

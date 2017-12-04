@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbSUStaticBindDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbSUStaticBind" >
+    <id column="keySUBindID" property="keySUBindID" jdbcType="VARCHAR" />
+    <result column="idxSCGroupID" property="idxSCGroupID" jdbcType="VARCHAR" />
+    <result column="idxDevGrpID" property="idxDevGrpID" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="useTimes" property="useTimes" jdbcType="INTEGER" />
+    <result column="lastBindDate" property="lastBindDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keySUBindID, idxSCGroupID, idxDevGrpID, status, useTimes, lastBindDate, remarks, mdfTm, 
+    mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbSUStaticBind
+    where keySUBindID = #{keySUBindID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbSUStaticBind
+    where keySUBindID = #{keySUBindID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbSUStaticBind" >
+    insert into tbSUStaticBind (keySUBindID, idxSCGroupID, idxDevGrpID, 
+      status, useTimes, lastBindDate, 
+      remarks, mdfTm, mdfBy, 
+      crtTm, crtBy)
+    values (#{keySUBindID,jdbcType=VARCHAR}, #{idxSCGroupID,jdbcType=VARCHAR}, #{idxDevGrpID,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{useTimes,jdbcType=INTEGER}, #{lastBindDate,jdbcType=TIMESTAMP}, 
+      #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, 
+      #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSUStaticBind" >
+    insert into tbSUStaticBind
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keySUBindID != null" >
+        keySUBindID,
+      </if>
+      <if test="idxSCGroupID != null" >
+        idxSCGroupID,
+      </if>
+      <if test="idxDevGrpID != null" >
+        idxDevGrpID,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="useTimes != null" >
+        useTimes,
+      </if>
+      <if test="lastBindDate != null" >
+        lastBindDate,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keySUBindID != null" >
+        #{keySUBindID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSCGroupID != null" >
+        #{idxSCGroupID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxDevGrpID != null" >
+        #{idxDevGrpID,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="useTimes != null" >
+        #{useTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastBindDate != null" >
+        #{lastBindDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSUStaticBind" >
+    update tbSUStaticBind
+    <set >
+      <if test="idxSCGroupID != null" >
+        idxSCGroupID = #{idxSCGroupID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxDevGrpID != null" >
+        idxDevGrpID = #{idxDevGrpID,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="useTimes != null" >
+        useTimes = #{useTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastBindDate != null" >
+        lastBindDate = #{lastBindDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keySUBindID = #{keySUBindID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbSUStaticBind" >
+    update tbSUStaticBind
+    set idxSCGroupID = #{idxSCGroupID,jdbcType=VARCHAR},
+      idxDevGrpID = #{idxDevGrpID,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      useTimes = #{useTimes,jdbcType=INTEGER},
+      lastBindDate = #{lastBindDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keySUBindID = #{keySUBindID,jdbcType=VARCHAR}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectByDevGrpID" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbSUStaticBind where idxDevGrpID = #{0} and `status` = #{1} limit 1
+  </select>
+</mapper>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbIPAddressDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbIPAddress" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="startIP" property="startIP" jdbcType="INTEGER" />
+    <result column="endIP" property="endIP" jdbcType="INTEGER" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="operators" property="operators" jdbcType="VARCHAR" />
+    <result column="idxUUWiFiAreaId" property="idxUUWiFiAreaId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, startIP, endIP, country, operators, idxUUWiFiAreaId
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbIPAddress
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbIPAddress
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbIPAddress" >
+    insert into tbIPAddress (id, startIP, endIP, 
+      country, operators, idxUUWiFiAreaId
+      )
+    values (#{id,jdbcType=INTEGER}, #{startIP,jdbcType=INTEGER}, #{endIP,jdbcType=INTEGER}, 
+      #{country,jdbcType=VARCHAR}, #{operators,jdbcType=VARCHAR}, #{idxUUWiFiAreaId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbIPAddress" >
+    insert into tbIPAddress
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="startIP != null" >
+        startIP,
+      </if>
+      <if test="endIP != null" >
+        endIP,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="operators != null" >
+        operators,
+      </if>
+      <if test="idxUUWiFiAreaId != null" >
+        idxUUWiFiAreaId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="startIP != null" >
+        #{startIP,jdbcType=INTEGER},
+      </if>
+      <if test="endIP != null" >
+        #{endIP,jdbcType=INTEGER},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="operators != null" >
+        #{operators,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null" >
+        #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbIPAddress" >
+    update tbIPAddress
+    <set >
+      <if test="startIP != null" >
+        startIP = #{startIP,jdbcType=INTEGER},
+      </if>
+      <if test="endIP != null" >
+        endIP = #{endIP,jdbcType=INTEGER},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="operators != null" >
+        operators = #{operators,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null" >
+        idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbIPAddress" >
+    update tbIPAddress
+    set startIP = #{startIP,jdbcType=INTEGER},
+      endIP = #{endIP,jdbcType=INTEGER},
+      country = #{country,jdbcType=VARCHAR},
+      operators = #{operators,jdbcType=VARCHAR},
+      idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

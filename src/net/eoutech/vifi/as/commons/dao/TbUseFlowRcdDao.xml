@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbUseFlowRcdDao" >
+    <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.dao.TbUseFlowRcdDao" >
+        <id column="keyId" property="keyId" jdbcType="VARCHAR" />
+        <result column="idxUserId" property="idxUserId" jdbcType="VARCHAR" />
+        <result column="idxVifiId" property="idxVifiId" jdbcType="VARCHAR" />
+        <result column="idxIccid" property="idxIccid" jdbcType="VARCHAR" />
+        <result column="idxSlotNum" property="idxSlotNum" jdbcType="INTEGER" />
+        <result column="idxSimPDevID" property="idxSimPDevID" jdbcType="VARCHAR" />
+        <result column="mac" property="mac" jdbcType="VARCHAR" />
+        <result column="upFlow" property="upFlow" jdbcType="INTEGER" />
+        <result column="downFlow" property="downFlow" jdbcType="INTEGER" />
+        <result column="online" property="online" jdbcType="VARCHAR" />
+        <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+        <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        keyId, idxUserId, idxVifiId, idxIccid, idxSlotNum, idxSimPDevID, mac, upFlow, downFlow, online, crtTm, crtBy
+    </sql>
+
+    <!--<select id="selectFlowRcd" resultMap="BaseResultMap" parameterType="java.lang.String">-->
+        <!--select <include refid="Base_Column_List"/>-->
+        <!--from tbUseFlowRcd WHERE keyId = #{keyId,jdbcType=VARCHAR}-->
+    <!--</select>-->
+
+    <insert id="insertFlowRcd" parameterType="net.eoutech.vifi.as.commons.entity.TbUseFlowRcd">
+        insert into tbUseFlowRcd
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="keyId != null">
+                keyId,
+            </if>
+            <if test="idxUserId != null">
+                idxUserId,
+            </if>
+            <if test="idxVifiId != null">
+                idxVifiId,
+            </if>
+            <if test="idxIccid != null">
+                idxIccid,
+            </if>
+            <if test="idxSlotNum != null">
+                idxSlotNum,
+            </if>
+            <if test="idxSimPDevID != null">
+                idxSimPDevID,
+            </if>
+            <if test="mac != null">
+                mac,
+            </if>
+            <if test="upFlow != null">
+                upFlow,
+            </if>
+            <if test="downFlow != null">
+                downFlow,
+            </if>
+            <if test="online != null">
+                online,
+            </if>
+            <if test="crtTm != null">
+                crtTm,
+            </if>
+            <if test="crtBy != null">
+                crtBy,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="keyId != null">
+                #{keyId,jdbcType=VARCHAR},
+            </if>
+            <if test="idxUserId != null">
+                #{idxUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="idxVifiId != null">
+                #{idxVifiId,jdbcType=VARCHAR},
+            </if>
+            <if test="idxIccid != null">
+                #{idxIccid,jdbcType=VARCHAR},
+            </if>
+            <if test="idxSlotNum != null">
+                #{idxSlotNum,jdbcType=INTEGER},
+            </if>
+            <if test="idxSimPDevID != null">
+                #{idxSimPDevID,jdbcType=VARCHAR},
+            </if>
+            <if test="mac != null">
+                #{mac,jdbcType=VARCHAR},
+            </if>
+            <if test="upFlow != null">
+                #{upFlow,jdbcType=INTEGER},
+            </if>
+            <if test="downFlow != null">
+                #{downFlow,jdbcType=INTEGER},
+            </if>
+            <if test="online != null">
+                #{online,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTm != null">
+                #{crtTm,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtBy != null">
+                #{crtBy,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="selectListByRecieveUidLimit" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from tbTransfer WHERE receiveUid = #{2,jdbcType=VARCHAR} ORDER BY crtTm DESC LIMIT
+        #{0,jdbcType=INTEGER},#{1,jdbcType=INTEGER}
+    </select>
+</mapper>

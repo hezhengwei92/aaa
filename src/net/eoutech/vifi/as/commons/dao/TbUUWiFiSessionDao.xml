@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbUUWiFiSessionDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbUUWiFiSession" >
+    <id column="keySessID" property="keySessID" jdbcType="VARCHAR" />
+    <result column="sessType" property="sessType" jdbcType="VARCHAR" />
+    <result column="idxSUBindID" property="idxSUBindID" jdbcType="VARCHAR" />
+    <result column="idxVifiID" property="idxVifiID" jdbcType="VARCHAR" />
+    <result column="idxUUWiFiCellID" property="idxUUWiFiCellID" jdbcType="VARCHAR" />
+    <result column="idxUUWiFiAreaId" property="idxUUWiFiAreaId" jdbcType="VARCHAR" />
+    <result column="idxSimCIccId" property="idxSimCIccId" jdbcType="VARCHAR" />
+    <result column="idxSimPPortId" property="idxSimPPortId" jdbcType="VARCHAR" />
+    <result column="idxSimPDevID" property="idxSimPDevID" jdbcType="VARCHAR" />
+    <result column="idxGoipDevID" property="idxGoipDevID" jdbcType="VARCHAR" />
+    <result column="idxGoipPortID" property="idxGoipPortID" jdbcType="INTEGER" />
+    <result column="idxVSWID" property="idxVSWID" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="expire" property="expire" jdbcType="INTEGER" />
+    <result column="lastUpdate" property="lastUpdate" jdbcType="TIMESTAMP" />
+    <result column="userAct" property="userAct" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keySessID, sessType, idxSUBindID, idxVifiID, idxUUWiFiCellID, idxUUWiFiAreaId, idxSimCIccId, idxSimPPortId, idxSimPDevID,
+    idxGoipDevID, idxGoipPortID, idxVSWID, status, expire, lastUpdate, userAct, remarks, 
+    mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbUUWiFiSession
+    where keySessID = #{keySessID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbUUWiFiSession
+    where keySessID = #{keySessID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiSession" >
+    insert into tbUUWiFiSession (keySessID, sessType, idxSUBindID,
+      idxVifiID, idxUUWiFiCellID, idxUUWiFiAreaId, idxSimCIccId, idxSimPPortId,
+      idxSimPDevID, idxGoipDevID, idxGoipPortID, 
+      idxVSWID, status, expire, 
+      lastUpdate, userAct, remarks, 
+      mdfTm, mdfBy, crtTm, 
+      crtBy)
+    values (#{keySessID,jdbcType=VARCHAR}, #{sessType,jdbcType=VARCHAR}, #{idxSUBindID,jdbcType=VARCHAR},
+      #{idxVifiID,jdbcType=VARCHAR}, #{idxUUWiFiCellID, jdbcType=VARCHAR}, #{idxUUWiFiAreaId,jdbcType=VARCHAR}, #{idxSimCIccId,jdbcType=VARCHAR}, #{idxSimPPortId,jdbcType=VARCHAR},
+      #{idxSimPDevID,jdbcType=VARCHAR}, #{idxGoipDevID,jdbcType=VARCHAR}, #{idxGoipPortID,jdbcType=INTEGER}, 
+      #{idxVSWID,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{expire,jdbcType=INTEGER}, 
+      #{lastUpdate,jdbcType=TIMESTAMP}, #{userAct,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiSession" >
+    insert into tbUUWiFiSession
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keySessID != null" >
+        keySessID,
+      </if>
+      <if test="sessType != null" >
+        sessType,
+      </if>
+      <if test="idxSUBindID != null" >
+        idxSUBindID,
+      </if>
+      <if test="idxVifiID != null" >
+        idxVifiID,
+      </if>
+      <if test="idxUUWiFiCellID != null">
+        idxUUWiFiCellID,
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId,
+      </if>
+      <if test="idxSimCIccId != null" >
+        idxSimCIccId,
+      </if>
+      <if test="idxSimPPortId != null" >
+        idxSimPPortId,
+      </if>
+      <if test="idxSimPDevID != null" >
+        idxSimPDevID,
+      </if>
+      <if test="idxGoipDevID != null" >
+        idxGoipDevID,
+      </if>
+      <if test="idxGoipPortID != null" >
+        idxGoipPortID,
+      </if>
+      <if test="idxVSWID != null" >
+        idxVSWID,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="expire != null" >
+        expire,
+      </if>
+      <if test="lastUpdate != null" >
+        lastUpdate,
+      </if>
+      <if test="userAct != null" >
+        userAct,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keySessID != null" >
+        #{keySessID,jdbcType=VARCHAR},
+      </if>
+      <if test="sessType != null" >
+        #{sessType,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSUBindID != null" >
+        #{idxSUBindID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVifiID != null" >
+        #{idxVifiID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiCellID != null">
+        #{idxUUWiFiCellID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimCIccId != null" >
+        #{idxSimCIccId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimPPortId != null" >
+        #{idxSimPPortId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimPDevID != null" >
+        #{idxSimPDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxGoipDevID != null" >
+        #{idxGoipDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxGoipPortID != null" >
+        #{idxGoipPortID,jdbcType=INTEGER},
+      </if>
+      <if test="idxVSWID != null" >
+        #{idxVSWID,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="expire != null" >
+        #{expire,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdate != null" >
+        #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userAct != null" >
+        #{userAct,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiSession" >
+    update tbUUWiFiSession
+    <set >
+      <if test="sessType != null" >
+        sessType = #{sessType,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSUBindID != null" >
+        idxSUBindID = #{idxSUBindID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVifiID != null" >
+        idxVifiID = #{idxVifiID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiCellID != null">
+        idxUUWiFiCellID = #{idxUUWiFiCellID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimCIccId != null" >
+        idxSimCIccId = #{idxSimCIccId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimPPortId != null" >
+        idxSimPPortId = #{idxSimPPortId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimPDevID != null" >
+        idxSimPDevID = #{idxSimPDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxGoipDevID != null" >
+        idxGoipDevID = #{idxGoipDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxGoipPortID != null" >
+        idxGoipPortID = #{idxGoipPortID,jdbcType=INTEGER},
+      </if>
+      <if test="idxVSWID != null" >
+        idxVSWID = #{idxVSWID,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="expire != null" >
+        expire = #{expire,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdate != null" >
+        lastUpdate = #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userAct != null" >
+        userAct = #{userAct,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keySessID = #{keySessID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiSession" >
+    update tbUUWiFiSession
+    set sessType = #{sessType,jdbcType=VARCHAR},
+      idxSUBindID = #{idxSUBindID,jdbcType=VARCHAR},
+      idxVifiID = #{idxVifiID,jdbcType=VARCHAR},
+      idxUUWiFiCellID = #{idxUUWiFiCellID,jdbcType=VARCHAR},
+      idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      idxSimCIccId = #{idxSimCIccId,jdbcType=VARCHAR},
+      idxSimPPortId = #{idxSimPPortId,jdbcType=VARCHAR},
+      idxSimPDevID = #{idxSimPDevID,jdbcType=VARCHAR},
+      idxGoipDevID = #{idxGoipDevID,jdbcType=VARCHAR},
+      idxGoipPortID = #{idxGoipPortID,jdbcType=INTEGER},
+      idxVSWID = #{idxVSWID,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      expire = #{expire,jdbcType=INTEGER},
+      lastUpdate = #{lastUpdate,jdbcType=TIMESTAMP},
+      userAct = #{userAct,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keySessID = #{keySessID,jdbcType=VARCHAR}
+  </update>
+
+  <!--mysql begin-->
+  <!--
+  <select id="createSimPSession" resultType="java.util.Map" parameterType="java.util.Map">
+    select a.keyVSWID as vswId, a.hostname as vswHostName, a.vswpwd as vswPass, a.expire as vswExpire, a.lastHBTime as vswLastUpdateTime, a.state as vswState, a.publicIP as vswIP, a.publicPort as vswPort, a.countryCode as vswCountryCode,
+    b.keySimPDevID as simPDevId, b.idxSimPDevGrpID as simPGroupId, b.username as simPUserName, b.password as simPPass, b.expire as simPExpire, b.ipaddr as simPIP, b.port as simPPort, b.ports as simPPorts, b.lastUpdate as simPLastUpdateTime, b.`status` as simPStatus,
+    d.keyID as simpPortId, d.idxSlotNum as simpPortSlot, d.`status` as simpPortStatus, d.idxIccid as simpPortIccid,
+    e.keySimCardID as simCardId, e.idxIccid as simCardIccid, e.idxSCGroupID as simCardGroupId, e.`status` as simCardStatus, e.balance as simCardBalance, e.restNetData as simCardRestNetData, e.idxUUWiFiAreaId as simCardidxUUWiFiAreaId, e.exActions as simCardExActions,
+    f.idxSalerID as simCardSalerID, f.ispId as simCardIsp, f.apn as simCardApn, f.dialnumber as simCardDialnumber, f.dialuid as simCardDialuid, f.dialpwd as simCardDialpwd
+    from tbVSW a, tbSimPDev b, tbSimPDevGrp c, tbSimPPort d, tbSimCard e, tbSCGroup f
+    where a.state = 'R' and TIMESTAMPDIFF(SECOND,a.lastHBTime,NOW()) &lt; (a.expire+120) and a.keyVSWID = b.idxVSWID
+    and b.`status` = 0 and TIMESTAMPDIFF(SECOND,b.lastUpdate,NOW()) &lt; (b.expire+120) and b.idxSimPDevGrpID = c.keyID and c.idxAgentID = #{agentId,jdbcType=VARCHAR}
+    and b.keySimPDevID = d.idxSimPDevID and d.`status` = 1 and d.idxViFiId = ''
+    and d.idxIccid = e.idxIccid and e.`status` = 0 and e.bindType = #{bindType,jdbcType=VARCHAR} and e.restNetData > 0 and e.idxSCGroupID = f.keySCGroupID
+    <if test="simcID != null">
+      and e.keySimCardID = #{simcID,jdbcType=VARCHAR}
+    </if>
+    and f.idxAgentID = #{agentId,jdbcType=VARCHAR} and f.areaCode = #{ccode,jdbcType=VARCHAR}
+    order by e.restNetData desc limit 1 for update
+  </select>
+  -->
+
+  <update id="updateTimeoutSessionStatus">
+    update tbUUWiFiSession set `status` = #{1} where TIMESTAMPDIFF(SECOND,lastUpdate,NOW()) > expire and `status` = #{0}
+  </update>
+
+  <select id="selectUUWiFiLastSimCardIccid" parameterType="java.lang.String" resultType="java.lang.String">
+    select DISTINCT(idxSimCIccId) from tbUUWiFiSession where idxVifiID = #{0} order by crtTm desc limit 1
+  </select>
+
+</mapper>

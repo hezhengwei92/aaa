@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbAgentDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbAgent" >
+    <id column="idxAgentId" property="idxAgentId" jdbcType="VARCHAR" />
+    <result column="idxParentsId" property="idxParentsId" jdbcType="VARCHAR" />
+    <result column="idxAgentName" property="idxAgentName" jdbcType="VARCHAR" />
+    <result column="agentLevel" property="agentLevel" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="phoneNumber" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="balance" property="balance" jdbcType="INTEGER" />
+    <result column="credit" property="credit" jdbcType="INTEGER" />
+    <result column="discount" property="discount" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    idxAgentId, idxParentsId, idxAgentName, agentLevel, name, phoneNumber, balance, credit,
+    discount, remark, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbAgent
+    where idxAgentId = #{idxAgentId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbAgent
+    where idxAgentId = #{idxAgentId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbAgent" >
+    insert into tbAgent (idxAgentId, idxParentsId, idxAgentName, 
+      agentLevel, name, phoneNumber, 
+      balance, credit, discount, 
+      remark, mdfTm, mdfBy, 
+      crtTm, crtBy)
+    values (#{idxAgentId,jdbcType=VARCHAR}, #{idxParentsId,jdbcType=VARCHAR}, #{idxAgentName,jdbcType=VARCHAR}, 
+      #{agentLevel,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{balance,jdbcType=INTEGER}, #{credit,jdbcType=INTEGER}, #{discount,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, 
+      #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbAgent" >
+    insert into tbAgent
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idxAgentId != null" >
+        idxAgentId,
+      </if>
+      <if test="idxParentsId != null" >
+        idxParentsId,
+      </if>
+      <if test="idxAgentName != null" >
+        idxAgentName,
+      </if>
+      <if test="agentLevel != null" >
+        agentLevel,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="phoneNumber != null" >
+        phoneNumber,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="credit != null" >
+        credit,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idxAgentId != null" >
+        #{idxAgentId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxParentsId != null" >
+        #{idxParentsId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAgentName != null" >
+        #{idxAgentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentLevel != null" >
+        #{agentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="credit != null" >
+        #{credit,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbAgent" >
+    update tbAgent
+    <set >
+      <if test="idxParentsId != null" >
+        idxParentsId = #{idxParentsId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAgentName != null" >
+        idxAgentName = #{idxAgentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentLevel != null" >
+        agentLevel = #{agentLevel,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="credit != null" >
+        credit = #{credit,jdbcType=INTEGER},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where idxAgentId = #{idxAgentId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbAgent" >
+    update tbAgent
+    set idxParentsId = #{idxParentsId,jdbcType=VARCHAR},
+      idxAgentName = #{idxAgentName,jdbcType=VARCHAR},
+      agentLevel = #{agentLevel,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      phoneNumber = #{phoneNumber,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=INTEGER},
+      credit = #{credit,jdbcType=INTEGER},
+      discount = #{discount,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where idxAgentId = #{idxAgentId,jdbcType=VARCHAR}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectBatch" parameterType="java.util.List" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbAgent
+    where idxAgentId in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+  </select>
+
+  <update id="agentCost" parameterType="java.util.Map">
+    update tbAgent set balance = balance - #{cost,jdbcType=INTEGER} * discount / 100 where idxAgentId in
+    <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+  </update>
+</mapper>

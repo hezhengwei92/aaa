@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbGUStaticBindDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbGUStaticBind" >
+    <id column="keyGUBindID" property="keyGUBindID" jdbcType="VARCHAR" />
+    <result column="idxGoIPDevID" property="idxGoIPDevID" jdbcType="VARCHAR" />
+    <result column="idxPortNum" property="idxPortNum" jdbcType="INTEGER" />
+    <result column="idxViFiID" property="idxViFiID" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="useTimes" property="useTimes" jdbcType="INTEGER" />
+    <result column="lastBindDate" property="lastBindDate" jdbcType="TIMESTAMP" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyGUBindID, idxGoIPDevID, idxPortNum, idxViFiID, status, useTimes, lastBindDate, 
+    remarks, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbGUStaticBind
+    where keyGUBindID = #{keyGUBindID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbGUStaticBind
+    where keyGUBindID = #{keyGUBindID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbGUStaticBind" >
+    insert into tbGUStaticBind (keyGUBindID, idxGoIPDevID, idxPortNum, 
+      idxViFiID, status, useTimes, 
+      lastBindDate, remarks, mdfTm, 
+      mdfBy, crtTm, crtBy
+      )
+    values (#{keyGUBindID,jdbcType=VARCHAR}, #{idxGoIPDevID,jdbcType=VARCHAR}, #{idxPortNum,jdbcType=INTEGER}, 
+      #{idxViFiID,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{useTimes,jdbcType=INTEGER}, 
+      #{lastBindDate,jdbcType=TIMESTAMP}, #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, 
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbGUStaticBind" >
+    insert into tbGUStaticBind
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyGUBindID != null" >
+        keyGUBindID,
+      </if>
+      <if test="idxGoIPDevID != null" >
+        idxGoIPDevID,
+      </if>
+      <if test="idxPortNum != null" >
+        idxPortNum,
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="useTimes != null" >
+        useTimes,
+      </if>
+      <if test="lastBindDate != null" >
+        lastBindDate,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyGUBindID != null" >
+        #{keyGUBindID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxGoIPDevID != null" >
+        #{idxGoIPDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxPortNum != null" >
+        #{idxPortNum,jdbcType=INTEGER},
+      </if>
+      <if test="idxViFiID != null" >
+        #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="useTimes != null" >
+        #{useTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastBindDate != null" >
+        #{lastBindDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbGUStaticBind" >
+    update tbGUStaticBind
+    <set >
+      <if test="idxGoIPDevID != null" >
+        idxGoIPDevID = #{idxGoIPDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxPortNum != null" >
+        idxPortNum = #{idxPortNum,jdbcType=INTEGER},
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="useTimes != null" >
+        useTimes = #{useTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastBindDate != null" >
+        lastBindDate = #{lastBindDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyGUBindID = #{keyGUBindID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbGUStaticBind" >
+    update tbGUStaticBind
+    set idxGoIPDevID = #{idxGoIPDevID,jdbcType=VARCHAR},
+      idxPortNum = #{idxPortNum,jdbcType=INTEGER},
+      idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      useTimes = #{useTimes,jdbcType=INTEGER},
+      lastBindDate = #{lastBindDate,jdbcType=TIMESTAMP},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyGUBindID = #{keyGUBindID,jdbcType=VARCHAR}
+  </update>
+
+  <select id="queryByVID" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from tbGUStaticBind
+    where idxViFiID = #{0} and `status` = #{1} limit 1
+  </select>
+</mapper>

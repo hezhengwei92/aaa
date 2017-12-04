@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbUUWiFiCellDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbUUWiFiCell" >
+    <id column="keyUUWiFiCellID" property="keyUUWiFiCellID" jdbcType="VARCHAR" />
+    <result column="mcc" property="mcc" jdbcType="INTEGER" />
+    <result column="mnc" property="mnc" jdbcType="INTEGER" />
+    <result column="cellid" property="cellid" jdbcType="INTEGER" />
+    <result column="lac" property="lac" jdbcType="INTEGER" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="longitide" property="longitide" jdbcType="DOUBLE" />
+    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
+    <result column="pubIP" property="pubIP" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="region" property="region" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="county" property="county" jdbcType="VARCHAR" />
+    <result column="street" property="street" jdbcType="VARCHAR" />
+    <result column="street_number" property="street_number" jdbcType="VARCHAR" />
+    <result column="accuracy" property="accuracy" jdbcType="INTEGER" />
+    <result column="uuwifiAreaId" property="uuwifiAreaId" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyUUWiFiCellID, mcc, mnc, cellid, lac, type, longitide, latitude, pubIP, country, 
+    region, city, county, street, street_number, accuracy, uuwifiAreaId, remark, mdfTm, 
+    mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbUUWiFiCell
+    where keyUUWiFiCellID = #{keyUUWiFiCellID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbUUWiFiCell
+    where keyUUWiFiCellID = #{keyUUWiFiCellID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiCell" >
+    insert into tbUUWiFiCell (keyUUWiFiCellID, mcc, mnc, 
+      cellid, lac, type, 
+      longitide, latitude, pubIP, 
+      country, region, city, 
+      county, street, street_number, 
+      accuracy, uuwifiAreaId, remark, 
+      mdfTm, mdfBy, crtTm, 
+      crtBy)
+    values (#{keyUUWiFiCellID,jdbcType=VARCHAR}, #{mcc,jdbcType=INTEGER}, #{mnc,jdbcType=INTEGER}, 
+      #{cellid,jdbcType=INTEGER}, #{lac,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{longitide,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{pubIP,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{region,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{county,jdbcType=VARCHAR}, #{street,jdbcType=VARCHAR}, #{street_number,jdbcType=VARCHAR}, 
+      #{accuracy,jdbcType=INTEGER}, #{uuwifiAreaId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, 
+      #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiCell" >
+    insert into tbUUWiFiCell
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyUUWiFiCellID != null" >
+        keyUUWiFiCellID,
+      </if>
+      <if test="mcc != null" >
+        mcc,
+      </if>
+      <if test="mnc != null" >
+        mnc,
+      </if>
+      <if test="cellid != null" >
+        cellid,
+      </if>
+      <if test="lac != null" >
+        lac,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="longitide != null" >
+        longitide,
+      </if>
+      <if test="latitude != null" >
+        latitude,
+      </if>
+      <if test="pubIP != null" >
+        pubIP,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="region != null" >
+        region,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="county != null" >
+        county,
+      </if>
+      <if test="street != null" >
+        street,
+      </if>
+      <if test="street_number != null" >
+        street_number,
+      </if>
+      <if test="accuracy != null" >
+        accuracy,
+      </if>
+      <if test="uuwifiAreaId != null" >
+        uuwifiAreaId,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyUUWiFiCellID != null" >
+        #{keyUUWiFiCellID,jdbcType=VARCHAR},
+      </if>
+      <if test="mcc != null" >
+        #{mcc,jdbcType=INTEGER},
+      </if>
+      <if test="mnc != null" >
+        #{mnc,jdbcType=INTEGER},
+      </if>
+      <if test="cellid != null" >
+        #{cellid,jdbcType=INTEGER},
+      </if>
+      <if test="lac != null" >
+        #{lac,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="longitide != null" >
+        #{longitide,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="pubIP != null" >
+        #{pubIP,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null" >
+        #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null" >
+        #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="street_number != null" >
+        #{street_number,jdbcType=VARCHAR},
+      </if>
+      <if test="accuracy != null" >
+        #{accuracy,jdbcType=INTEGER},
+      </if>
+      <if test="uuwifiAreaId != null" >
+        #{uuwifiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiCell" >
+    update tbUUWiFiCell
+    <set >
+      <if test="mcc != null" >
+        mcc = #{mcc,jdbcType=INTEGER},
+      </if>
+      <if test="mnc != null" >
+        mnc = #{mnc,jdbcType=INTEGER},
+      </if>
+      <if test="cellid != null" >
+        cellid = #{cellid,jdbcType=INTEGER},
+      </if>
+      <if test="lac != null" >
+        lac = #{lac,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="longitide != null" >
+        longitide = #{longitide,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null" >
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="pubIP != null" >
+        pubIP = #{pubIP,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="region != null" >
+        region = #{region,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="county != null" >
+        county = #{county,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null" >
+        street = #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="street_number != null" >
+        street_number = #{street_number,jdbcType=VARCHAR},
+      </if>
+      <if test="accuracy != null" >
+        accuracy = #{accuracy,jdbcType=INTEGER},
+      </if>
+      <if test="uuwifiAreaId != null" >
+        uuwifiAreaId = #{uuwifiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyUUWiFiCellID = #{keyUUWiFiCellID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiCell" >
+    update tbUUWiFiCell
+    set mcc = #{mcc,jdbcType=INTEGER},
+      mnc = #{mnc,jdbcType=INTEGER},
+      cellid = #{cellid,jdbcType=INTEGER},
+      lac = #{lac,jdbcType=INTEGER},
+      type = #{type,jdbcType=INTEGER},
+      longitide = #{longitide,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      pubIP = #{pubIP,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      region = #{region,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      street = #{street,jdbcType=VARCHAR},
+      street_number = #{street_number,jdbcType=VARCHAR},
+      accuracy = #{accuracy,jdbcType=INTEGER},
+      uuwifiAreaId = #{uuwifiAreaId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyUUWiFiCellID = #{keyUUWiFiCellID,jdbcType=VARCHAR}
+  </update>
+  
+  <!--mysql begin-->
+  <select id="selectByCellInfo" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbUUWiFiCell where mcc = #{0} and mnc = #{1} and cellid = #{2} and lac = #{3} limit 1
+  </select>
+  
+</mapper>

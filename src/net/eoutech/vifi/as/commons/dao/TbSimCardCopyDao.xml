@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbSimCardCopyDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbSimCard" >
+    <id column="keySimCardID" property="keySimCardID" jdbcType="VARCHAR" />
+    <result column="idxSCGroupID" property="idxSCGroupID" jdbcType="VARCHAR" />
+    <result column="idxIccid" property="idxIccid" jdbcType="VARCHAR" />
+    <result column="imsi" property="imsi" jdbcType="VARCHAR" />
+    <result column="imei" property="imei" jdbcType="VARCHAR" />
+    <result column="ssId" property="ssId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="bindType" property="bindType" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="balance" property="balance" jdbcType="INTEGER" />
+    <result column="restNetData" property="restNetData" jdbcType="INTEGER" />
+    <result column="restCallDur" property="restCallDur" jdbcType="INTEGER" />
+    <result column="restSMSNum" property="restSMSNum" jdbcType="INTEGER" />
+    <result column="onlineTime" property="onlineTime" jdbcType="INTEGER" />
+    <result column="outCalls" property="outCalls" jdbcType="INTEGER" />
+    <result column="outCallDuration" property="outCallDuration" jdbcType="INTEGER" />
+    <result column="inCalls" property="inCalls" jdbcType="INTEGER" />
+    <result column="inCallDuration" property="inCallDuration" jdbcType="INTEGER" />
+    <result column="successCalls" property="successCalls" jdbcType="INTEGER" />
+    <result column="failedCalls" property="failedCalls" jdbcType="INTEGER" />
+    <result column="shortCalls" property="shortCalls" jdbcType="INTEGER" />
+    <result column="contFailedCalls" property="contFailedCalls" jdbcType="INTEGER" />
+    <result column="totalSuccess" property="totalSuccess" jdbcType="INTEGER" />
+    <result column="totalFailed" property="totalFailed" jdbcType="INTEGER" />
+    <result column="contFailed" property="contFailed" jdbcType="INTEGER" />
+    <result column="totalData" property="totalData" jdbcType="INTEGER" />
+    <result column="lastIdleTime" property="lastIdleTime" jdbcType="TIMESTAMP" />
+    <result column="exActions" property="exActions" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+    <result column="cardATR" property="cardATR" jdbcType="VARBINARY"/>
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keySimCardID, idxSCGroupID, idxIccid, imsi, imei, ssId, `status`, bindType, number,
+    balance, restNetData, restCallDur, restSMSNum, onlineTime, outCalls, outCallDuration, 
+    inCalls, inCallDuration, successCalls, failedCalls, shortCalls, contFailedCalls, 
+    totalSuccess, totalFailed, contFailed, totalData, lastIdleTime, exActions, remarks, 
+    mdfTm, mdfBy, crtTm, crtBy,cardATR,idxAgentID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbSimCardCopy
+    where keySimCardID = #{keySimCardID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbSimCardCopy
+    where keySimCardID = #{keySimCardID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbSimCard" >
+    insert into tbSimCardCopy (keySimCardID, idxSCGroupID, idxIccid,
+      imsi, imei, ssId, `status`,
+      bindType, number, balance, 
+      restNetData, restCallDur, restSMSNum, 
+      onlineTime, outCalls, outCallDuration, 
+      inCalls, inCallDuration, successCalls, 
+      failedCalls, shortCalls, contFailedCalls, 
+      totalSuccess, totalFailed, contFailed, 
+      totalData, lastIdleTime, exActions, 
+      remarks, mdfTm, mdfBy, 
+      crtTm, crtBy,cardATR,idxAgentID)
+    values (#{keySimCardID,jdbcType=VARCHAR}, #{idxSCGroupID,jdbcType=VARCHAR}, #{idxIccid,jdbcType=VARCHAR}, 
+      #{imsi,jdbcType=VARCHAR}, #{imei,jdbcType=VARCHAR}, #{ssId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{bindType,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, #{balance,jdbcType=INTEGER}, 
+      #{restNetData,jdbcType=INTEGER}, #{restCallDur,jdbcType=INTEGER}, #{restSMSNum,jdbcType=INTEGER}, 
+      #{onlineTime,jdbcType=INTEGER}, #{outCalls,jdbcType=INTEGER}, #{outCallDuration,jdbcType=INTEGER}, 
+      #{inCalls,jdbcType=INTEGER}, #{inCallDuration,jdbcType=INTEGER}, #{successCalls,jdbcType=INTEGER}, 
+      #{failedCalls,jdbcType=INTEGER}, #{shortCalls,jdbcType=INTEGER}, #{contFailedCalls,jdbcType=INTEGER}, 
+      #{totalSuccess,jdbcType=INTEGER}, #{totalFailed,jdbcType=INTEGER}, #{contFailed,jdbcType=INTEGER}, 
+      #{totalData,jdbcType=INTEGER}, #{lastIdleTime,jdbcType=TIMESTAMP}, #{exActions,jdbcType=VARCHAR}, 
+      #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, 
+      #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR},#{cardATR,jdbcType=VARBINARY},#{idxAgentID,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSimCard" >
+    insert into tbSimCardCopy
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keySimCardID != null" >
+        keySimCardID,
+      </if>
+      <if test="idxSCGroupID != null" >
+        idxSCGroupID,
+      </if>
+      <if test="idxIccid != null" >
+        idxIccid,
+      </if>
+      <if test="imsi != null" >
+        imsi,
+      </if>
+      <if test="imei != null" >
+        imei,
+      </if>
+      <if test="ssId != null" >
+        ssId,
+      </if>
+      <if test="status != null" >
+        `status`,
+      </if>
+      <if test="bindType != null" >
+        bindType,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="restNetData != null" >
+        restNetData,
+      </if>
+      <if test="restCallDur != null" >
+        restCallDur,
+      </if>
+      <if test="restSMSNum != null" >
+        restSMSNum,
+      </if>
+      <if test="onlineTime != null" >
+        onlineTime,
+      </if>
+      <if test="outCalls != null" >
+        outCalls,
+      </if>
+      <if test="outCallDuration != null" >
+        outCallDuration,
+      </if>
+      <if test="inCalls != null" >
+        inCalls,
+      </if>
+      <if test="inCallDuration != null" >
+        inCallDuration,
+      </if>
+      <if test="successCalls != null" >
+        successCalls,
+      </if>
+      <if test="failedCalls != null" >
+        failedCalls,
+      </if>
+      <if test="shortCalls != null" >
+        shortCalls,
+      </if>
+      <if test="contFailedCalls != null" >
+        contFailedCalls,
+      </if>
+      <if test="totalSuccess != null" >
+        totalSuccess,
+      </if>
+      <if test="totalFailed != null" >
+        totalFailed,
+      </if>
+      <if test="contFailed != null" >
+        contFailed,
+      </if>
+      <if test="totalData != null" >
+        totalData,
+      </if>
+      <if test="lastIdleTime != null" >
+        lastIdleTime,
+      </if>
+      <if test="exActions != null" >
+        exActions,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+      <if test="cardATR != null">
+       cardATR,
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keySimCardID != null" >
+        #{keySimCardID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSCGroupID != null" >
+        #{idxSCGroupID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxIccid != null" >
+        #{idxIccid,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null" >
+        #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="ssId != null" >
+        #{ssId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="bindType != null" >
+        #{bindType,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="restNetData != null" >
+        #{restNetData,jdbcType=INTEGER},
+      </if>
+      <if test="restCallDur != null" >
+        #{restCallDur,jdbcType=INTEGER},
+      </if>
+      <if test="restSMSNum != null" >
+        #{restSMSNum,jdbcType=INTEGER},
+      </if>
+      <if test="onlineTime != null" >
+        #{onlineTime,jdbcType=INTEGER},
+      </if>
+      <if test="outCalls != null" >
+        #{outCalls,jdbcType=INTEGER},
+      </if>
+      <if test="outCallDuration != null" >
+        #{outCallDuration,jdbcType=INTEGER},
+      </if>
+      <if test="inCalls != null" >
+        #{inCalls,jdbcType=INTEGER},
+      </if>
+      <if test="inCallDuration != null" >
+        #{inCallDuration,jdbcType=INTEGER},
+      </if>
+      <if test="successCalls != null" >
+        #{successCalls,jdbcType=INTEGER},
+      </if>
+      <if test="failedCalls != null" >
+        #{failedCalls,jdbcType=INTEGER},
+      </if>
+      <if test="shortCalls != null" >
+        #{shortCalls,jdbcType=INTEGER},
+      </if>
+      <if test="contFailedCalls != null" >
+        #{contFailedCalls,jdbcType=INTEGER},
+      </if>
+      <if test="totalSuccess != null" >
+        #{totalSuccess,jdbcType=INTEGER},
+      </if>
+      <if test="totalFailed != null" >
+        #{totalFailed,jdbcType=INTEGER},
+      </if>
+      <if test="contFailed != null" >
+        #{contFailed,jdbcType=INTEGER},
+      </if>
+      <if test="totalData != null" >
+        #{totalData,jdbcType=INTEGER},
+      </if>
+      <if test="lastIdleTime != null" >
+        #{lastIdleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exActions != null" >
+        #{exActions,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+      <if test="cardATR != null">
+        #{cardATR,jdbcType=VARBINARY},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSimCard" >
+    update tbSimCardCopy
+    <set >
+      <if test="idxSCGroupID != null" >
+        idxSCGroupID = #{idxSCGroupID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxIccid != null" >
+        idxIccid = #{idxIccid,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null" >
+        imsi = #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null" >
+        imei = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="ssId != null" >
+        ssId = #{ssId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="bindType != null" >
+        bindType = #{bindType,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=INTEGER},
+      </if>
+      <if test="restNetData != null" >
+        restNetData = #{restNetData,jdbcType=INTEGER},
+      </if>
+      <if test="restCallDur != null" >
+        restCallDur = #{restCallDur,jdbcType=INTEGER},
+      </if>
+      <if test="restSMSNum != null" >
+        restSMSNum = #{restSMSNum,jdbcType=INTEGER},
+      </if>
+      <if test="onlineTime != null" >
+        onlineTime = #{onlineTime,jdbcType=INTEGER},
+      </if>
+      <if test="outCalls != null" >
+        outCalls = #{outCalls,jdbcType=INTEGER},
+      </if>
+      <if test="outCallDuration != null" >
+        outCallDuration = #{outCallDuration,jdbcType=INTEGER},
+      </if>
+      <if test="inCalls != null" >
+        inCalls = #{inCalls,jdbcType=INTEGER},
+      </if>
+      <if test="inCallDuration != null" >
+        inCallDuration = #{inCallDuration,jdbcType=INTEGER},
+      </if>
+      <if test="successCalls != null" >
+        successCalls = #{successCalls,jdbcType=INTEGER},
+      </if>
+      <if test="failedCalls != null" >
+        failedCalls = #{failedCalls,jdbcType=INTEGER},
+      </if>
+      <if test="shortCalls != null" >
+        shortCalls = #{shortCalls,jdbcType=INTEGER},
+      </if>
+      <if test="contFailedCalls != null" >
+        contFailedCalls = #{contFailedCalls,jdbcType=INTEGER},
+      </if>
+      <if test="totalSuccess != null" >
+        totalSuccess = #{totalSuccess,jdbcType=INTEGER},
+      </if>
+      <if test="totalFailed != null" >
+        totalFailed = #{totalFailed,jdbcType=INTEGER},
+      </if>
+      <if test="contFailed != null" >
+        contFailed = #{contFailed,jdbcType=INTEGER},
+      </if>
+      <if test="totalData != null" >
+        totalData = #{totalData,jdbcType=INTEGER},
+      </if>
+      <if test="lastIdleTime != null" >
+        lastIdleTime = #{lastIdleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exActions != null" >
+        exActions = #{exActions,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+      <if test="cardATR !=null">
+        cardATR=#{cardATR,jdbcType=VARBINARY},
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keySimCardID = #{keySimCardID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbSimCard" >
+    update tbSimCardCopy
+    set idxSCGroupID = #{idxSCGroupID,jdbcType=VARCHAR},
+      idxIccid = #{idxIccid,jdbcType=VARCHAR},
+      imsi = #{imsi,jdbcType=VARCHAR},
+      imei = #{imei,jdbcType=VARCHAR},
+      ssId = #{ssId,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      bindType = #{bindType,jdbcType=VARCHAR},
+      number = #{number,jdbcType=VARCHAR},
+      balance = #{balance,jdbcType=INTEGER},
+      restNetData = #{restNetData,jdbcType=INTEGER},
+      restCallDur = #{restCallDur,jdbcType=INTEGER},
+      restSMSNum = #{restSMSNum,jdbcType=INTEGER},
+      onlineTime = #{onlineTime,jdbcType=INTEGER},
+      outCalls = #{outCalls,jdbcType=INTEGER},
+      outCallDuration = #{outCallDuration,jdbcType=INTEGER},
+      inCalls = #{inCalls,jdbcType=INTEGER},
+      inCallDuration = #{inCallDuration,jdbcType=INTEGER},
+      successCalls = #{successCalls,jdbcType=INTEGER},
+      failedCalls = #{failedCalls,jdbcType=INTEGER},
+      shortCalls = #{shortCalls,jdbcType=INTEGER},
+      contFailedCalls = #{contFailedCalls,jdbcType=INTEGER},
+      totalSuccess = #{totalSuccess,jdbcType=INTEGER},
+      totalFailed = #{totalFailed,jdbcType=INTEGER},
+      contFailed = #{contFailed,jdbcType=INTEGER},
+      totalData = #{totalData,jdbcType=INTEGER},
+      lastIdleTime = #{lastIdleTime,jdbcType=TIMESTAMP},
+      exActions = #{exActions,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR},
+      cardATR=#{cardATR,jdbcType=VARBINARY},
+      idxAgentID = #{idxAgentID,jdbcType=VARCHAR}
+    where keySimCardID = #{keySimCardID,jdbcType=VARCHAR}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectByIccid" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from tbSimCardCopy
+    where idxIccid = #{0} limit 1
+  </select>
+
+  <select id="selectActiveSimCard" parameterType="java.util.Map" resultType="java.lang.String">
+    select idxIccid
+    from tbSimCardCopy where idxSCGroupID in
+    <foreach collection="scGroupList" index="index" item="item" open="(" separator="," close=")">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+    and bindType = 'D' and restNetData > 0 and `status` = 0 and idxIccid in ( select c.idxIccid from tbSimPDev a left join tbVSW b on a.idxVSWID = b.keyVSWID left join tbSimPPort c on a.keySimPDevID = c.idxSimPDevID left join tbSimPDevGrp d on a.idxSimPDevGrpID = d.keyID
+    where a.`status` = 0 and TIMESTAMPDIFF(SECOND,a.lastUpdate,NOW()) &lt; a.expire
+    and b.state = 'R' and TIMESTAMPDIFF(SECOND,b.lastHBTime,NOW()) &lt; b.expire
+    and c.`status` = 1 and c.idxIccid != '' and c.idxViFiId = ''
+    and d.idxAgentID = #{agentId,jdbcType=VARCHAR} )
+    order by restNetData desc limit 1 for update
+  </select>
+  
+  <select id="selectSCGrpIdList" parameterType="java.util.List" resultType="java.lang.String">
+    select DISTINCT(idxSCGroupID) from tbSimCardCopy where idxIccid in
+    <foreach collection="iccidList" index="index" item="item" open="(" separator="," close=")">
+      #{item,jdbcType=VARCHAR}
+    </foreach>
+  </select>
+
+  <select id="selectBestSimCardByGroupId" resultMap="BaseResultMap" parameterType="java.lang.String">
+    select <include refid="Base_Column_List" />
+    from tbSimCardCopy where idxSCGroupID = #{0} and bindType = #{1} and `status` = 0 and restNetData > 0 order by restNetData desc limit 1 for update
+  </select>
+
+</mapper>

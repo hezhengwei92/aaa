@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbUserDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbUser" >
+    <id column="keyUserID" property="keyUserID" jdbcType="VARCHAR" />
+    <result column="idxAppId" property="idxAppId" jdbcType="VARCHAR" />
+    <result column="idxSIPUId" property="idxSIPUId" jdbcType="VARCHAR" />
+    <result column="idxPhoneNumber" property="idxPhoneNumber" jdbcType="VARCHAR" />
+    <result column="idxAreaCode" property="idxAreaCode" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="language" property="language" jdbcType="VARCHAR" />
+    <result column="roamAreaCode" property="roamAreaCode" jdbcType="VARCHAR" />
+    <result column="roamTimeZone" property="roamTimeZone" jdbcType="INTEGER" />
+    <result column="idxDomain" property="idxDomain" jdbcType="VARCHAR" />
+    <result column="displayNumber" property="displayNumber" jdbcType="VARCHAR" />
+    <result column="accountState" property="accountState" jdbcType="VARCHAR" />
+    <result column="appState" property="appState" jdbcType="INTEGER" />
+    <result column="vifiState" property="vifiState" jdbcType="INTEGER" />
+    <result column="idxViFiID" property="idxViFiID" jdbcType="VARCHAR" />
+    <result column="idxVPXID" property="idxVPXID" jdbcType="VARCHAR" />
+    <result column="idxVSWID" property="idxVSWID" jdbcType="VARCHAR" />
+    <result column="idxGoIPPortID" property="idxGoIPPortID" jdbcType="VARCHAR" />
+    <result column="idxSimpPortID" property="idxSimpPortID" jdbcType="VARCHAR" />
+    <result column="idxSimCardID" property="idxSimCardID" jdbcType="VARCHAR" />
+    <result column="userBalance" property="userBalance" jdbcType="INTEGER" />
+    <result column="voiceBalance" property="voiceBalance" jdbcType="INTEGER" />
+    <result column="dataBalance" property="dataBalance" jdbcType="INTEGER" />
+    <result column="credit" property="credit" jdbcType="INTEGER" />
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR" />
+    <result column="sipExpire" property="sipExpire" jdbcType="INTEGER" />
+    <result column="todayMaxData" property="todayMaxData" jdbcType="INTEGER" />
+    <result column="todayUUWiFiData" property="todayUUWiFiData" jdbcType="INTEGER" />
+    <result column="monthMaxData" property="monthMaxData" jdbcType="INTEGER"/>
+    <result column="monthUUWiFiData" property="monthUUWiFiData" jdbcType="INTEGER"/>
+    <result column="lastUUWiFiDate" property="lastUUWiFiDate" jdbcType="DATE" />
+    <result column="lastAPPOnlineDate" property="lastAPPOnlineDate" jdbcType="TIMESTAMP" />
+    <result column="lastAPPPublicIP" property="lastAPPPublicIP" jdbcType="VARCHAR" />
+    <result column="lastAPPPublicPort" property="lastAPPPublicPort" jdbcType="INTEGER" />
+    <result column="lastAPPDevInfo" property="lastAPPDevInfo" jdbcType="VARCHAR" />
+    <result column="pushToken" property="pushToken" jdbcType="VARCHAR" />
+    <result column="lastAPPVer" property="lastAPPVer" jdbcType="VARCHAR" />
+    <result column="lastViFiDate" property="lastViFiDate" jdbcType="TIMESTAMP" />
+    <result column="lastViFiID" property="lastViFiID" jdbcType="VARCHAR" />
+    <result column="lastViFiPublicIP" property="lastViFiPublicIP" jdbcType="VARCHAR" />
+    <result column="userType" property="userType" jdbcType="INTEGER" />
+    <result column="idxWechatId" property="idxWechatId" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyUserID, idxAppId, idxSIPUId, idxPhoneNumber, idxAreaCode, password, language, 
+    roamAreaCode, roamTimeZone, idxDomain, displayNumber, accountState, appState, vifiState, 
+    idxViFiID, idxVPXID, idxVSWID, idxGoIPPortID, idxSimpPortID, idxSimCardID, userBalance, 
+    voiceBalance, dataBalance, credit, idxAgentID, sipExpire, todayMaxData,
+    todayUUWiFiData, monthMaxData, monthUUWiFiData, lastUUWiFiDate, lastAPPOnlineDate, lastAPPPublicIP, lastAPPPublicPort,
+    lastAPPDevInfo, pushToken, lastAPPVer, lastViFiDate, lastViFiID, lastViFiPublicIP, userType,
+    idxWechatId, remarks, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbUser
+    where keyUserID = #{keyUserID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbUser
+    where keyUserID = #{keyUserID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbUser" >
+    insert into tbUser (keyUserID, idxAppId, idxSIPUId, 
+      idxPhoneNumber, idxAreaCode, password, 
+      language, roamAreaCode, roamTimeZone, 
+      idxDomain, displayNumber, accountState, 
+      appState, vifiState, idxViFiID, 
+      idxVPXID, idxVSWID, idxGoIPPortID, 
+      idxSimpPortID, idxSimCardID, userBalance, 
+      voiceBalance, dataBalance, credit, 
+      idxAgentID, sipExpire, todayMaxData,
+      todayUUWiFiData, monthMaxData, monthUUWiFiData, lastUUWiFiDate,
+      lastAPPOnlineDate, lastAPPPublicIP, lastAPPPublicPort, 
+      lastAPPDevInfo, pushToken, lastAPPVer, lastViFiDate,
+      lastViFiID, lastViFiPublicIP, userType, 
+      idxWechatId, remarks, mdfTm, 
+      mdfBy, crtTm, crtBy
+      )
+    values (#{keyUserID,jdbcType=VARCHAR}, #{idxAppId,jdbcType=VARCHAR}, #{idxSIPUId,jdbcType=VARCHAR}, 
+      #{idxPhoneNumber,jdbcType=VARCHAR}, #{idxAreaCode,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{language,jdbcType=VARCHAR}, #{roamAreaCode,jdbcType=VARCHAR}, #{roamTimeZone,jdbcType=INTEGER}, 
+      #{idxDomain,jdbcType=VARCHAR}, #{displayNumber,jdbcType=VARCHAR}, #{accountState,jdbcType=VARCHAR}, 
+      #{appState,jdbcType=INTEGER}, #{vifiState,jdbcType=INTEGER}, #{idxViFiID,jdbcType=VARCHAR}, 
+      #{idxVPXID,jdbcType=VARCHAR}, #{idxVSWID,jdbcType=VARCHAR}, #{idxGoIPPortID,jdbcType=VARCHAR}, 
+      #{idxSimpPortID,jdbcType=VARCHAR}, #{idxSimCardID,jdbcType=VARCHAR}, #{userBalance,jdbcType=INTEGER}, 
+      #{voiceBalance,jdbcType=INTEGER}, #{dataBalance,jdbcType=INTEGER}, #{credit,jdbcType=INTEGER}, 
+      #{idxAgentID,jdbcType=VARCHAR}, #{sipExpire,jdbcType=INTEGER}, #{todayMaxData,jdbcType=INTEGER},
+      #{todayUUWiFiData,jdbcType=INTEGER}, #{monthMaxData,jdbcType=INTEGER}, #{monthUUWiFiData,jdbcType=INTEGER}, #{lastUUWiFiDate,jdbcType=DATE},
+      #{lastAPPOnlineDate,jdbcType=TIMESTAMP}, #{lastAPPPublicIP,jdbcType=VARCHAR}, #{lastAPPPublicPort,jdbcType=INTEGER}, 
+      #{lastAPPDevInfo,jdbcType=VARCHAR}, #{pushToken,jdbcType=VARCHAR}, #{lastAPPVer,jdbcType=VARCHAR}, #{lastViFiDate,jdbcType=TIMESTAMP},
+      #{lastViFiID,jdbcType=VARCHAR}, #{lastViFiPublicIP,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, 
+      #{idxWechatId,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, 
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUser" >
+    insert into tbUser
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyUserID != null" >
+        keyUserID,
+      </if>
+      <if test="idxAppId != null" >
+        idxAppId,
+      </if>
+      <if test="idxSIPUId != null" >
+        idxSIPUId,
+      </if>
+      <if test="idxPhoneNumber != null" >
+        idxPhoneNumber,
+      </if>
+      <if test="idxAreaCode != null" >
+        idxAreaCode,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="language != null" >
+        language,
+      </if>
+      <if test="roamAreaCode != null" >
+        roamAreaCode,
+      </if>
+      <if test="roamTimeZone != null" >
+        roamTimeZone,
+      </if>
+      <if test="idxDomain != null" >
+        idxDomain,
+      </if>
+      <if test="displayNumber != null" >
+        displayNumber,
+      </if>
+      <if test="accountState != null" >
+        accountState,
+      </if>
+      <if test="appState != null" >
+        appState,
+      </if>
+      <if test="vifiState != null" >
+        vifiState,
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID,
+      </if>
+      <if test="idxVPXID != null" >
+        idxVPXID,
+      </if>
+      <if test="idxVSWID != null" >
+        idxVSWID,
+      </if>
+      <if test="idxGoIPPortID != null" >
+        idxGoIPPortID,
+      </if>
+      <if test="idxSimpPortID != null" >
+        idxSimpPortID,
+      </if>
+      <if test="idxSimCardID != null" >
+        idxSimCardID,
+      </if>
+      <if test="userBalance != null" >
+        userBalance,
+      </if>
+      <if test="voiceBalance != null" >
+        voiceBalance,
+      </if>
+      <if test="dataBalance != null" >
+        dataBalance,
+      </if>
+      <if test="credit != null" >
+        credit,
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID,
+      </if>
+      <if test="sipExpire != null" >
+        sipExpire,
+      </if>
+      <if test="todayMaxData != null" >
+        todayMaxData,
+      </if>
+      <if test="todayUUWiFiData != null" >
+        todayUUWiFiData,
+      </if>
+      <if test="monthMaxData != null">
+        monthMaxData,
+      </if>
+      <if test="monthUUWiFiData != null" >
+        monthUUWiFiData,
+      </if>
+      <if test="lastUUWiFiDate != null" >
+        lastUUWiFiDate,
+      </if>
+      <if test="lastAPPOnlineDate != null" >
+        lastAPPOnlineDate,
+      </if>
+      <if test="lastAPPPublicIP != null" >
+        lastAPPPublicIP,
+      </if>
+      <if test="lastAPPPublicPort != null" >
+        lastAPPPublicPort,
+      </if>
+      <if test="lastAPPDevInfo != null" >
+        lastAPPDevInfo,
+      </if>
+      <if test="pushToken != null">
+        pushToken,
+      </if>
+      <if test="lastAPPVer != null" >
+        lastAPPVer,
+      </if>
+      <if test="lastViFiDate != null" >
+        lastViFiDate,
+      </if>
+      <if test="lastViFiID != null" >
+        lastViFiID,
+      </if>
+      <if test="lastViFiPublicIP != null" >
+        lastViFiPublicIP,
+      </if>
+      <if test="userType != null" >
+        userType,
+      </if>
+      <if test="idxWechatId != null" >
+        idxWechatId,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyUserID != null" >
+        #{keyUserID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAppId != null" >
+        #{idxAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSIPUId != null" >
+        #{idxSIPUId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxPhoneNumber != null" >
+        #{idxPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAreaCode != null" >
+        #{idxAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="roamAreaCode != null" >
+        #{roamAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roamTimeZone != null" >
+        #{roamTimeZone,jdbcType=INTEGER},
+      </if>
+      <if test="idxDomain != null" >
+        #{idxDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="displayNumber != null" >
+        #{displayNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountState != null" >
+        #{accountState,jdbcType=VARCHAR},
+      </if>
+      <if test="appState != null" >
+        #{appState,jdbcType=INTEGER},
+      </if>
+      <if test="vifiState != null" >
+        #{vifiState,jdbcType=INTEGER},
+      </if>
+      <if test="idxViFiID != null" >
+        #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVPXID != null" >
+        #{idxVPXID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVSWID != null" >
+        #{idxVSWID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxGoIPPortID != null" >
+        #{idxGoIPPortID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimpPortID != null" >
+        #{idxSimpPortID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimCardID != null" >
+        #{idxSimCardID,jdbcType=VARCHAR},
+      </if>
+      <if test="userBalance != null" >
+        #{userBalance,jdbcType=INTEGER},
+      </if>
+      <if test="voiceBalance != null" >
+        #{voiceBalance,jdbcType=INTEGER},
+      </if>
+      <if test="dataBalance != null" >
+        #{dataBalance,jdbcType=INTEGER},
+      </if>
+      <if test="credit != null" >
+        #{credit,jdbcType=INTEGER},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="sipExpire != null" >
+        #{sipExpire,jdbcType=INTEGER},
+      </if>
+      <if test="todayMaxData != null" >
+        #{todayMaxData,jdbcType=INTEGER},
+      </if>
+      <if test="todayUUWiFiData != null" >
+        #{todayUUWiFiData,jdbcType=INTEGER},
+      </if>
+      <if test="monthMaxData != null">
+        #{monthMaxData,jdbcType=INTEGER},
+      </if>
+      <if test="monthUUWiFiData != null" >
+        #{monthUUWiFiData,jdbcType=INTEGER},
+      </if>
+      <if test="lastUUWiFiDate != null" >
+        #{lastUUWiFiDate,jdbcType=DATE},
+      </if>
+      <if test="lastAPPOnlineDate != null" >
+        #{lastAPPOnlineDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastAPPPublicIP != null" >
+        #{lastAPPPublicIP,jdbcType=VARCHAR},
+      </if>
+      <if test="lastAPPPublicPort != null" >
+        #{lastAPPPublicPort,jdbcType=INTEGER},
+      </if>
+      <if test="lastAPPDevInfo != null" >
+        #{lastAPPDevInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="pushToken != null">
+        #{pushToken,jdbcType=VARCHAR},
+      </if>
+      <if test="lastAPPVer != null" >
+        #{lastAPPVer,jdbcType=VARCHAR},
+      </if>
+      <if test="lastViFiDate != null" >
+        #{lastViFiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastViFiID != null" >
+        #{lastViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="lastViFiPublicIP != null" >
+        #{lastViFiPublicIP,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="idxWechatId != null" >
+        #{idxWechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUser" >
+    update tbUser
+    <set >
+      <if test="idxAppId != null" >
+        idxAppId = #{idxAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSIPUId != null" >
+        idxSIPUId = #{idxSIPUId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxPhoneNumber != null" >
+        idxPhoneNumber = #{idxPhoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAreaCode != null" >
+        idxAreaCode = #{idxAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="roamAreaCode != null" >
+        roamAreaCode = #{roamAreaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roamTimeZone != null" >
+        roamTimeZone = #{roamTimeZone,jdbcType=INTEGER},
+      </if>
+      <if test="idxDomain != null" >
+        idxDomain = #{idxDomain,jdbcType=VARCHAR},
+      </if>
+      <if test="displayNumber != null" >
+        displayNumber = #{displayNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountState != null" >
+        accountState = #{accountState,jdbcType=VARCHAR},
+      </if>
+      <if test="appState != null" >
+        appState = #{appState,jdbcType=INTEGER},
+      </if>
+      <if test="vifiState != null" >
+        vifiState = #{vifiState,jdbcType=INTEGER},
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVPXID != null" >
+        idxVPXID = #{idxVPXID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVSWID != null" >
+        idxVSWID = #{idxVSWID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxGoIPPortID != null" >
+        idxGoIPPortID = #{idxGoIPPortID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimpPortID != null" >
+        idxSimpPortID = #{idxSimpPortID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimCardID != null" >
+        idxSimCardID = #{idxSimCardID,jdbcType=VARCHAR},
+      </if>
+      <if test="userBalance != null" >
+        userBalance = #{userBalance,jdbcType=INTEGER},
+      </if>
+      <if test="voiceBalance != null" >
+        voiceBalance = #{voiceBalance,jdbcType=INTEGER},
+      </if>
+      <if test="dataBalance != null" >
+        dataBalance = #{dataBalance,jdbcType=INTEGER},
+      </if>
+      <if test="credit != null" >
+        credit = #{credit,jdbcType=INTEGER},
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="sipExpire != null" >
+        sipExpire = #{sipExpire,jdbcType=INTEGER},
+      </if>
+      <if test="todayMaxData != null" >
+        todayMaxData = #{todayMaxData,jdbcType=INTEGER},
+      </if>
+      <if test="todayUUWiFiData != null" >
+        todayUUWiFiData = #{todayUUWiFiData,jdbcType=INTEGER},
+      </if>
+      <if test="monthMaxData != null">
+        monthMaxData = #{monthMaxData,jdbcType=INTEGER},
+      </if>
+      <if test="monthUUWiFiData != null" >
+        monthUUWiFiData = #{monthUUWiFiData,jdbcType=INTEGER},
+      </if>
+      <if test="lastUUWiFiDate != null" >
+        lastUUWiFiDate = #{lastUUWiFiDate,jdbcType=DATE},
+      </if>
+      <if test="lastAPPOnlineDate != null" >
+        lastAPPOnlineDate = #{lastAPPOnlineDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastAPPPublicIP != null" >
+        lastAPPPublicIP = #{lastAPPPublicIP,jdbcType=VARCHAR},
+      </if>
+      <if test="lastAPPPublicPort != null" >
+        lastAPPPublicPort = #{lastAPPPublicPort,jdbcType=INTEGER},
+      </if>
+      <if test="lastAPPDevInfo != null" >
+        lastAPPDevInfo = #{lastAPPDevInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="pushToken != null">
+        pushToken = #{pushToken,jdbcType=VARCHAR},
+      </if>
+      <if test="lastAPPVer != null" >
+        lastAPPVer = #{lastAPPVer,jdbcType=VARCHAR},
+      </if>
+      <if test="lastViFiDate != null" >
+        lastViFiDate = #{lastViFiDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastViFiID != null" >
+        lastViFiID = #{lastViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="lastViFiPublicIP != null" >
+        lastViFiPublicIP = #{lastViFiPublicIP,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        userType = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="idxWechatId != null" >
+        idxWechatId = #{idxWechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyUserID = #{keyUserID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbUser" >
+    update tbUser
+    set idxAppId = #{idxAppId,jdbcType=VARCHAR},
+      idxSIPUId = #{idxSIPUId,jdbcType=VARCHAR},
+      idxPhoneNumber = #{idxPhoneNumber,jdbcType=VARCHAR},
+      idxAreaCode = #{idxAreaCode,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR},
+      roamAreaCode = #{roamAreaCode,jdbcType=VARCHAR},
+      roamTimeZone = #{roamTimeZone,jdbcType=INTEGER},
+      idxDomain = #{idxDomain,jdbcType=VARCHAR},
+      displayNumber = #{displayNumber,jdbcType=VARCHAR},
+      accountState = #{accountState,jdbcType=VARCHAR},
+      appState = #{appState,jdbcType=INTEGER},
+      vifiState = #{vifiState,jdbcType=INTEGER},
+      idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      idxVPXID = #{idxVPXID,jdbcType=VARCHAR},
+      idxVSWID = #{idxVSWID,jdbcType=VARCHAR},
+      idxGoIPPortID = #{idxGoIPPortID,jdbcType=VARCHAR},
+      idxSimpPortID = #{idxSimpPortID,jdbcType=VARCHAR},
+      idxSimCardID = #{idxSimCardID,jdbcType=VARCHAR},
+      userBalance = #{userBalance,jdbcType=INTEGER},
+      voiceBalance = #{voiceBalance,jdbcType=INTEGER},
+      dataBalance = #{dataBalance,jdbcType=INTEGER},
+      credit = #{credit,jdbcType=INTEGER},
+      idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      sipExpire = #{sipExpire,jdbcType=INTEGER},
+      todayMaxData = #{todayMaxData,jdbcType=INTEGER},
+      todayUUWiFiData = #{todayUUWiFiData,jdbcType=INTEGER},
+      monthMaxData = #{monthMaxData,jdbcType=INTEGER},
+      monthUUWiFiData = #{monthUUWiFiData,jdbcType=INTEGER},
+      lastUUWiFiDate = #{lastUUWiFiDate,jdbcType=DATE},
+      lastAPPOnlineDate = #{lastAPPOnlineDate,jdbcType=TIMESTAMP},
+      lastAPPPublicIP = #{lastAPPPublicIP,jdbcType=VARCHAR},
+      lastAPPPublicPort = #{lastAPPPublicPort,jdbcType=INTEGER},
+      lastAPPDevInfo = #{lastAPPDevInfo,jdbcType=VARCHAR},
+      pushToken = #{pushToken,jdbcType=VARCHAR},
+      lastAPPVer = #{lastAPPVer,jdbcType=VARCHAR},
+      lastViFiDate = #{lastViFiDate,jdbcType=TIMESTAMP},
+      lastViFiID = #{lastViFiID,jdbcType=VARCHAR},
+      lastViFiPublicIP = #{lastViFiPublicIP,jdbcType=VARCHAR},
+      userType = #{userType,jdbcType=INTEGER},
+      idxWechatId = #{idxWechatId,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyUserID = #{keyUserID,jdbcType=VARCHAR}
+  </update>
+
+  <!--mysql begin-->
+  <update id="userCost">
+    update tbUser set userBalance = userBalance - #{1} where idxPhoneNumber = #{0}
+  </update>
+
+  <select id="selectByPhoneNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbUser where idxPhoneNumber = #{0} limit 1
+  </select>
+</mapper>

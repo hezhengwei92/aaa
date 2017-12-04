@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbViFiCtrlRcdDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbViFiCtrlRcd" >
+    <id column="keyCtrlRcdID" property="keyCtrlRcdID" jdbcType="INTEGER" />
+    <result column="idxCtrlCmdID" property="idxCtrlCmdID" jdbcType="VARCHAR" />
+    <result column="idxViFiID" property="idxViFiID" jdbcType="VARCHAR" />
+    <result column="cmdState" property="cmdState" jdbcType="VARCHAR" />
+    <result column="respCode" property="respCode" jdbcType="INTEGER" />
+    <result column="respDetail" property="respDetail" jdbcType="VARCHAR" />
+    <result column="reqDate" property="reqDate" jdbcType="TIMESTAMP" />
+    <result column="updateDate" property="updateDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyCtrlRcdID, idxCtrlCmdID, idxViFiID, cmdState, respCode, respDetail, reqDate, updateDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbViFiCtrlRcd
+    where keyCtrlRcdID = #{keyCtrlRcdID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbViFiCtrlRcd
+    where keyCtrlRcdID = #{keyCtrlRcdID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiCtrlRcd" >
+    insert into tbViFiCtrlRcd (keyCtrlRcdID, idxCtrlCmdID, idxViFiID, 
+      cmdState, respCode, respDetail, 
+      reqDate, updateDate)
+    values (#{keyCtrlRcdID,jdbcType=INTEGER}, #{idxCtrlCmdID,jdbcType=VARCHAR}, #{idxViFiID,jdbcType=VARCHAR}, 
+      #{cmdState,jdbcType=VARCHAR}, #{respCode,jdbcType=INTEGER}, #{respDetail,jdbcType=VARCHAR}, 
+      #{reqDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiCtrlRcd" >
+    insert into tbViFiCtrlRcd
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyCtrlRcdID != null" >
+        keyCtrlRcdID,
+      </if>
+      <if test="idxCtrlCmdID != null" >
+        idxCtrlCmdID,
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID,
+      </if>
+      <if test="cmdState != null" >
+        cmdState,
+      </if>
+      <if test="respCode != null" >
+        respCode,
+      </if>
+      <if test="respDetail != null" >
+        respDetail,
+      </if>
+      <if test="reqDate != null" >
+        reqDate,
+      </if>
+      <if test="updateDate != null" >
+        updateDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyCtrlRcdID != null" >
+        #{keyCtrlRcdID,jdbcType=INTEGER},
+      </if>
+      <if test="idxCtrlCmdID != null" >
+        #{idxCtrlCmdID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxViFiID != null" >
+        #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="cmdState != null" >
+        #{cmdState,jdbcType=VARCHAR},
+      </if>
+      <if test="respCode != null" >
+        #{respCode,jdbcType=INTEGER},
+      </if>
+      <if test="respDetail != null" >
+        #{respDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="reqDate != null" >
+        #{reqDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiCtrlRcd" >
+    update tbViFiCtrlRcd
+    <set >
+      <if test="idxCtrlCmdID != null" >
+        idxCtrlCmdID = #{idxCtrlCmdID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="cmdState != null" >
+        cmdState = #{cmdState,jdbcType=VARCHAR},
+      </if>
+      <if test="respCode != null" >
+        respCode = #{respCode,jdbcType=INTEGER},
+      </if>
+      <if test="respDetail != null" >
+        respDetail = #{respDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="reqDate != null" >
+        reqDate = #{reqDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateDate != null" >
+        updateDate = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where keyCtrlRcdID = #{keyCtrlRcdID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiCtrlRcd" >
+    update tbViFiCtrlRcd
+    set idxCtrlCmdID = #{idxCtrlCmdID,jdbcType=VARCHAR},
+      idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      cmdState = #{cmdState,jdbcType=VARCHAR},
+      respCode = #{respCode,jdbcType=INTEGER},
+      respDetail = #{respDetail,jdbcType=VARCHAR},
+      reqDate = #{reqDate,jdbcType=TIMESTAMP},
+      updateDate = #{updateDate,jdbcType=TIMESTAMP}
+    where keyCtrlRcdID = #{keyCtrlRcdID,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql begin-->
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into tbViFiCtrlRcd (idxCtrlCmdID,idxViFiID,cmdState,respCode,respDetail,reqDate,updateDate) values
+    <foreach collection="list" index="index" item="item" separator=",">
+      (#{item.idxCtrlCmdID,jdbcType=VARCHAR},#{item.idxViFiID,jdbcType=VARCHAR},#{item.cmdState,jdbcType=VARCHAR},#{item.respCode,jdbcType=INTEGER},#{item.respDetail,jdbcType=VARCHAR},#{item.reqDate,jdbcType=TIMESTAMP},#{item.updateDate,jdbcType=TIMESTAMP})
+    </foreach>
+  </insert>
+</mapper>

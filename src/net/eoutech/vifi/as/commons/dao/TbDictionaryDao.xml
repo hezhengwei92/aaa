@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbDictionaryDao" >
+    <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbDictionary" >
+        <id column="keyId" property="keyId" jdbcType="INTEGER" />
+        <result column="keyMap" property="keyMap" jdbcType="VARCHAR" />
+        <result column="valueMap" property="valueMap" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        keyId, keyMap, valueMap
+    </sql>
+    <!--<select id="query" resultMap="BaseResultMap"> -->
+        <!--select-->
+        <!--<include refid="Base_Column_List" />-->
+        <!--from tbdictionary-->
+    <!--</select>-->
+
+</mapper>

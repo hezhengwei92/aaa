@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbISPDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbISP" >
+    <id column="keyISPID" property="keyISPID" jdbcType="INTEGER" />
+    <result column="mcc" property="mcc" jdbcType="INTEGER" />
+    <result column="ispName" property="ispName" jdbcType="VARCHAR" />
+    <result column="areaCode" property="areaCode" jdbcType="VARCHAR" />
+    <result column="idxUUWiFiAreaId" property="idxUUWiFiAreaId" jdbcType="VARCHAR"/>
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyISPID, mcc, ispName, areaCode, idxUUWiFiAreaId, remark, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbISP
+    where keyISPID = #{keyISPID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbISP
+    where keyISPID = #{keyISPID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbISP" >
+    insert into tbISP (keyISPID, mcc, ispName, areaCode, idxUUWiFiAreaId,
+      remark, mdfTm, mdfBy, 
+      crtTm, crtBy)
+    values (#{keyISPID,jdbcType=INTEGER}, #{mcc,jdbcType=INTEGER}, #{ispName,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR},
+      #{idxUUWiFiAreaId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR},
+      #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbISP" >
+    insert into tbISP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyISPID != null" >
+        keyISPID,
+      </if>
+      <if test="mcc != null">
+        mcc,
+      </if>
+      <if test="ispName != null" >
+        ispName,
+      </if>
+      <if test="areaCode != null" >
+        areaCode,
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyISPID != null" >
+        #{keyISPID,jdbcType=INTEGER},
+      </if>
+      <if test="mcc != null">
+        #{mcc,jdbcType=INTEGER},
+      </if>
+      <if test="ispName != null" >
+        #{ispName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbISP" >
+    update tbISP
+    <set >
+      <if test="mcc != null">
+        mcc = #{mcc,jdbcType=INTEGER},
+      </if>
+      <if test="ispName != null" >
+        ispName = #{ispName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        areaCode = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyISPID = #{keyISPID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbISP" >
+    update tbISP
+    set mcc = #{mcc,jdbcType=INTEGER},
+      ispName = #{ispName,jdbcType=VARCHAR},
+      areaCode = #{areaCode,jdbcType=VARCHAR},
+      idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyISPID = #{keyISPID,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectByMCC" resultMap="BaseResultMap" parameterType="INTEGER">
+    select <include refid="Base_Column_List" />
+    from tbISP where mcc = #{0} limit 1
+  </select>
+
+</mapper>

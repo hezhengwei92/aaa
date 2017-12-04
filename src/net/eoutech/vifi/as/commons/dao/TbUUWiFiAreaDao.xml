@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbUUWiFiAreaDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbUUWiFiArea" >
+    <id column="keyAreaId" property="keyAreaId" jdbcType="VARCHAR" />
+    <result column="idxContinent" property="idxContinent" jdbcType="VARCHAR" />
+    <result column="idxCountry" property="idxCountry" jdbcType="VARCHAR" />
+    <result column="idxRegion" property="idxRegion" jdbcType="VARCHAR" />
+    <result column="idxCity" property="idxCity" jdbcType="VARCHAR" />
+    <result column="idxCode" property="idxCode" jdbcType="VARCHAR" />
+    <result column="cos" property="cos" jdbcType="VARCHAR" />
+    <result column="timeZone" property="timeZone" jdbcType="INTEGER" />
+    <result column="language" property="language" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="totalNumber" property="totalNumber" jdbcType="INTEGER" />
+    <result column="mcc" property="mcc" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyAreaId, idxContinent, idxCountry, idxRegion, idxCity, idxCode, cos, timeZone, 
+    language, currency, totalNumber, mcc, remarks, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbUUWiFiArea
+    where keyAreaId = #{keyAreaId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbUUWiFiArea
+    where keyAreaId = #{keyAreaId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiArea" >
+    insert into tbUUWiFiArea (keyAreaId, idxContinent, idxCountry, 
+      idxRegion, idxCity, idxCode, 
+      cos, timeZone, language, 
+      currency, totalNumber, mcc, 
+      remarks, mdfTm, mdfBy, 
+      crtTm, crtBy)
+    values (#{keyAreaId,jdbcType=VARCHAR}, #{idxContinent,jdbcType=VARCHAR}, #{idxCountry,jdbcType=VARCHAR}, 
+      #{idxRegion,jdbcType=VARCHAR}, #{idxCity,jdbcType=VARCHAR}, #{idxCode,jdbcType=VARCHAR}, 
+      #{cos,jdbcType=VARCHAR}, #{timeZone,jdbcType=INTEGER}, #{language,jdbcType=VARCHAR}, 
+      #{currency,jdbcType=VARCHAR}, #{totalNumber,jdbcType=INTEGER}, #{mcc,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, 
+      #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiArea" >
+    insert into tbUUWiFiArea
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyAreaId != null" >
+        keyAreaId,
+      </if>
+      <if test="idxContinent != null" >
+        idxContinent,
+      </if>
+      <if test="idxCountry != null" >
+        idxCountry,
+      </if>
+      <if test="idxRegion != null" >
+        idxRegion,
+      </if>
+      <if test="idxCity != null" >
+        idxCity,
+      </if>
+      <if test="idxCode != null" >
+        idxCode,
+      </if>
+      <if test="cos != null" >
+        cos,
+      </if>
+      <if test="timeZone != null" >
+        timeZone,
+      </if>
+      <if test="language != null" >
+        language,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="totalNumber != null" >
+        totalNumber,
+      </if>
+      <if test="mcc != null" >
+        mcc,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyAreaId != null" >
+        #{keyAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxContinent != null" >
+        #{idxContinent,jdbcType=VARCHAR},
+      </if>
+      <if test="idxCountry != null" >
+        #{idxCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="idxRegion != null" >
+        #{idxRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="idxCity != null" >
+        #{idxCity,jdbcType=VARCHAR},
+      </if>
+      <if test="idxCode != null" >
+        #{idxCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cos != null" >
+        #{cos,jdbcType=VARCHAR},
+      </if>
+      <if test="timeZone != null" >
+        #{timeZone,jdbcType=INTEGER},
+      </if>
+      <if test="language != null" >
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="totalNumber != null" >
+        #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="mcc != null" >
+        #{mcc,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiArea" >
+    update tbUUWiFiArea
+    <set >
+      <if test="idxContinent != null" >
+        idxContinent = #{idxContinent,jdbcType=VARCHAR},
+      </if>
+      <if test="idxCountry != null" >
+        idxCountry = #{idxCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="idxRegion != null" >
+        idxRegion = #{idxRegion,jdbcType=VARCHAR},
+      </if>
+      <if test="idxCity != null" >
+        idxCity = #{idxCity,jdbcType=VARCHAR},
+      </if>
+      <if test="idxCode != null" >
+        idxCode = #{idxCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cos != null" >
+        cos = #{cos,jdbcType=VARCHAR},
+      </if>
+      <if test="timeZone != null" >
+        timeZone = #{timeZone,jdbcType=INTEGER},
+      </if>
+      <if test="language != null" >
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="totalNumber != null" >
+        totalNumber = #{totalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="mcc != null" >
+        mcc = #{mcc,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyAreaId = #{keyAreaId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbUUWiFiArea" >
+    update tbUUWiFiArea
+    set idxContinent = #{idxContinent,jdbcType=VARCHAR},
+      idxCountry = #{idxCountry,jdbcType=VARCHAR},
+      idxRegion = #{idxRegion,jdbcType=VARCHAR},
+      idxCity = #{idxCity,jdbcType=VARCHAR},
+      idxCode = #{idxCode,jdbcType=VARCHAR},
+      cos = #{cos,jdbcType=VARCHAR},
+      timeZone = #{timeZone,jdbcType=INTEGER},
+      language = #{language,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      totalNumber = #{totalNumber,jdbcType=INTEGER},
+      mcc = #{mcc,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyAreaId = #{keyAreaId,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectByMcc" parameterType="Integer" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbUUWiFiArea where mcc = #{0} limit 1
+  </select>
+
+  <select id="getIdxCode" parameterType="java.lang.String" resultType="java.lang.String">
+    select idxCode from tbUUWiFiArea where keyAreaId = #{areaId,jdbcType=VARCHAR} limit 1
+  </select>
+
+</mapper>

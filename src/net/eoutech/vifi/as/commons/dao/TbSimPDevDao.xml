@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbSimPDevDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbSimPDev" >
+    <id column="keySimPDevID" property="keySimPDevID" jdbcType="VARCHAR" />
+    <result column="devName" property="devName" jdbcType="VARCHAR" />
+    <result column="idxSimPDevGrpID" property="idxSimPDevGrpID" jdbcType="INTEGER" />
+    <result column="typeName" property="typeName" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="expire" property="expire" jdbcType="INTEGER" />
+    <result column="lastUpdate" property="lastUpdate" jdbcType="TIMESTAMP" />
+    <result column="ipaddr" property="ipaddr" jdbcType="VARCHAR" />
+    <result column="port" property="port" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="ports" property="ports" jdbcType="INTEGER" />
+    <result column="idxVSWID" property="idxVSWID" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+    <result column="serveIp" property="serveIp" jdbcType="VARCHAR" />
+    <result column="servePort" property="servePort" jdbcType="INTEGER" />
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keySimPDevID, devName, idxSimPDevGrpID, typeName, username, password, expire, lastUpdate, 
+    ipaddr, port, `status`, ports, idxVSWID, remarks, mdfTm, mdfBy, crtTm, crtBy,`serveIp` ,`servePort`,idxAgentID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbSimPDev
+    where keySimPDevID = #{keySimPDevID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbSimPDev
+    where keySimPDevID = #{keySimPDevID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbSimPDev" >
+    insert into tbSimPDev (keySimPDevID, devName, idxSimPDevGrpID, 
+      typeName, username, password, 
+      expire, lastUpdate, ipaddr, 
+      port, `status`, ports,
+      idxVSWID, remarks, mdfTm, 
+      mdfBy, crtTm, crtBy ,serveIp, servePort,idxAgentID
+      )
+    values (#{keySimPDevID,jdbcType=VARCHAR}, #{devName,jdbcType=VARCHAR}, #{idxSimPDevGrpID,jdbcType=INTEGER}, 
+      #{typeName,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{expire,jdbcType=INTEGER}, #{lastUpdate,jdbcType=TIMESTAMP}, #{ipaddr,jdbcType=VARCHAR}, 
+      #{port,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{ports,jdbcType=INTEGER}, 
+      #{idxVSWID,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, 
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR},
+      #{serveIp,jdbcType=VARCHAR},#{servePort,jdbcType=INTEGER},#{idxAgentID,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSimPDev" >
+    insert into tbSimPDev
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keySimPDevID != null" >
+        keySimPDevID,
+      </if>
+      <if test="devName != null" >
+        devName,
+      </if>
+      <if test="idxSimPDevGrpID != null" >
+        idxSimPDevGrpID,
+      </if>
+      <if test="typeName != null" >
+        typeName,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="expire != null" >
+        expire,
+      </if>
+      <if test="lastUpdate != null" >
+        lastUpdate,
+      </if>
+      <if test="ipaddr != null" >
+        ipaddr,
+      </if>
+      <if test="port != null" >
+        port,
+      </if>
+      <if test="status != null" >
+        `status`,
+      </if>
+      <if test="ports != null" >
+        ports,
+      </if>
+      <if test="idxVSWID != null" >
+        idxVSWID,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+      <if test="serveIp != null" >
+        serveIp,
+      </if>
+      <if test="servePort != null" >
+        servePort,
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keySimPDevID != null" >
+        #{keySimPDevID,jdbcType=VARCHAR},
+      </if>
+      <if test="devName != null" >
+        #{devName,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimPDevGrpID != null" >
+        #{idxSimPDevGrpID,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null" >
+        #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="expire != null" >
+        #{expire,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdate != null" >
+        #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ipaddr != null" >
+        #{ipaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null" >
+        #{port,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ports != null" >
+        #{ports,jdbcType=INTEGER},
+      </if>
+      <if test="idxVSWID != null" >
+        #{idxVSWID,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+      <if test="serveIp != null" >
+        #{serveIp,jdbcType=VARCHAR},
+      </if>
+      <if test="servePort != null" >
+        #{servePort,jdbcType=INTEGER},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSimPDev" >
+    update tbSimPDev
+    <set >
+      <if test="devName != null" >
+        devName = #{devName,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimPDevGrpID != null" >
+        idxSimPDevGrpID = #{idxSimPDevGrpID,jdbcType=INTEGER},
+      </if>
+      <if test="typeName != null" >
+        typeName = #{typeName,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="expire != null" >
+        expire = #{expire,jdbcType=INTEGER},
+      </if>
+      <if test="lastUpdate != null" >
+        lastUpdate = #{lastUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ipaddr != null" >
+        ipaddr = #{ipaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null" >
+        port = #{port,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="ports != null" >
+        ports = #{ports,jdbcType=INTEGER},
+      </if>
+      <if test="idxVSWID != null" >
+        idxVSWID = #{idxVSWID,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+      <if test="serveIp != null" >
+        #{serveIp,jdbcType=VARCHAR},
+      </if>
+      <if test="servePort != null" >
+        #{servePort,jdbcType=INTEGER},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keySimPDevID = #{keySimPDevID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbSimPDev" >
+    update tbSimPDev
+    set devName = #{devName,jdbcType=VARCHAR},
+      idxSimPDevGrpID = #{idxSimPDevGrpID,jdbcType=INTEGER},
+      typeName = #{typeName,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      expire = #{expire,jdbcType=INTEGER},
+      lastUpdate = #{lastUpdate,jdbcType=TIMESTAMP},
+      ipaddr = #{ipaddr,jdbcType=VARCHAR},
+      port = #{port,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      ports = #{ports,jdbcType=INTEGER},
+      idxVSWID = #{idxVSWID,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR},
+      serveIp = #{serveIp,jdbcType=VARCHAR},
+      servePort = #{servePort,jdbcType=INTEGER},
+      idxAgentID = #{idxAgentID,jdbcType=VARCHAR}
+    where keySimPDevID = #{keySimPDevID,jdbcType=VARCHAR}
+  </update>
+
+
+  <!--mysql...begin-->
+  <select id="selectByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from tbSimPDev
+    where username = #{0} limit 1
+  </select>
+
+
+</mapper>

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbSCGroupDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbSCGroup" >
+    <id column="keySCGroupID" property="keySCGroupID" jdbcType="VARCHAR" />
+    <result column="groupName" property="groupName" jdbcType="VARCHAR" />
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR" />
+    <result column="idxSalerId" property="idxSalerId" jdbcType="VARCHAR" />
+    <result column="idxUUWiFiAreaId" property="idxUUWiFiAreaId" jdbcType="VARCHAR" />
+    <result column="areaName" property="areaName" jdbcType="VARCHAR" />
+    <result column="areaCode" property="areaCode" jdbcType="VARCHAR" />
+    <result column="ispID" property="ispID" jdbcType="VARCHAR" />
+    <result column="apn" property="apn" jdbcType="VARCHAR" />
+    <result column="dialnumber" property="dialnumber" jdbcType="VARCHAR" />
+    <result column="dialuid" property="dialuid" jdbcType="VARCHAR" />
+    <result column="dialpwd" property="dialpwd" jdbcType="VARCHAR" />
+    <result column="ispName" property="ispName" jdbcType="VARCHAR" />
+    <result column="cardType" property="cardType" jdbcType="INTEGER" />
+    <result column="cardSize" property="cardSize" jdbcType="INTEGER" />
+    <result column="monthlyRental" property="monthlyRental" jdbcType="VARCHAR" />
+    <result column="dataUsage" property="dataUsage" jdbcType="INTEGER" />
+    <result column="dataPrice" property="dataPrice" jdbcType="INTEGER" />
+    <result column="roamSupport" property="roamSupport" jdbcType="INTEGER" />
+    <result column="roamAreaCodes" property="roamAreaCodes" jdbcType="VARCHAR" />
+    <result column="roamDataPrice" property="roamDataPrice" jdbcType="INTEGER" />
+    <result column="priority" property="priority" jdbcType="INTEGER" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keySCGroupID, groupName, idxAgentID, idxSalerId, idxUUWiFiAreaId, areaName, areaCode, ispID, apn,
+    dialnumber, dialuid, dialpwd, ispName, cardType, cardSize, monthlyRental, dataUsage, 
+    dataPrice, roamSupport, roamAreaCodes, roamDataPrice, priority, number, remarks, 
+    mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbSCGroup
+    where keySCGroupID = #{keySCGroupID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbSCGroup
+    where keySCGroupID = #{keySCGroupID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbSCGroup" >
+    insert into tbSCGroup (keySCGroupID, groupName, idxAgentID, 
+      idxSalerId, idxUUWiFiAreaId, areaName, areaCode,
+      ispID, apn, dialnumber, 
+      dialuid, dialpwd, ispName, 
+      cardType, cardSize, monthlyRental, 
+      dataUsage, dataPrice, roamSupport, 
+      roamAreaCodes, roamDataPrice, priority, 
+      number, remarks, mdfTm, 
+      mdfBy, crtTm, crtBy
+      )
+    values (#{keySCGroupID,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{idxAgentID,jdbcType=VARCHAR},
+      #{idxSalerId,jdbcType=VARCHAR}, #{idxUUWiFiAreaId,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR},
+      #{ispID,jdbcType=VARCHAR}, #{apn,jdbcType=VARCHAR}, #{dialnumber,jdbcType=VARCHAR}, 
+      #{dialuid,jdbcType=VARCHAR}, #{dialpwd,jdbcType=VARCHAR}, #{ispName,jdbcType=VARCHAR}, 
+      #{cardType,jdbcType=INTEGER}, #{cardSize,jdbcType=INTEGER}, #{monthlyRental,jdbcType=VARCHAR}, 
+      #{dataUsage,jdbcType=INTEGER}, #{dataPrice,jdbcType=INTEGER}, #{roamSupport,jdbcType=INTEGER}, 
+      #{roamAreaCodes,jdbcType=VARCHAR}, #{roamDataPrice,jdbcType=INTEGER}, #{priority,jdbcType=INTEGER}, 
+      #{number,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, 
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSCGroup" >
+    insert into tbSCGroup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keySCGroupID != null" >
+        keySCGroupID,
+      </if>
+      <if test="groupName != null" >
+        groupName,
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID,
+      </if>
+      <if test="idxSalerId != null" >
+        idxSalerId,
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId,
+      </if>
+      <if test="areaName != null" >
+        areaName,
+      </if>
+      <if test="areaCode != null" >
+        areaCode,
+      </if>
+      <if test="ispID != null" >
+        ispID,
+      </if>
+      <if test="apn != null" >
+        apn,
+      </if>
+      <if test="dialnumber != null" >
+        dialnumber,
+      </if>
+      <if test="dialuid != null" >
+        dialuid,
+      </if>
+      <if test="dialpwd != null" >
+        dialpwd,
+      </if>
+      <if test="ispName != null" >
+        ispName,
+      </if>
+      <if test="cardType != null" >
+        cardType,
+      </if>
+      <if test="cardSize != null" >
+        cardSize,
+      </if>
+      <if test="monthlyRental != null" >
+        monthlyRental,
+      </if>
+      <if test="dataUsage != null" >
+        dataUsage,
+      </if>
+      <if test="dataPrice != null" >
+        dataPrice,
+      </if>
+      <if test="roamSupport != null" >
+        roamSupport,
+      </if>
+      <if test="roamAreaCodes != null" >
+        roamAreaCodes,
+      </if>
+      <if test="roamDataPrice != null" >
+        roamDataPrice,
+      </if>
+      <if test="priority != null" >
+        priority,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="remarks != null" >
+        remarks,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keySCGroupID != null" >
+        #{keySCGroupID,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSalerId != null" >
+        #{idxSalerId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null" >
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ispID != null" >
+        #{ispID,jdbcType=VARCHAR},
+      </if>
+      <if test="apn != null" >
+        #{apn,jdbcType=VARCHAR},
+      </if>
+      <if test="dialnumber != null" >
+        #{dialnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="dialuid != null" >
+        #{dialuid,jdbcType=VARCHAR},
+      </if>
+      <if test="dialpwd != null" >
+        #{dialpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="ispName != null" >
+        #{ispName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        #{cardType,jdbcType=INTEGER},
+      </if>
+      <if test="cardSize != null" >
+        #{cardSize,jdbcType=INTEGER},
+      </if>
+      <if test="monthlyRental != null" >
+        #{monthlyRental,jdbcType=VARCHAR},
+      </if>
+      <if test="dataUsage != null" >
+        #{dataUsage,jdbcType=INTEGER},
+      </if>
+      <if test="dataPrice != null" >
+        #{dataPrice,jdbcType=INTEGER},
+      </if>
+      <if test="roamSupport != null" >
+        #{roamSupport,jdbcType=INTEGER},
+      </if>
+      <if test="roamAreaCodes != null" >
+        #{roamAreaCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="roamDataPrice != null" >
+        #{roamDataPrice,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null" >
+        #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbSCGroup" >
+    update tbSCGroup
+    <set >
+      <if test="groupName != null" >
+        groupName = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSalerId != null" >
+        idxSalerId = #{idxSalerId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null">
+        idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null" >
+        areaName = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        areaCode = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ispID != null" >
+        ispID = #{ispID,jdbcType=VARCHAR},
+      </if>
+      <if test="apn != null" >
+        apn = #{apn,jdbcType=VARCHAR},
+      </if>
+      <if test="dialnumber != null" >
+        dialnumber = #{dialnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="dialuid != null" >
+        dialuid = #{dialuid,jdbcType=VARCHAR},
+      </if>
+      <if test="dialpwd != null" >
+        dialpwd = #{dialpwd,jdbcType=VARCHAR},
+      </if>
+      <if test="ispName != null" >
+        ispName = #{ispName,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        cardType = #{cardType,jdbcType=INTEGER},
+      </if>
+      <if test="cardSize != null" >
+        cardSize = #{cardSize,jdbcType=INTEGER},
+      </if>
+      <if test="monthlyRental != null" >
+        monthlyRental = #{monthlyRental,jdbcType=VARCHAR},
+      </if>
+      <if test="dataUsage != null" >
+        dataUsage = #{dataUsage,jdbcType=INTEGER},
+      </if>
+      <if test="dataPrice != null" >
+        dataPrice = #{dataPrice,jdbcType=INTEGER},
+      </if>
+      <if test="roamSupport != null" >
+        roamSupport = #{roamSupport,jdbcType=INTEGER},
+      </if>
+      <if test="roamAreaCodes != null" >
+        roamAreaCodes = #{roamAreaCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="roamDataPrice != null" >
+        roamDataPrice = #{roamDataPrice,jdbcType=INTEGER},
+      </if>
+      <if test="priority != null" >
+        priority = #{priority,jdbcType=INTEGER},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keySCGroupID = #{keySCGroupID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbSCGroup" >
+    update tbSCGroup
+    set groupName = #{groupName,jdbcType=VARCHAR},
+      idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      idxSalerId = #{idxSalerId,jdbcType=VARCHAR},
+      idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      areaName = #{areaName,jdbcType=VARCHAR},
+      areaCode = #{areaCode,jdbcType=VARCHAR},
+      ispID = #{ispID,jdbcType=VARCHAR},
+      apn = #{apn,jdbcType=VARCHAR},
+      dialnumber = #{dialnumber,jdbcType=VARCHAR},
+      dialuid = #{dialuid,jdbcType=VARCHAR},
+      dialpwd = #{dialpwd,jdbcType=VARCHAR},
+      ispName = #{ispName,jdbcType=VARCHAR},
+      cardType = #{cardType,jdbcType=INTEGER},
+      cardSize = #{cardSize,jdbcType=INTEGER},
+      monthlyRental = #{monthlyRental,jdbcType=VARCHAR},
+      dataUsage = #{dataUsage,jdbcType=INTEGER},
+      dataPrice = #{dataPrice,jdbcType=INTEGER},
+      roamSupport = #{roamSupport,jdbcType=INTEGER},
+      roamAreaCodes = #{roamAreaCodes,jdbcType=VARCHAR},
+      roamDataPrice = #{roamDataPrice,jdbcType=INTEGER},
+      priority = #{priority,jdbcType=INTEGER},
+      number = #{number,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keySCGroupID = #{keySCGroupID,jdbcType=VARCHAR}
+  </update>
+
+  <select id="selectCountByAreaCodeAndISP" resultType="INTEGER">
+    select count(keySCGroupID) from tbSCGroup where areaCode = #{0} and ispID = #{1} limit 1
+  </select>
+</mapper>

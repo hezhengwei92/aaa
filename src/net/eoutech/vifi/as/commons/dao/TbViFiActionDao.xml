@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbViFiActionDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbViFiAction" >
+    <id column="keyActionID" property="keyActionID" jdbcType="INTEGER" />
+    <result column="actionType" property="actionType" jdbcType="INTEGER" />
+    <result column="idxViFiID" property="idxViFiID" jdbcType="VARCHAR" />
+    <result column="idxAppId" property="idxAppId" jdbcType="VARCHAR" />
+    <result column="idxUserId" property="idxUserId" jdbcType="VARCHAR" />
+    <result column="reqAct" property="reqAct" jdbcType="VARCHAR" />
+    <result column="reqIP" property="reqIP" jdbcType="VARCHAR" />
+    <result column="respCode" property="respCode" jdbcType="INTEGER" />
+    <result column="respReason" property="respReason" jdbcType="VARCHAR" />
+    <result column="sessionId" property="sessionId" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="reqDate" property="reqDate" jdbcType="TIMESTAMP" />
+    <result column="handTime" property="handTime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyActionID, actionType, idxViFiID, idxAppId, idxUserId, reqAct, reqIP, respCode, 
+    respReason, sessionId, version, reqDate, handTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbViFiAction
+    where keyActionID = #{keyActionID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbViFiAction
+    where keyActionID = #{keyActionID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiAction" >
+    insert into tbViFiAction (keyActionID, actionType, idxViFiID, 
+      idxAppId, idxUserId, reqAct, 
+      reqIP, respCode, respReason, 
+      sessionId, version, reqDate, 
+      handTime)
+    values (#{keyActionID,jdbcType=INTEGER}, #{actionType,jdbcType=INTEGER}, #{idxViFiID,jdbcType=VARCHAR}, 
+      #{idxAppId,jdbcType=VARCHAR}, #{idxUserId,jdbcType=VARCHAR}, #{reqAct,jdbcType=VARCHAR}, 
+      #{reqIP,jdbcType=VARCHAR}, #{respCode,jdbcType=INTEGER}, #{respReason,jdbcType=VARCHAR}, 
+      #{sessionId,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{reqDate,jdbcType=TIMESTAMP}, 
+      #{handTime,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiAction" >
+    insert into tbViFiAction
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyActionID != null" >
+        keyActionID,
+      </if>
+      <if test="actionType != null" >
+        actionType,
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID,
+      </if>
+      <if test="idxAppId != null" >
+        idxAppId,
+      </if>
+      <if test="idxUserId != null" >
+        idxUserId,
+      </if>
+      <if test="reqAct != null" >
+        reqAct,
+      </if>
+      <if test="reqIP != null" >
+        reqIP,
+      </if>
+      <if test="respCode != null" >
+        respCode,
+      </if>
+      <if test="respReason != null" >
+        respReason,
+      </if>
+      <if test="sessionId != null" >
+        sessionId,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="reqDate != null" >
+        reqDate,
+      </if>
+      <if test="handTime != null" >
+        handTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyActionID != null" >
+        #{keyActionID,jdbcType=INTEGER},
+      </if>
+      <if test="actionType != null" >
+        #{actionType,jdbcType=INTEGER},
+      </if>
+      <if test="idxViFiID != null" >
+        #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAppId != null" >
+        #{idxAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUserId != null" >
+        #{idxUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="reqAct != null" >
+        #{reqAct,jdbcType=VARCHAR},
+      </if>
+      <if test="reqIP != null" >
+        #{reqIP,jdbcType=VARCHAR},
+      </if>
+      <if test="respCode != null" >
+        #{respCode,jdbcType=INTEGER},
+      </if>
+      <if test="respReason != null" >
+        #{respReason,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionId != null" >
+        #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="reqDate != null" >
+        #{reqDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handTime != null" >
+        #{handTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiAction" >
+    update tbViFiAction
+    <set >
+      <if test="actionType != null" >
+        actionType = #{actionType,jdbcType=INTEGER},
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxAppId != null" >
+        idxAppId = #{idxAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUserId != null" >
+        idxUserId = #{idxUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="reqAct != null" >
+        reqAct = #{reqAct,jdbcType=VARCHAR},
+      </if>
+      <if test="reqIP != null" >
+        reqIP = #{reqIP,jdbcType=VARCHAR},
+      </if>
+      <if test="respCode != null" >
+        respCode = #{respCode,jdbcType=INTEGER},
+      </if>
+      <if test="respReason != null" >
+        respReason = #{respReason,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionId != null" >
+        sessionId = #{sessionId,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="reqDate != null" >
+        reqDate = #{reqDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handTime != null" >
+        handTime = #{handTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where keyActionID = #{keyActionID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiAction" >
+    update tbViFiAction
+    set actionType = #{actionType,jdbcType=INTEGER},
+      idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      idxAppId = #{idxAppId,jdbcType=VARCHAR},
+      idxUserId = #{idxUserId,jdbcType=VARCHAR},
+      reqAct = #{reqAct,jdbcType=VARCHAR},
+      reqIP = #{reqIP,jdbcType=VARCHAR},
+      respCode = #{respCode,jdbcType=INTEGER},
+      respReason = #{respReason,jdbcType=VARCHAR},
+      sessionId = #{sessionId,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      reqDate = #{reqDate,jdbcType=TIMESTAMP},
+      handTime = #{handTime,jdbcType=INTEGER}
+    where keyActionID = #{keyActionID,jdbcType=INTEGER}
+  </update>
+</mapper>

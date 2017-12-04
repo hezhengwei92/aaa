@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbUUMsgQueueDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbUUMsgQueue" >
+    <id column="keyUUMsgId" property="keyUUMsgId" jdbcType="INTEGER" />
+    <result column="msgType" property="msgType" jdbcType="VARCHAR" />
+    <result column="sender" property="sender" jdbcType="VARCHAR" />
+    <result column="receiver" property="receiver" jdbcType="VARCHAR" />
+    <result column="idxUUWiFiAreaId" property="idxUUWiFiAreaId" jdbcType="VARCHAR" />
+    <result column="message" property="message" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+    <result column="sendTime" property="sendTime" jdbcType="TIMESTAMP" />
+    <result column="expiryTime" property="expiryTime" jdbcType="TIMESTAMP" />
+    <result column="msgChannelId" property="msgChannelId" jdbcType="VARCHAR" />
+    <result column="retry" property="retry" jdbcType="INTEGER" />
+    <result column="maxRetry" property="maxRetry" jdbcType="INTEGER" />
+    <result column="pri" property="pri" jdbcType="INTEGER" />
+    <result column="idxExternalID" property="idxExternalID" jdbcType="INTEGER" />
+    <result column="respMsgId" property="respMsgId" jdbcType="VARCHAR" />
+    <result column="respCode" property="respCode" jdbcType="VARCHAR" />
+    <result column="respDesc" property="respDesc" jdbcType="VARCHAR" />
+    <result column="ipaddr" property="ipaddr" jdbcType="VARCHAR" />
+    <result column="timeUsed" property="timeUsed" jdbcType="INTEGER" />
+    <result column="msgTmplId" property="msgTmplId" jdbcType="INTEGER" />
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR" />
+    <result column="updateBy" property="updateBy" jdbcType="VARCHAR" />
+    <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="createdBy" property="createdBy" jdbcType="VARCHAR" />
+    <result column="createdTime" property="createdTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyUUMsgId, msgType, sender, receiver, idxUUWiFiAreaId, message, state, sendTime, 
+    expiryTime, msgChannelId, retry, maxRetry, pri, idxExternalID, respMsgId, respCode, 
+    respDesc, ipaddr, timeUsed, msgTmplId, idxAgentID, updateBy, updateTime, createdBy, 
+    createdTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbUUMsgQueue
+    where keyUUMsgId = #{keyUUMsgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbUUMsgQueue
+    where keyUUMsgId = #{keyUUMsgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbUUMsgQueue" >
+    insert into tbUUMsgQueue (keyUUMsgId, msgType, sender, 
+      receiver, idxUUWiFiAreaId, message, 
+      state, sendTime, expiryTime, 
+      msgChannelId, retry, maxRetry, 
+      pri, idxExternalID, respMsgId, 
+      respCode, respDesc, ipaddr, 
+      timeUsed, msgTmplId, idxAgentID, 
+      updateBy, updateTime, createdBy, 
+      createdTime)
+    values (#{keyUUMsgId,jdbcType=INTEGER}, #{msgType,jdbcType=VARCHAR}, #{sender,jdbcType=VARCHAR}, 
+      #{receiver,jdbcType=VARCHAR}, #{idxUUWiFiAreaId,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{sendTime,jdbcType=TIMESTAMP}, #{expiryTime,jdbcType=TIMESTAMP}, 
+      #{msgChannelId,jdbcType=VARCHAR}, #{retry,jdbcType=INTEGER}, #{maxRetry,jdbcType=INTEGER}, 
+      #{pri,jdbcType=INTEGER}, #{idxExternalID,jdbcType=INTEGER}, #{respMsgId,jdbcType=VARCHAR}, 
+      #{respCode,jdbcType=VARCHAR}, #{respDesc,jdbcType=VARCHAR}, #{ipaddr,jdbcType=VARCHAR}, 
+      #{timeUsed,jdbcType=INTEGER}, #{msgTmplId,jdbcType=INTEGER}, #{idxAgentID,jdbcType=VARCHAR}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUUMsgQueue" >
+    insert into tbUUMsgQueue
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyUUMsgId != null" >
+        keyUUMsgId,
+      </if>
+      <if test="msgType != null" >
+        msgType,
+      </if>
+      <if test="sender != null" >
+        sender,
+      </if>
+      <if test="receiver != null" >
+        receiver,
+      </if>
+      <if test="idxUUWiFiAreaId != null" >
+        idxUUWiFiAreaId,
+      </if>
+      <if test="message != null" >
+        message,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="sendTime != null" >
+        sendTime,
+      </if>
+      <if test="expiryTime != null" >
+        expiryTime,
+      </if>
+      <if test="msgChannelId != null" >
+        msgChannelId,
+      </if>
+      <if test="retry != null" >
+        retry,
+      </if>
+      <if test="maxRetry != null" >
+        maxRetry,
+      </if>
+      <if test="pri != null" >
+        pri,
+      </if>
+      <if test="idxExternalID != null" >
+        idxExternalID,
+      </if>
+      <if test="respMsgId != null" >
+        respMsgId,
+      </if>
+      <if test="respCode != null" >
+        respCode,
+      </if>
+      <if test="respDesc != null" >
+        respDesc,
+      </if>
+      <if test="ipaddr != null" >
+        ipaddr,
+      </if>
+      <if test="timeUsed != null" >
+        timeUsed,
+      </if>
+      <if test="msgTmplId != null" >
+        msgTmplId,
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID,
+      </if>
+      <if test="updateBy != null" >
+        updateBy,
+      </if>
+      <if test="updateTime != null" >
+        updateTime,
+      </if>
+      <if test="createdBy != null" >
+        createdBy,
+      </if>
+      <if test="createdTime != null" >
+        createdTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyUUMsgId != null" >
+        #{keyUUMsgId,jdbcType=INTEGER},
+      </if>
+      <if test="msgType != null" >
+        #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="sender != null" >
+        #{sender,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null" >
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null" >
+        #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+        #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null" >
+        #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msgChannelId != null" >
+        #{msgChannelId,jdbcType=VARCHAR},
+      </if>
+      <if test="retry != null" >
+        #{retry,jdbcType=INTEGER},
+      </if>
+      <if test="maxRetry != null" >
+        #{maxRetry,jdbcType=INTEGER},
+      </if>
+      <if test="pri != null" >
+        #{pri,jdbcType=INTEGER},
+      </if>
+      <if test="idxExternalID != null" >
+        #{idxExternalID,jdbcType=INTEGER},
+      </if>
+      <if test="respMsgId != null" >
+        #{respMsgId,jdbcType=VARCHAR},
+      </if>
+      <if test="respCode != null" >
+        #{respCode,jdbcType=VARCHAR},
+      </if>
+      <if test="respDesc != null" >
+        #{respDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddr != null" >
+        #{ipaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="timeUsed != null" >
+        #{timeUsed,jdbcType=INTEGER},
+      </if>
+      <if test="msgTmplId != null" >
+        #{msgTmplId,jdbcType=INTEGER},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbUUMsgQueue" >
+    update tbUUMsgQueue
+    <set >
+      <if test="msgType != null" >
+        msgType = #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="sender != null" >
+        sender = #{sender,jdbcType=VARCHAR},
+      </if>
+      <if test="receiver != null" >
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUUWiFiAreaId != null" >
+        idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null" >
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null" >
+        sendTime = #{sendTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expiryTime != null" >
+        expiryTime = #{expiryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msgChannelId != null" >
+        msgChannelId = #{msgChannelId,jdbcType=VARCHAR},
+      </if>
+      <if test="retry != null" >
+        retry = #{retry,jdbcType=INTEGER},
+      </if>
+      <if test="maxRetry != null" >
+        maxRetry = #{maxRetry,jdbcType=INTEGER},
+      </if>
+      <if test="pri != null" >
+        pri = #{pri,jdbcType=INTEGER},
+      </if>
+      <if test="idxExternalID != null" >
+        idxExternalID = #{idxExternalID,jdbcType=INTEGER},
+      </if>
+      <if test="respMsgId != null" >
+        respMsgId = #{respMsgId,jdbcType=VARCHAR},
+      </if>
+      <if test="respCode != null" >
+        respCode = #{respCode,jdbcType=VARCHAR},
+      </if>
+      <if test="respDesc != null" >
+        respDesc = #{respDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ipaddr != null" >
+        ipaddr = #{ipaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="timeUsed != null" >
+        timeUsed = #{timeUsed,jdbcType=INTEGER},
+      </if>
+      <if test="msgTmplId != null" >
+        msgTmplId = #{msgTmplId,jdbcType=INTEGER},
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null" >
+        updateBy = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        createdBy = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        createdTime = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where keyUUMsgId = #{keyUUMsgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbUUMsgQueue" >
+    update tbUUMsgQueue
+    set msgType = #{msgType,jdbcType=VARCHAR},
+      sender = #{sender,jdbcType=VARCHAR},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      idxUUWiFiAreaId = #{idxUUWiFiAreaId,jdbcType=VARCHAR},
+      message = #{message,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR},
+      sendTime = #{sendTime,jdbcType=TIMESTAMP},
+      expiryTime = #{expiryTime,jdbcType=TIMESTAMP},
+      msgChannelId = #{msgChannelId,jdbcType=VARCHAR},
+      retry = #{retry,jdbcType=INTEGER},
+      maxRetry = #{maxRetry,jdbcType=INTEGER},
+      pri = #{pri,jdbcType=INTEGER},
+      idxExternalID = #{idxExternalID,jdbcType=INTEGER},
+      respMsgId = #{respMsgId,jdbcType=VARCHAR},
+      respCode = #{respCode,jdbcType=VARCHAR},
+      respDesc = #{respDesc,jdbcType=VARCHAR},
+      ipaddr = #{ipaddr,jdbcType=VARCHAR},
+      timeUsed = #{timeUsed,jdbcType=INTEGER},
+      msgTmplId = #{msgTmplId,jdbcType=INTEGER},
+      idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      updateBy = #{updateBy,jdbcType=VARCHAR},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      createdBy = #{createdBy,jdbcType=VARCHAR},
+      createdTime = #{createdTime,jdbcType=TIMESTAMP}
+    where keyUUMsgId = #{keyUUMsgId,jdbcType=INTEGER}
+  </update>
+</mapper>

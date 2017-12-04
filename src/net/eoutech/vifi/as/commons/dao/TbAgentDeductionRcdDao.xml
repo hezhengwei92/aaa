@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbAgentDeductionRcdDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbAgentDeductionRcd" >
+    <id column="keyID" property="keyID" jdbcType="INTEGER" />
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR" />
+    <result column="idxCDRId" property="idxCDRId" jdbcType="VARCHAR" />
+    <result column="discount" property="discount" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="beforeValue" property="beforeValue" jdbcType="INTEGER" />
+    <result column="afterValue" property="afterValue" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyID, idxAgentID, idxCDRId, discount, amount, beforeValue, afterValue, remark, mdfTm, 
+    mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbAgentDeductionRcd
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbAgentDeductionRcd
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbAgentDeductionRcd" >
+    insert into tbAgentDeductionRcd (keyID, idxAgentID, idxCDRId, 
+      discount, amount, beforeValue, 
+      afterValue, remark, mdfTm, 
+      mdfBy, crtTm, crtBy
+      )
+    values (#{keyID,jdbcType=INTEGER}, #{idxAgentID,jdbcType=VARCHAR}, #{idxCDRId,jdbcType=VARCHAR}, 
+      #{discount,jdbcType=INTEGER}, #{amount,jdbcType=INTEGER}, #{beforeValue,jdbcType=INTEGER}, 
+      #{afterValue,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, 
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbAgentDeductionRcd" >
+    insert into tbAgentDeductionRcd
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        keyID,
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID,
+      </if>
+      <if test="idxCDRId != null" >
+        idxCDRId,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="beforeValue != null" >
+        beforeValue,
+      </if>
+      <if test="afterValue != null" >
+        afterValue,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyID != null" >
+        #{keyID,jdbcType=INTEGER},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxCDRId != null" >
+        #{idxCDRId,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="beforeValue != null" >
+        #{beforeValue,jdbcType=INTEGER},
+      </if>
+      <if test="afterValue != null" >
+        #{afterValue,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbAgentDeductionRcd" >
+    update tbAgentDeductionRcd
+    <set >
+      <if test="idxAgentID != null" >
+        idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxCDRId != null" >
+        idxCDRId = #{idxCDRId,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="beforeValue != null" >
+        beforeValue = #{beforeValue,jdbcType=INTEGER},
+      </if>
+      <if test="afterValue != null" >
+        afterValue = #{afterValue,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbAgentDeductionRcd" >
+    update tbAgentDeductionRcd
+    set idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      idxCDRId = #{idxCDRId,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=INTEGER},
+      beforeValue = #{beforeValue,jdbcType=INTEGER},
+      afterValue = #{afterValue,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyID = #{keyID,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql begin-->
+  <insert id="insertBatch" parameterType="net.eoutech.vifi.as.commons.entity.TbAgentDeductionRcd" >
+    insert into tbAgentDeductionRcd (idxAgentID, idxCDRId,
+    discount, amount, beforeValue,
+    afterValue, remark, mdfTm,
+    mdfBy, crtTm, crtBy
+    )
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+    (#{item.idxAgentID,jdbcType=VARCHAR}, #{item.idxCDRId,jdbcType=VARCHAR},
+    #{item.discount,jdbcType=INTEGER}, #{item.amount,jdbcType=INTEGER}, #{item.beforeValue,jdbcType=INTEGER},
+    #{item.afterValue,jdbcType=INTEGER}, #{item.remark,jdbcType=VARCHAR}, #{item.mdfTm,jdbcType=TIMESTAMP},
+    #{item.mdfBy,jdbcType=VARCHAR}, #{item.crtTm,jdbcType=TIMESTAMP}, #{item.crtBy,jdbcType=VARCHAR}
+    )
+    </foreach>
+  </insert>
+
+</mapper>

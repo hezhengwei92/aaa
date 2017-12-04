@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbUserTopupRcdDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbUserTopupRcd" >
+    <id column="keyID" property="keyID" jdbcType="INTEGER" />
+    <result column="idxOrderID" property="idxOrderID" jdbcType="VARCHAR" />
+    <result column="idxUserID" property="idxUserID" jdbcType="VARCHAR" />
+    <result column="topupType" property="topupType" jdbcType="VARCHAR" />
+    <result column="idxExID" property="idxExID" jdbcType="VARCHAR" />
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR" />
+    <result column="goodsID" property="goodsID" jdbcType="VARCHAR" />
+    <result column="pkgType" property="pkgType" jdbcType="VARCHAR" />
+    <result column="pkgInfo" property="pkgInfo" jdbcType="VARCHAR" />
+    <result column="uuwifiAreaId" property="uuwifiAreaId" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
+    <result column="ipAddr" property="ipAddr" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+    <result column="flow" property="flow" jdbcType="INTEGER" />
+
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyID,idxOrderID,idxUserID,topupType,idxExID,idxAgentID,goodsID,pkgType,pkgInfo,uuwifiAreaId,amount,ipAddr,status,remark,mdfTm,mdfBy,crtTm,crtBy,flow
+  </sql>
+
+  <update id="updateLock"  >
+    UPDATE tbUserTopupRcd set status = '0' where idxOrderID = #{0}
+  </update>
+
+
+</mapper>

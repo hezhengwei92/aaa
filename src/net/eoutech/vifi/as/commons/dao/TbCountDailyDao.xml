@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbCountDailyDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbCountDaily" >
+    <id column="keyCDID" property="keyCDID" jdbcType="VARCHAR" />
+    <result column="idxUserId" property="idxUserId" jdbcType="VARCHAR" />
+    <result column="numTotalMMIn" property="numTotalMMIn" jdbcType="INTEGER" />
+    <result column="numTotalMMOut" property="numTotalMMOut" jdbcType="INTEGER" />
+    <result column="numTotalMO" property="numTotalMO" jdbcType="INTEGER" />
+    <result column="numTotalMOCb" property="numTotalMOCb" jdbcType="INTEGER" />
+    <result column="numTotalMTGoip" property="numTotalMTGoip" jdbcType="INTEGER" />
+    <result column="numTotalMOGoip" property="numTotalMOGoip" jdbcType="INTEGER" />
+    <result column="numTotalMOGoipCb" property="numTotalMOGoipCb" jdbcType="INTEGER" />
+    <result column="numFailedMMIn" property="numFailedMMIn" jdbcType="INTEGER" />
+    <result column="numFailedMMOut" property="numFailedMMOut" jdbcType="INTEGER" />
+    <result column="numFailedMO" property="numFailedMO" jdbcType="INTEGER" />
+    <result column="numFailedMOCb" property="numFailedMOCb" jdbcType="INTEGER" />
+    <result column="numFailedMTGoip" property="numFailedMTGoip" jdbcType="INTEGER" />
+    <result column="numFailedMOGoip" property="numFailedMOGoip" jdbcType="INTEGER" />
+    <result column="numFailedMOGoipCb" property="numFailedMOGoipCb" jdbcType="INTEGER" />
+    <result column="numShortMMIn" property="numShortMMIn" jdbcType="INTEGER" />
+    <result column="numShortMMOut" property="numShortMMOut" jdbcType="INTEGER" />
+    <result column="numShortMO" property="numShortMO" jdbcType="INTEGER" />
+    <result column="numShortMOCb" property="numShortMOCb" jdbcType="INTEGER" />
+    <result column="numShortMTGoip" property="numShortMTGoip" jdbcType="INTEGER" />
+    <result column="numShortMOGoip" property="numShortMOGoip" jdbcType="INTEGER" />
+    <result column="numShortMOGoipCb" property="numShortMOGoipCb" jdbcType="INTEGER" />
+    <result column="durMMOut" property="durMMOut" jdbcType="INTEGER" />
+    <result column="durMO" property="durMO" jdbcType="INTEGER" />
+    <result column="durMOCb" property="durMOCb" jdbcType="INTEGER" />
+    <result column="durMTGoip" property="durMTGoip" jdbcType="INTEGER" />
+    <result column="durMOGoip" property="durMOGoip" jdbcType="INTEGER" />
+    <result column="durMOGoipCb" property="durMOGoipCb" jdbcType="INTEGER" />
+    <result column="numSMSRecv" property="numSMSRecv" jdbcType="INTEGER" />
+    <result column="numSMSSend" property="numSMSSend" jdbcType="INTEGER" />
+    <result column="cntDataDown" property="cntDataDown" jdbcType="INTEGER" />
+    <result column="cntDataUp" property="cntDataUp" jdbcType="INTEGER" />
+    <result column="cntDataSum" property="cntDataSum" jdbcType="INTEGER" />
+    <result column="cost" property="cost" jdbcType="INTEGER" />
+    <result column="dataCost" property="dataCost" jdbcType="INTEGER" />
+    <result column="callCost" property="callCost" jdbcType="INTEGER" />
+    <result column="smsCost" property="smsCost" jdbcType="INTEGER" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyCDID, idxUserId, numTotalMMIn, numTotalMMOut, numTotalMO, numTotalMOCb, numTotalMTGoip, 
+    numTotalMOGoip, numTotalMOGoipCb, numFailedMMIn, numFailedMMOut, numFailedMO, numFailedMOCb, 
+    numFailedMTGoip, numFailedMOGoip, numFailedMOGoipCb, numShortMMIn, numShortMMOut, 
+    numShortMO, numShortMOCb, numShortMTGoip, numShortMOGoip, numShortMOGoipCb, durMMOut, 
+    durMO, durMOCb, durMTGoip, durMOGoip, durMOGoipCb, numSMSRecv, numSMSSend, cntDataDown, 
+    cntDataUp, cntDataSum, cost, dataCost, callCost, smsCost, mdfTm, mdfBy, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbCountDaily
+    where keyCDID = #{keyCDID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbCountDaily
+    where keyCDID = #{keyCDID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbCountDaily" >
+    insert into tbCountDaily (keyCDID, idxUserId, numTotalMMIn, 
+      numTotalMMOut, numTotalMO, numTotalMOCb, 
+      numTotalMTGoip, numTotalMOGoip, numTotalMOGoipCb, 
+      numFailedMMIn, numFailedMMOut, numFailedMO, 
+      numFailedMOCb, numFailedMTGoip, numFailedMOGoip, 
+      numFailedMOGoipCb, numShortMMIn, numShortMMOut, 
+      numShortMO, numShortMOCb, numShortMTGoip, 
+      numShortMOGoip, numShortMOGoipCb, durMMOut, 
+      durMO, durMOCb, durMTGoip, 
+      durMOGoip, durMOGoipCb, numSMSRecv, 
+      numSMSSend, cntDataDown, cntDataUp, 
+      cntDataSum, cost, dataCost, 
+      callCost, smsCost, mdfTm, 
+      mdfBy, crtTm, crtBy
+      )
+    values (#{keyCDID,jdbcType=VARCHAR}, #{idxUserId,jdbcType=VARCHAR}, #{numTotalMMIn,jdbcType=INTEGER}, 
+      #{numTotalMMOut,jdbcType=INTEGER}, #{numTotalMO,jdbcType=INTEGER}, #{numTotalMOCb,jdbcType=INTEGER}, 
+      #{numTotalMTGoip,jdbcType=INTEGER}, #{numTotalMOGoip,jdbcType=INTEGER}, #{numTotalMOGoipCb,jdbcType=INTEGER}, 
+      #{numFailedMMIn,jdbcType=INTEGER}, #{numFailedMMOut,jdbcType=INTEGER}, #{numFailedMO,jdbcType=INTEGER}, 
+      #{numFailedMOCb,jdbcType=INTEGER}, #{numFailedMTGoip,jdbcType=INTEGER}, #{numFailedMOGoip,jdbcType=INTEGER}, 
+      #{numFailedMOGoipCb,jdbcType=INTEGER}, #{numShortMMIn,jdbcType=INTEGER}, #{numShortMMOut,jdbcType=INTEGER}, 
+      #{numShortMO,jdbcType=INTEGER}, #{numShortMOCb,jdbcType=INTEGER}, #{numShortMTGoip,jdbcType=INTEGER}, 
+      #{numShortMOGoip,jdbcType=INTEGER}, #{numShortMOGoipCb,jdbcType=INTEGER}, #{durMMOut,jdbcType=INTEGER}, 
+      #{durMO,jdbcType=INTEGER}, #{durMOCb,jdbcType=INTEGER}, #{durMTGoip,jdbcType=INTEGER}, 
+      #{durMOGoip,jdbcType=INTEGER}, #{durMOGoipCb,jdbcType=INTEGER}, #{numSMSRecv,jdbcType=INTEGER}, 
+      #{numSMSSend,jdbcType=INTEGER}, #{cntDataDown,jdbcType=INTEGER}, #{cntDataUp,jdbcType=INTEGER}, 
+      #{cntDataSum,jdbcType=INTEGER}, #{cost,jdbcType=INTEGER}, #{dataCost,jdbcType=INTEGER}, 
+      #{callCost,jdbcType=INTEGER}, #{smsCost,jdbcType=INTEGER}, #{mdfTm,jdbcType=TIMESTAMP}, 
+      #{mdfBy,jdbcType=VARCHAR}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbCountDaily" >
+    insert into tbCountDaily
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyCDID != null" >
+        keyCDID,
+      </if>
+      <if test="idxUserId != null" >
+        idxUserId,
+      </if>
+      <if test="numTotalMMIn != null" >
+        numTotalMMIn,
+      </if>
+      <if test="numTotalMMOut != null" >
+        numTotalMMOut,
+      </if>
+      <if test="numTotalMO != null" >
+        numTotalMO,
+      </if>
+      <if test="numTotalMOCb != null" >
+        numTotalMOCb,
+      </if>
+      <if test="numTotalMTGoip != null" >
+        numTotalMTGoip,
+      </if>
+      <if test="numTotalMOGoip != null" >
+        numTotalMOGoip,
+      </if>
+      <if test="numTotalMOGoipCb != null" >
+        numTotalMOGoipCb,
+      </if>
+      <if test="numFailedMMIn != null" >
+        numFailedMMIn,
+      </if>
+      <if test="numFailedMMOut != null" >
+        numFailedMMOut,
+      </if>
+      <if test="numFailedMO != null" >
+        numFailedMO,
+      </if>
+      <if test="numFailedMOCb != null" >
+        numFailedMOCb,
+      </if>
+      <if test="numFailedMTGoip != null" >
+        numFailedMTGoip,
+      </if>
+      <if test="numFailedMOGoip != null" >
+        numFailedMOGoip,
+      </if>
+      <if test="numFailedMOGoipCb != null" >
+        numFailedMOGoipCb,
+      </if>
+      <if test="numShortMMIn != null" >
+        numShortMMIn,
+      </if>
+      <if test="numShortMMOut != null" >
+        numShortMMOut,
+      </if>
+      <if test="numShortMO != null" >
+        numShortMO,
+      </if>
+      <if test="numShortMOCb != null" >
+        numShortMOCb,
+      </if>
+      <if test="numShortMTGoip != null" >
+        numShortMTGoip,
+      </if>
+      <if test="numShortMOGoip != null" >
+        numShortMOGoip,
+      </if>
+      <if test="numShortMOGoipCb != null" >
+        numShortMOGoipCb,
+      </if>
+      <if test="durMMOut != null" >
+        durMMOut,
+      </if>
+      <if test="durMO != null" >
+        durMO,
+      </if>
+      <if test="durMOCb != null" >
+        durMOCb,
+      </if>
+      <if test="durMTGoip != null" >
+        durMTGoip,
+      </if>
+      <if test="durMOGoip != null" >
+        durMOGoip,
+      </if>
+      <if test="durMOGoipCb != null" >
+        durMOGoipCb,
+      </if>
+      <if test="numSMSRecv != null" >
+        numSMSRecv,
+      </if>
+      <if test="numSMSSend != null" >
+        numSMSSend,
+      </if>
+      <if test="cntDataDown != null" >
+        cntDataDown,
+      </if>
+      <if test="cntDataUp != null" >
+        cntDataUp,
+      </if>
+      <if test="cntDataSum != null" >
+        cntDataSum,
+      </if>
+      <if test="cost != null" >
+        cost,
+      </if>
+      <if test="dataCost != null" >
+        dataCost,
+      </if>
+      <if test="callCost != null" >
+        callCost,
+      </if>
+      <if test="smsCost != null" >
+        smsCost,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyCDID != null" >
+        #{keyCDID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxUserId != null" >
+        #{idxUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="numTotalMMIn != null" >
+        #{numTotalMMIn,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMMOut != null" >
+        #{numTotalMMOut,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMO != null" >
+        #{numTotalMO,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMOCb != null" >
+        #{numTotalMOCb,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMTGoip != null" >
+        #{numTotalMTGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMOGoip != null" >
+        #{numTotalMOGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMOGoipCb != null" >
+        #{numTotalMOGoipCb,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMMIn != null" >
+        #{numFailedMMIn,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMMOut != null" >
+        #{numFailedMMOut,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMO != null" >
+        #{numFailedMO,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMOCb != null" >
+        #{numFailedMOCb,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMTGoip != null" >
+        #{numFailedMTGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMOGoip != null" >
+        #{numFailedMOGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMOGoipCb != null" >
+        #{numFailedMOGoipCb,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMMIn != null" >
+        #{numShortMMIn,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMMOut != null" >
+        #{numShortMMOut,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMO != null" >
+        #{numShortMO,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMOCb != null" >
+        #{numShortMOCb,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMTGoip != null" >
+        #{numShortMTGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMOGoip != null" >
+        #{numShortMOGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMOGoipCb != null" >
+        #{numShortMOGoipCb,jdbcType=INTEGER},
+      </if>
+      <if test="durMMOut != null" >
+        #{durMMOut,jdbcType=INTEGER},
+      </if>
+      <if test="durMO != null" >
+        #{durMO,jdbcType=INTEGER},
+      </if>
+      <if test="durMOCb != null" >
+        #{durMOCb,jdbcType=INTEGER},
+      </if>
+      <if test="durMTGoip != null" >
+        #{durMTGoip,jdbcType=INTEGER},
+      </if>
+      <if test="durMOGoip != null" >
+        #{durMOGoip,jdbcType=INTEGER},
+      </if>
+      <if test="durMOGoipCb != null" >
+        #{durMOGoipCb,jdbcType=INTEGER},
+      </if>
+      <if test="numSMSRecv != null" >
+        #{numSMSRecv,jdbcType=INTEGER},
+      </if>
+      <if test="numSMSSend != null" >
+        #{numSMSSend,jdbcType=INTEGER},
+      </if>
+      <if test="cntDataDown != null" >
+        #{cntDataDown,jdbcType=INTEGER},
+      </if>
+      <if test="cntDataUp != null" >
+        #{cntDataUp,jdbcType=INTEGER},
+      </if>
+      <if test="cntDataSum != null" >
+        #{cntDataSum,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null" >
+        #{cost,jdbcType=INTEGER},
+      </if>
+      <if test="dataCost != null" >
+        #{dataCost,jdbcType=INTEGER},
+      </if>
+      <if test="callCost != null" >
+        #{callCost,jdbcType=INTEGER},
+      </if>
+      <if test="smsCost != null" >
+        #{smsCost,jdbcType=INTEGER},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbCountDaily" >
+    update tbCountDaily
+    <set >
+      <if test="idxUserId != null" >
+        idxUserId = #{idxUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="numTotalMMIn != null" >
+        numTotalMMIn = #{numTotalMMIn,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMMOut != null" >
+        numTotalMMOut = #{numTotalMMOut,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMO != null" >
+        numTotalMO = #{numTotalMO,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMOCb != null" >
+        numTotalMOCb = #{numTotalMOCb,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMTGoip != null" >
+        numTotalMTGoip = #{numTotalMTGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMOGoip != null" >
+        numTotalMOGoip = #{numTotalMOGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numTotalMOGoipCb != null" >
+        numTotalMOGoipCb = #{numTotalMOGoipCb,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMMIn != null" >
+        numFailedMMIn = #{numFailedMMIn,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMMOut != null" >
+        numFailedMMOut = #{numFailedMMOut,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMO != null" >
+        numFailedMO = #{numFailedMO,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMOCb != null" >
+        numFailedMOCb = #{numFailedMOCb,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMTGoip != null" >
+        numFailedMTGoip = #{numFailedMTGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMOGoip != null" >
+        numFailedMOGoip = #{numFailedMOGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numFailedMOGoipCb != null" >
+        numFailedMOGoipCb = #{numFailedMOGoipCb,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMMIn != null" >
+        numShortMMIn = #{numShortMMIn,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMMOut != null" >
+        numShortMMOut = #{numShortMMOut,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMO != null" >
+        numShortMO = #{numShortMO,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMOCb != null" >
+        numShortMOCb = #{numShortMOCb,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMTGoip != null" >
+        numShortMTGoip = #{numShortMTGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMOGoip != null" >
+        numShortMOGoip = #{numShortMOGoip,jdbcType=INTEGER},
+      </if>
+      <if test="numShortMOGoipCb != null" >
+        numShortMOGoipCb = #{numShortMOGoipCb,jdbcType=INTEGER},
+      </if>
+      <if test="durMMOut != null" >
+        durMMOut = #{durMMOut,jdbcType=INTEGER},
+      </if>
+      <if test="durMO != null" >
+        durMO = #{durMO,jdbcType=INTEGER},
+      </if>
+      <if test="durMOCb != null" >
+        durMOCb = #{durMOCb,jdbcType=INTEGER},
+      </if>
+      <if test="durMTGoip != null" >
+        durMTGoip = #{durMTGoip,jdbcType=INTEGER},
+      </if>
+      <if test="durMOGoip != null" >
+        durMOGoip = #{durMOGoip,jdbcType=INTEGER},
+      </if>
+      <if test="durMOGoipCb != null" >
+        durMOGoipCb = #{durMOGoipCb,jdbcType=INTEGER},
+      </if>
+      <if test="numSMSRecv != null" >
+        numSMSRecv = #{numSMSRecv,jdbcType=INTEGER},
+      </if>
+      <if test="numSMSSend != null" >
+        numSMSSend = #{numSMSSend,jdbcType=INTEGER},
+      </if>
+      <if test="cntDataDown != null" >
+        cntDataDown = #{cntDataDown,jdbcType=INTEGER},
+      </if>
+      <if test="cntDataUp != null" >
+        cntDataUp = #{cntDataUp,jdbcType=INTEGER},
+      </if>
+      <if test="cntDataSum != null" >
+        cntDataSum = #{cntDataSum,jdbcType=INTEGER},
+      </if>
+      <if test="cost != null" >
+        cost = #{cost,jdbcType=INTEGER},
+      </if>
+      <if test="dataCost != null" >
+        dataCost = #{dataCost,jdbcType=INTEGER},
+      </if>
+      <if test="callCost != null" >
+        callCost = #{callCost,jdbcType=INTEGER},
+      </if>
+      <if test="smsCost != null" >
+        smsCost = #{smsCost,jdbcType=INTEGER},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyCDID = #{keyCDID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbCountDaily" >
+    update tbCountDaily
+    set idxUserId = #{idxUserId,jdbcType=VARCHAR},
+      numTotalMMIn = #{numTotalMMIn,jdbcType=INTEGER},
+      numTotalMMOut = #{numTotalMMOut,jdbcType=INTEGER},
+      numTotalMO = #{numTotalMO,jdbcType=INTEGER},
+      numTotalMOCb = #{numTotalMOCb,jdbcType=INTEGER},
+      numTotalMTGoip = #{numTotalMTGoip,jdbcType=INTEGER},
+      numTotalMOGoip = #{numTotalMOGoip,jdbcType=INTEGER},
+      numTotalMOGoipCb = #{numTotalMOGoipCb,jdbcType=INTEGER},
+      numFailedMMIn = #{numFailedMMIn,jdbcType=INTEGER},
+      numFailedMMOut = #{numFailedMMOut,jdbcType=INTEGER},
+      numFailedMO = #{numFailedMO,jdbcType=INTEGER},
+      numFailedMOCb = #{numFailedMOCb,jdbcType=INTEGER},
+      numFailedMTGoip = #{numFailedMTGoip,jdbcType=INTEGER},
+      numFailedMOGoip = #{numFailedMOGoip,jdbcType=INTEGER},
+      numFailedMOGoipCb = #{numFailedMOGoipCb,jdbcType=INTEGER},
+      numShortMMIn = #{numShortMMIn,jdbcType=INTEGER},
+      numShortMMOut = #{numShortMMOut,jdbcType=INTEGER},
+      numShortMO = #{numShortMO,jdbcType=INTEGER},
+      numShortMOCb = #{numShortMOCb,jdbcType=INTEGER},
+      numShortMTGoip = #{numShortMTGoip,jdbcType=INTEGER},
+      numShortMOGoip = #{numShortMOGoip,jdbcType=INTEGER},
+      numShortMOGoipCb = #{numShortMOGoipCb,jdbcType=INTEGER},
+      durMMOut = #{durMMOut,jdbcType=INTEGER},
+      durMO = #{durMO,jdbcType=INTEGER},
+      durMOCb = #{durMOCb,jdbcType=INTEGER},
+      durMTGoip = #{durMTGoip,jdbcType=INTEGER},
+      durMOGoip = #{durMOGoip,jdbcType=INTEGER},
+      durMOGoipCb = #{durMOGoipCb,jdbcType=INTEGER},
+      numSMSRecv = #{numSMSRecv,jdbcType=INTEGER},
+      numSMSSend = #{numSMSSend,jdbcType=INTEGER},
+      cntDataDown = #{cntDataDown,jdbcType=INTEGER},
+      cntDataUp = #{cntDataUp,jdbcType=INTEGER},
+      cntDataSum = #{cntDataSum,jdbcType=INTEGER},
+      cost = #{cost,jdbcType=INTEGER},
+      dataCost = #{dataCost,jdbcType=INTEGER},
+      callCost = #{callCost,jdbcType=INTEGER},
+      smsCost = #{smsCost,jdbcType=INTEGER},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyCDID = #{keyCDID,jdbcType=VARCHAR}
+  </update>
+</mapper>

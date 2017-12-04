@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbCDRDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbCDR" >
+    <id column="keyCDRID" property="keyCDRID" jdbcType="INTEGER" />
+    <result column="idxUserId" property="idxUserId" jdbcType="VARCHAR" />
+    <result column="idxDeductUserId" property="idxDeductUserId" jdbcType="VARCHAR" />
+    <result column="cdrType" property="cdrType" jdbcType="VARCHAR" />
+    <result column="direction" property="direction" jdbcType="VARCHAR" />
+    <result column="distance" property="distance" jdbcType="VARCHAR" />
+    <result column="idxRateId" property="idxRateId" jdbcType="INTEGER" />
+    <result column="suiteRateIds" property="suiteRateIds" jdbcType="VARCHAR" />
+    <result column="dailyRentalID" property="dailyRentalID" jdbcType="INTEGER" />
+    <result column="dnis" property="dnis" jdbcType="VARCHAR" />
+    <result column="caller" property="caller" jdbcType="VARCHAR" />
+    <result column="callee" property="callee" jdbcType="VARCHAR" />
+    <result column="StartTime" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="AnswerTime" property="answerTime" jdbcType="TIMESTAMP" />
+    <result column="StopTime" property="stopTime" jdbcType="TIMESTAMP" />
+    <result column="callDuration" property="callDuration" jdbcType="INTEGER" />
+    <result column="dataTraffic" property="dataTraffic" jdbcType="INTEGER" />
+    <result column="uuwifiDataUp" property="uuwifiDataUp" jdbcType="INTEGER" />
+    <result column="uuwifiDataDown" property="uuwifiDataDown" jdbcType="INTEGER" />
+    <result column="uuwifiSessId" property="uuwifiSessId" jdbcType="VARCHAR" />
+    <result column="costCash" property="costCash" jdbcType="INTEGER" />
+    <result column="costReward" property="costReward" jdbcType="INTEGER" />
+    <result column="bonus" property="bonus" jdbcType="INTEGER" />
+    <result column="idxSupplierId" property="idxSupplierId" jdbcType="VARCHAR" />
+    <result column="supplierDiscount" property="supplierDiscount" jdbcType="INTEGER" />
+    <result column="idxAgentID" property="idxAgentID" jdbcType="VARCHAR" />
+    <result column="agentDiscount" property="agentDiscount" jdbcType="INTEGER" />
+    <result column="idxCallID" property="idxCallID" jdbcType="VARCHAR" />
+    <result column="idxVPXID" property="idxVPXID" jdbcType="VARCHAR" />
+    <result column="idxTrunkID" property="idxTrunkID" jdbcType="VARCHAR" />
+    <result column="hangupPart" property="hangupPart" jdbcType="INTEGER" />
+    <result column="hangupReason" property="hangupReason" jdbcType="VARCHAR" />
+    <result column="idxVSWID" property="idxVSWID" jdbcType="VARCHAR" />
+    <result column="idxGoIPID" property="idxGoIPID" jdbcType="VARCHAR" />
+    <result column="idxSimPID" property="idxSimPID" jdbcType="VARCHAR" />
+    <result column="idxSimCardID" property="idxSimCardID" jdbcType="VARCHAR" />
+    <result column="idxSMSGate" property="idxSMSGate" jdbcType="VARCHAR" />
+    <result column="idxVAPPID" property="idxVAPPID" jdbcType="VARCHAR" />
+    <result column="idxViFiID" property="idxViFiID" jdbcType="VARCHAR" />
+    <result column="ispID" property="ispID" jdbcType="VARCHAR" />
+    <result column="cellId" property="cellId" jdbcType="VARCHAR" />
+    <result column="countryCode" property="countryCode" jdbcType="VARCHAR" />
+    <result column="pubIP" property="pubIP" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="longitude" property="longitude" jdbcType="DOUBLE" />
+    <result column="latitude" property="latitude" jdbcType="DOUBLE" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyCDRID, idxUserId, idxDeductUserId, cdrType, direction, distance, idxRateId, suiteRateIds, 
+    dailyRentalID, dnis, caller, callee, StartTime, AnswerTime, StopTime, callDuration, 
+    dataTraffic, uuwifiDataUp, uuwifiDataDown, uuwifiSessId, costCash, costReward, bonus, 
+    idxSupplierId, supplierDiscount, idxAgentID, agentDiscount, idxCallID, idxVPXID, 
+    idxTrunkID, hangupPart, hangupReason, idxVSWID, idxGoIPID, idxSimPID, idxSimCardID, 
+    idxSMSGate, idxVAPPID, idxViFiID, ispID, cellId, countryCode, pubIP, area, longitude, 
+    latitude, crtTm, crtBy
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbCDR
+    where keyCDRID = #{keyCDRID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tbCDR
+    where keyCDRID = #{keyCDRID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbCDR" >
+    insert into tbCDR (keyCDRID, idxUserId, idxDeductUserId, 
+      cdrType, direction, distance, 
+      idxRateId, suiteRateIds, dailyRentalID, 
+      dnis, caller, callee, 
+      StartTime, AnswerTime, StopTime, 
+      callDuration, dataTraffic, uuwifiDataUp, 
+      uuwifiDataDown, uuwifiSessId, costCash, 
+      costReward, bonus, idxSupplierId, 
+      supplierDiscount, idxAgentID, agentDiscount, 
+      idxCallID, idxVPXID, idxTrunkID, 
+      hangupPart, hangupReason, idxVSWID, 
+      idxGoIPID, idxSimPID, idxSimCardID, 
+      idxSMSGate, idxVAPPID, idxViFiID, 
+      ispID, cellId, countryCode, 
+      pubIP, area, longitude, 
+      latitude, crtTm, crtBy
+      )
+    values (#{keyCDRID,jdbcType=INTEGER}, #{idxUserId,jdbcType=VARCHAR}, #{idxDeductUserId,jdbcType=VARCHAR}, 
+      #{cdrType,jdbcType=VARCHAR}, #{direction,jdbcType=VARCHAR}, #{distance,jdbcType=VARCHAR}, 
+      #{idxRateId,jdbcType=INTEGER}, #{suiteRateIds,jdbcType=VARCHAR}, #{dailyRentalID,jdbcType=INTEGER}, 
+      #{dnis,jdbcType=VARCHAR}, #{caller,jdbcType=VARCHAR}, #{callee,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{answerTime,jdbcType=TIMESTAMP}, #{stopTime,jdbcType=TIMESTAMP}, 
+      #{callDuration,jdbcType=INTEGER}, #{dataTraffic,jdbcType=INTEGER}, #{uuwifiDataUp,jdbcType=INTEGER}, 
+      #{uuwifiDataDown,jdbcType=INTEGER}, #{uuwifiSessId,jdbcType=VARCHAR}, #{costCash,jdbcType=INTEGER}, 
+      #{costReward,jdbcType=INTEGER}, #{bonus,jdbcType=INTEGER}, #{idxSupplierId,jdbcType=VARCHAR}, 
+      #{supplierDiscount,jdbcType=INTEGER}, #{idxAgentID,jdbcType=VARCHAR}, #{agentDiscount,jdbcType=INTEGER}, 
+      #{idxCallID,jdbcType=VARCHAR}, #{idxVPXID,jdbcType=VARCHAR}, #{idxTrunkID,jdbcType=VARCHAR}, 
+      #{hangupPart,jdbcType=INTEGER}, #{hangupReason,jdbcType=VARCHAR}, #{idxVSWID,jdbcType=VARCHAR}, 
+      #{idxGoIPID,jdbcType=VARCHAR}, #{idxSimPID,jdbcType=VARCHAR}, #{idxSimCardID,jdbcType=VARCHAR}, 
+      #{idxSMSGate,jdbcType=VARCHAR}, #{idxVAPPID,jdbcType=VARCHAR}, #{idxViFiID,jdbcType=VARCHAR}, 
+      #{ispID,jdbcType=VARCHAR}, #{cellId,jdbcType=VARCHAR}, #{countryCode,jdbcType=VARCHAR}, 
+      #{pubIP,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{longitude,jdbcType=DOUBLE}, 
+      #{latitude,jdbcType=DOUBLE}, #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="keyCDRID" parameterType="net.eoutech.vifi.as.commons.entity.TbCDR" >
+    insert into tbCDR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyCDRID != null" >
+        keyCDRID,
+      </if>
+      <if test="idxUserId != null" >
+        idxUserId,
+      </if>
+      <if test="idxDeductUserId != null" >
+        idxDeductUserId,
+      </if>
+      <if test="cdrType != null" >
+        cdrType,
+      </if>
+      <if test="direction != null" >
+        direction,
+      </if>
+      <if test="distance != null" >
+        distance,
+      </if>
+      <if test="idxRateId != null" >
+        idxRateId,
+      </if>
+      <if test="suiteRateIds != null" >
+        suiteRateIds,
+      </if>
+      <if test="dailyRentalID != null" >
+        dailyRentalID,
+      </if>
+      <if test="dnis != null" >
+        dnis,
+      </if>
+      <if test="caller != null" >
+        caller,
+      </if>
+      <if test="callee != null" >
+        callee,
+      </if>
+      <if test="startTime != null" >
+        StartTime,
+      </if>
+      <if test="answerTime != null" >
+        AnswerTime,
+      </if>
+      <if test="stopTime != null" >
+        StopTime,
+      </if>
+      <if test="callDuration != null" >
+        callDuration,
+      </if>
+      <if test="dataTraffic != null" >
+        dataTraffic,
+      </if>
+      <if test="uuwifiDataUp != null" >
+        uuwifiDataUp,
+      </if>
+      <if test="uuwifiDataDown != null" >
+        uuwifiDataDown,
+      </if>
+      <if test="uuwifiSessId != null" >
+        uuwifiSessId,
+      </if>
+      <if test="costCash != null" >
+        costCash,
+      </if>
+      <if test="costReward != null" >
+        costReward,
+      </if>
+      <if test="bonus != null" >
+        bonus,
+      </if>
+      <if test="idxSupplierId != null" >
+        idxSupplierId,
+      </if>
+      <if test="supplierDiscount != null" >
+        supplierDiscount,
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID,
+      </if>
+      <if test="agentDiscount != null" >
+        agentDiscount,
+      </if>
+      <if test="idxCallID != null" >
+        idxCallID,
+      </if>
+      <if test="idxVPXID != null" >
+        idxVPXID,
+      </if>
+      <if test="idxTrunkID != null" >
+        idxTrunkID,
+      </if>
+      <if test="hangupPart != null" >
+        hangupPart,
+      </if>
+      <if test="hangupReason != null" >
+        hangupReason,
+      </if>
+      <if test="idxVSWID != null" >
+        idxVSWID,
+      </if>
+      <if test="idxGoIPID != null" >
+        idxGoIPID,
+      </if>
+      <if test="idxSimPID != null" >
+        idxSimPID,
+      </if>
+      <if test="idxSimCardID != null" >
+        idxSimCardID,
+      </if>
+      <if test="idxSMSGate != null" >
+        idxSMSGate,
+      </if>
+      <if test="idxVAPPID != null" >
+        idxVAPPID,
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID,
+      </if>
+      <if test="ispID != null" >
+        ispID,
+      </if>
+      <if test="cellId != null">
+        cellId,
+      </if>
+      <if test="countryCode != null" >
+        countryCode,
+      </if>
+      <if test="pubIP != null" >
+        pubIP,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyCDRID != null" >
+        #{keyCDRID,jdbcType=INTEGER},
+      </if>
+      <if test="idxUserId != null" >
+        #{idxUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxDeductUserId != null" >
+        #{idxDeductUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="cdrType != null" >
+        #{cdrType,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="distance != null" >
+        #{distance,jdbcType=VARCHAR},
+      </if>
+      <if test="idxRateId != null" >
+        #{idxRateId,jdbcType=INTEGER},
+      </if>
+      <if test="suiteRateIds != null" >
+        #{suiteRateIds,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyRentalID != null" >
+        #{dailyRentalID,jdbcType=INTEGER},
+      </if>
+      <if test="dnis != null" >
+        #{dnis,jdbcType=VARCHAR},
+      </if>
+      <if test="caller != null" >
+        #{caller,jdbcType=VARCHAR},
+      </if>
+      <if test="callee != null" >
+        #{callee,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="answerTime != null" >
+        #{answerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stopTime != null" >
+        #{stopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callDuration != null" >
+        #{callDuration,jdbcType=INTEGER},
+      </if>
+      <if test="dataTraffic != null" >
+        #{dataTraffic,jdbcType=INTEGER},
+      </if>
+      <if test="uuwifiDataUp != null" >
+        #{uuwifiDataUp,jdbcType=INTEGER},
+      </if>
+      <if test="uuwifiDataDown != null" >
+        #{uuwifiDataDown,jdbcType=INTEGER},
+      </if>
+      <if test="uuwifiSessId != null" >
+        #{uuwifiSessId,jdbcType=VARCHAR},
+      </if>
+      <if test="costCash != null" >
+        #{costCash,jdbcType=INTEGER},
+      </if>
+      <if test="costReward != null" >
+        #{costReward,jdbcType=INTEGER},
+      </if>
+      <if test="bonus != null" >
+        #{bonus,jdbcType=INTEGER},
+      </if>
+      <if test="idxSupplierId != null" >
+        #{idxSupplierId,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierDiscount != null" >
+        #{supplierDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="idxAgentID != null" >
+        #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDiscount != null" >
+        #{agentDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="idxCallID != null" >
+        #{idxCallID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVPXID != null" >
+        #{idxVPXID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxTrunkID != null" >
+        #{idxTrunkID,jdbcType=VARCHAR},
+      </if>
+      <if test="hangupPart != null" >
+        #{hangupPart,jdbcType=INTEGER},
+      </if>
+      <if test="hangupReason != null" >
+        #{hangupReason,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVSWID != null" >
+        #{idxVSWID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxGoIPID != null" >
+        #{idxGoIPID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimPID != null" >
+        #{idxSimPID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimCardID != null" >
+        #{idxSimCardID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSMSGate != null" >
+        #{idxSMSGate,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVAPPID != null" >
+        #{idxVAPPID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxViFiID != null" >
+        #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="ispID != null" >
+        #{ispID,jdbcType=VARCHAR},
+      </if>
+      <if test="cellId != null">
+        #{cellId,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null" >
+        #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pubIP != null" >
+        #{pubIP,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbCDR" >
+    update tbCDR
+    <set >
+      <if test="idxUserId != null" >
+        idxUserId = #{idxUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="idxDeductUserId != null" >
+        idxDeductUserId = #{idxDeductUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="cdrType != null" >
+        cdrType = #{cdrType,jdbcType=VARCHAR},
+      </if>
+      <if test="direction != null" >
+        direction = #{direction,jdbcType=VARCHAR},
+      </if>
+      <if test="distance != null" >
+        distance = #{distance,jdbcType=VARCHAR},
+      </if>
+      <if test="idxRateId != null" >
+        idxRateId = #{idxRateId,jdbcType=INTEGER},
+      </if>
+      <if test="suiteRateIds != null" >
+        suiteRateIds = #{suiteRateIds,jdbcType=VARCHAR},
+      </if>
+      <if test="dailyRentalID != null" >
+        dailyRentalID = #{dailyRentalID,jdbcType=INTEGER},
+      </if>
+      <if test="dnis != null" >
+        dnis = #{dnis,jdbcType=VARCHAR},
+      </if>
+      <if test="caller != null" >
+        caller = #{caller,jdbcType=VARCHAR},
+      </if>
+      <if test="callee != null" >
+        callee = #{callee,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        StartTime = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="answerTime != null" >
+        AnswerTime = #{answerTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stopTime != null" >
+        StopTime = #{stopTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="callDuration != null" >
+        callDuration = #{callDuration,jdbcType=INTEGER},
+      </if>
+      <if test="dataTraffic != null" >
+        dataTraffic = #{dataTraffic,jdbcType=INTEGER},
+      </if>
+      <if test="uuwifiDataUp != null" >
+        uuwifiDataUp = #{uuwifiDataUp,jdbcType=INTEGER},
+      </if>
+      <if test="uuwifiDataDown != null" >
+        uuwifiDataDown = #{uuwifiDataDown,jdbcType=INTEGER},
+      </if>
+      <if test="uuwifiSessId != null" >
+        uuwifiSessId = #{uuwifiSessId,jdbcType=VARCHAR},
+      </if>
+      <if test="costCash != null" >
+        costCash = #{costCash,jdbcType=INTEGER},
+      </if>
+      <if test="costReward != null" >
+        costReward = #{costReward,jdbcType=INTEGER},
+      </if>
+      <if test="bonus != null" >
+        bonus = #{bonus,jdbcType=INTEGER},
+      </if>
+      <if test="idxSupplierId != null" >
+        idxSupplierId = #{idxSupplierId,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierDiscount != null" >
+        supplierDiscount = #{supplierDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="idxAgentID != null" >
+        idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDiscount != null" >
+        agentDiscount = #{agentDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="idxCallID != null" >
+        idxCallID = #{idxCallID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVPXID != null" >
+        idxVPXID = #{idxVPXID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxTrunkID != null" >
+        idxTrunkID = #{idxTrunkID,jdbcType=VARCHAR},
+      </if>
+      <if test="hangupPart != null" >
+        hangupPart = #{hangupPart,jdbcType=INTEGER},
+      </if>
+      <if test="hangupReason != null" >
+        hangupReason = #{hangupReason,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVSWID != null" >
+        idxVSWID = #{idxVSWID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxGoIPID != null" >
+        idxGoIPID = #{idxGoIPID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimPID != null" >
+        idxSimPID = #{idxSimPID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSimCardID != null" >
+        idxSimCardID = #{idxSimCardID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxSMSGate != null" >
+        idxSMSGate = #{idxSMSGate,jdbcType=VARCHAR},
+      </if>
+      <if test="idxVAPPID != null" >
+        idxVAPPID = #{idxVAPPID,jdbcType=VARCHAR},
+      </if>
+      <if test="idxViFiID != null" >
+        idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      </if>
+      <if test="ispID != null" >
+        ispID = #{ispID,jdbcType=VARCHAR},
+      </if>
+      <if test="cellId != null">
+        cellId = #{cellId,jdbcType=VARCHAR},
+      </if>
+      <if test="countryCode != null" >
+        countryCode = #{countryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pubIP != null" >
+        pubIP = #{pubIP,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyCDRID = #{keyCDRID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbCDR" >
+    update tbCDR
+    set idxUserId = #{idxUserId,jdbcType=VARCHAR},
+      idxDeductUserId = #{idxDeductUserId,jdbcType=VARCHAR},
+      cdrType = #{cdrType,jdbcType=VARCHAR},
+      direction = #{direction,jdbcType=VARCHAR},
+      distance = #{distance,jdbcType=VARCHAR},
+      idxRateId = #{idxRateId,jdbcType=INTEGER},
+      suiteRateIds = #{suiteRateIds,jdbcType=VARCHAR},
+      dailyRentalID = #{dailyRentalID,jdbcType=INTEGER},
+      dnis = #{dnis,jdbcType=VARCHAR},
+      caller = #{caller,jdbcType=VARCHAR},
+      callee = #{callee,jdbcType=VARCHAR},
+      StartTime = #{startTime,jdbcType=TIMESTAMP},
+      AnswerTime = #{answerTime,jdbcType=TIMESTAMP},
+      StopTime = #{stopTime,jdbcType=TIMESTAMP},
+      callDuration = #{callDuration,jdbcType=INTEGER},
+      dataTraffic = #{dataTraffic,jdbcType=INTEGER},
+      uuwifiDataUp = #{uuwifiDataUp,jdbcType=INTEGER},
+      uuwifiDataDown = #{uuwifiDataDown,jdbcType=INTEGER},
+      uuwifiSessId = #{uuwifiSessId,jdbcType=VARCHAR},
+      costCash = #{costCash,jdbcType=INTEGER},
+      costReward = #{costReward,jdbcType=INTEGER},
+      bonus = #{bonus,jdbcType=INTEGER},
+      idxSupplierId = #{idxSupplierId,jdbcType=VARCHAR},
+      supplierDiscount = #{supplierDiscount,jdbcType=INTEGER},
+      idxAgentID = #{idxAgentID,jdbcType=VARCHAR},
+      agentDiscount = #{agentDiscount,jdbcType=INTEGER},
+      idxCallID = #{idxCallID,jdbcType=VARCHAR},
+      idxVPXID = #{idxVPXID,jdbcType=VARCHAR},
+      idxTrunkID = #{idxTrunkID,jdbcType=VARCHAR},
+      hangupPart = #{hangupPart,jdbcType=INTEGER},
+      hangupReason = #{hangupReason,jdbcType=VARCHAR},
+      idxVSWID = #{idxVSWID,jdbcType=VARCHAR},
+      idxGoIPID = #{idxGoIPID,jdbcType=VARCHAR},
+      idxSimPID = #{idxSimPID,jdbcType=VARCHAR},
+      idxSimCardID = #{idxSimCardID,jdbcType=VARCHAR},
+      idxSMSGate = #{idxSMSGate,jdbcType=VARCHAR},
+      idxVAPPID = #{idxVAPPID,jdbcType=VARCHAR},
+      idxViFiID = #{idxViFiID,jdbcType=VARCHAR},
+      ispID = #{ispID,jdbcType=VARCHAR},
+      cellId = #{cellId,jdbcType=VARCHAR},
+      countryCode = #{countryCode,jdbcType=VARCHAR},
+      pubIP = #{pubIP,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR}
+    where keyCDRID = #{keyCDRID,jdbcType=INTEGER}
+  </update>
+
+  <!--mysql begin-->
+  <select id="selectByCallId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbCDR where idxCallID = #{0} order by crtTm desc limit 1
+  </select>
+  <!--查询使用流量小于0.03的最新一条记录-->
+  <select id="selectCrtTm" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbCDR where idxUserId = #{0} AND dataTraffic &lt; 0.03  and TIMESTAMPDIFF(MINUTE,crtTm,NOW()) &gt; 10  order by crtTm ASC  limit 1
+  </select>
+
+  <select id="selectByUserId" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" />
+    from tbCDR where idxUserId = #{0} order by crtTm ASC  limit 1
+  </select>
+</mapper>

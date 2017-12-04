@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.eoutech.vifi.as.commons.dao.TbViFiDevGroupDao" >
+  <resultMap id="BaseResultMap" type="net.eoutech.vifi.as.commons.entity.TbViFiDevGroup" >
+    <id column="keyDevGrpID" property="keyDevGrpID" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="productionDate" property="productionDate" jdbcType="TIMESTAMP" />
+    <result column="productionNo" property="productionNo" jdbcType="VARCHAR" />
+    <result column="productionVer" property="productionVer" jdbcType="VARCHAR" />
+    <result column="hardwareVer" property="hardwareVer" jdbcType="VARCHAR" />
+    <result column="firmwareVer" property="firmwareVer" jdbcType="VARCHAR" />
+    <result column="softwareVer" property="softwareVer" jdbcType="VARCHAR" />
+    <result column="initNumber" property="initNumber" jdbcType="INTEGER" />
+    <result column="currentNumber" property="currentNumber" jdbcType="INTEGER" />
+    <result column="normalNumber" property="normalNumber" jdbcType="INTEGER" />
+    <result column="repairTimes" property="repairTimes" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="mdfTm" property="mdfTm" jdbcType="TIMESTAMP" />
+    <result column="mdfBy" property="mdfBy" jdbcType="VARCHAR" />
+    <result column="crtTm" property="crtTm" jdbcType="TIMESTAMP" />
+    <result column="crtBy" property="crtBy" jdbcType="VARCHAR" />
+    <result column="tbViFiDevGroupcol" property="tbViFiDevGroupcol" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    keyDevGrpID, name, productionDate, productionNo, productionVer, hardwareVer, firmwareVer, 
+    softwareVer, initNumber, currentNumber, normalNumber, repairTimes, remark, mdfTm, 
+    mdfBy, crtTm, crtBy, tbViFiDevGroupcol
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tbViFiDevGroup
+    where keyDevGrpID = #{keyDevGrpID,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tbViFiDevGroup
+    where keyDevGrpID = #{keyDevGrpID,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiDevGroup" >
+    insert into tbViFiDevGroup (keyDevGrpID, name, productionDate, 
+      productionNo, productionVer, hardwareVer, 
+      firmwareVer, softwareVer, initNumber, 
+      currentNumber, normalNumber, repairTimes, 
+      remark, mdfTm, mdfBy, 
+      crtTm, crtBy, tbViFiDevGroupcol
+      )
+    values (#{keyDevGrpID,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{productionDate,jdbcType=TIMESTAMP}, 
+      #{productionNo,jdbcType=VARCHAR}, #{productionVer,jdbcType=VARCHAR}, #{hardwareVer,jdbcType=VARCHAR}, 
+      #{firmwareVer,jdbcType=VARCHAR}, #{softwareVer,jdbcType=VARCHAR}, #{initNumber,jdbcType=INTEGER}, 
+      #{currentNumber,jdbcType=INTEGER}, #{normalNumber,jdbcType=INTEGER}, #{repairTimes,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{mdfTm,jdbcType=TIMESTAMP}, #{mdfBy,jdbcType=VARCHAR}, 
+      #{crtTm,jdbcType=TIMESTAMP}, #{crtBy,jdbcType=VARCHAR}, #{tbViFiDevGroupcol,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiDevGroup" >
+    insert into tbViFiDevGroup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="keyDevGrpID != null" >
+        keyDevGrpID,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="productionDate != null" >
+        productionDate,
+      </if>
+      <if test="productionNo != null" >
+        productionNo,
+      </if>
+      <if test="productionVer != null" >
+        productionVer,
+      </if>
+      <if test="hardwareVer != null" >
+        hardwareVer,
+      </if>
+      <if test="firmwareVer != null" >
+        firmwareVer,
+      </if>
+      <if test="softwareVer != null" >
+        softwareVer,
+      </if>
+      <if test="initNumber != null" >
+        initNumber,
+      </if>
+      <if test="currentNumber != null" >
+        currentNumber,
+      </if>
+      <if test="normalNumber != null" >
+        normalNumber,
+      </if>
+      <if test="repairTimes != null" >
+        repairTimes,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm,
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy,
+      </if>
+      <if test="crtTm != null" >
+        crtTm,
+      </if>
+      <if test="crtBy != null" >
+        crtBy,
+      </if>
+      <if test="tbViFiDevGroupcol != null" >
+        tbViFiDevGroupcol,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="keyDevGrpID != null" >
+        #{keyDevGrpID,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="productionDate != null" >
+        #{productionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productionNo != null" >
+        #{productionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productionVer != null" >
+        #{productionVer,jdbcType=VARCHAR},
+      </if>
+      <if test="hardwareVer != null" >
+        #{hardwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="firmwareVer != null" >
+        #{firmwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareVer != null" >
+        #{softwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="initNumber != null" >
+        #{initNumber,jdbcType=INTEGER},
+      </if>
+      <if test="currentNumber != null" >
+        #{currentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="normalNumber != null" >
+        #{normalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="repairTimes != null" >
+        #{repairTimes,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        #{crtBy,jdbcType=VARCHAR},
+      </if>
+      <if test="tbViFiDevGroupcol != null" >
+        #{tbViFiDevGroupcol,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiDevGroup" >
+    update tbViFiDevGroup
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="productionDate != null" >
+        productionDate = #{productionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productionNo != null" >
+        productionNo = #{productionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="productionVer != null" >
+        productionVer = #{productionVer,jdbcType=VARCHAR},
+      </if>
+      <if test="hardwareVer != null" >
+        hardwareVer = #{hardwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="firmwareVer != null" >
+        firmwareVer = #{firmwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareVer != null" >
+        softwareVer = #{softwareVer,jdbcType=VARCHAR},
+      </if>
+      <if test="initNumber != null" >
+        initNumber = #{initNumber,jdbcType=INTEGER},
+      </if>
+      <if test="currentNumber != null" >
+        currentNumber = #{currentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="normalNumber != null" >
+        normalNumber = #{normalNumber,jdbcType=INTEGER},
+      </if>
+      <if test="repairTimes != null" >
+        repairTimes = #{repairTimes,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="mdfTm != null" >
+        mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mdfBy != null" >
+        mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTm != null" >
+        crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      </if>
+      <if test="crtBy != null" >
+        crtBy = #{crtBy,jdbcType=VARCHAR},
+      </if>
+      <if test="tbViFiDevGroupcol != null" >
+        tbViFiDevGroupcol = #{tbViFiDevGroupcol,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where keyDevGrpID = #{keyDevGrpID,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="net.eoutech.vifi.as.commons.entity.TbViFiDevGroup" >
+    update tbViFiDevGroup
+    set name = #{name,jdbcType=VARCHAR},
+      productionDate = #{productionDate,jdbcType=TIMESTAMP},
+      productionNo = #{productionNo,jdbcType=VARCHAR},
+      productionVer = #{productionVer,jdbcType=VARCHAR},
+      hardwareVer = #{hardwareVer,jdbcType=VARCHAR},
+      firmwareVer = #{firmwareVer,jdbcType=VARCHAR},
+      softwareVer = #{softwareVer,jdbcType=VARCHAR},
+      initNumber = #{initNumber,jdbcType=INTEGER},
+      currentNumber = #{currentNumber,jdbcType=INTEGER},
+      normalNumber = #{normalNumber,jdbcType=INTEGER},
+      repairTimes = #{repairTimes,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      mdfTm = #{mdfTm,jdbcType=TIMESTAMP},
+      mdfBy = #{mdfBy,jdbcType=VARCHAR},
+      crtTm = #{crtTm,jdbcType=TIMESTAMP},
+      crtBy = #{crtBy,jdbcType=VARCHAR},
+      tbViFiDevGroupcol = #{tbViFiDevGroupcol,jdbcType=VARCHAR}
+    where keyDevGrpID = #{keyDevGrpID,jdbcType=VARCHAR}
+  </update>
+</mapper>
